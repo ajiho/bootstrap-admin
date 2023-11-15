@@ -1,0 +1,65 @@
+{# 继承母模板 #}
+{% extends "layout/main.twig" %}
+
+
+{% block content %}
+  index
+{% endblock %}
+
+
+{% block js %}
+  <script>
+
+    $(document).ready(function () {
+
+      //头部搜索框处理(不需要可以删除,不明白的可以看bootstrap-admin官方文档)
+      $(document).on('search.bsa.navbar-search', function (e, inputValue, data) {
+        //先得到请求地址,组合后大概是这样pages/search.html?keyword=dsadsa&type=article&user=admin2
+        let url = data.action + '?keyword=' + inputValue + '&' + $.param(data.params);
+
+        //然后通过tab打开一个搜索结果的窗口
+        Quicktab.get('.qtab').addTab({
+          title: '<i class="bi bi-search"></i><span class="text-danger ms-2">' + inputValue + '</span>',
+          url: url,
+          close: true,
+        })
+      })
+
+      //退出登录
+      $(document).on('click', '.bsa-logout', function (e) {
+        e.preventDefault();
+        $.modal({
+          body: '确定要退出吗？',
+          cancelBtn: true,
+          ok: function () {
+
+            //请求退出路由
+            $.ajax({
+              method: 'post',
+              url: '/logout',
+            }).then(response => {
+
+              if (response.code === 200) {//跳转到后台首页
+
+                $.toasts({
+                  type: 'success',
+                  content: '退出成功',
+                  onHidden: function () {
+                    top.location.replace('/pages/login.html');
+                  }
+                })
+              }
+            });
+
+
+          }
+        })
+
+
+      });
+
+    });
+  </script>
+{% endblock %}
+
+

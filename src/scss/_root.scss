@@ -1,0 +1,13 @@
+:root {
+  scroll-behavior: auto !important;
+}
+
+
+:root,
+[data-bs-theme="light"] {
+  // bsa自定义变量
+  --bsa-header-height: #{$header-height};
+  --bsa-sidebar-width: #{$sidebar-width};
+  --bsa-footer-height: #{$footer-height};
+}
+

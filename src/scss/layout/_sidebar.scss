@@ -1,0 +1,40 @@
+// 侧边栏
+.bsa-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: var(--bsa-sidebar-width);
+  background-color: var(--#{$prefix}body-bg);
+
+  // background: var(--bsa-sidebar-bg);
+  border-right: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+
+  // 交给js插件部分来实现
+  // transition: 0.3s transform;
+  transform: translateX(0);
+  will-change: transform;
+
+
+  @include media-breakpoint-down(lg) {
+    box-shadow: none;
+    transform: translateX(-101%);
+  }
+
+
+  .card-header {
+    height: var(--bsa-header-height);
+    border-bottom: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+  }
+
+  .card-footer {
+    border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+  }
+
+
+  &.open {
+    transform: translateX(0);
+  }
+
+}
