@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh" data-overlayscrollbars-initialize>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
+  <meta name="keywords" content="{{ keywords }}">
+  <meta name="description" content="{{ description }}">
+  <meta name="author" content="{{ author }}">
+  <!--===================//公共css========================-->
+  <link rel="stylesheet" href="lib/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/overlayscrollbars/styles/overlayscrollbars.min.css">
+  <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+  <!--===================//公共css========================-->
+  {% block css %}{% endblock %}
+  <!--bootstrap-admin样式文件-->
+  <link rel="stylesheet" href="css/bootstrap-admin.min.css">
+  <title>{{ title }}</title>
+</head>
+<body class="bg-body-tertiary" data-overlayscrollbars-initialize>
+{% block content %}{% endblock %}
+<!--===================//公共js========================-->
+<script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/layer/dist/layer.js"></script>
+<script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
+<!--bootstrap-admin网络请求处理-->
+<script src="js/bootstrap-admin.http.js"></script>
+<!--bootstrap-admin核心js文件-->
+<script src="js/bootstrap-admin.core.js"></script>
+<!--===================公共js//========================-->
+<!--===================//页面单独所需的js========================-->
+{% block js %}{% endblock %}
+<!--===================页面单独所需的//========================-->
+<!--=================//mockjs假数据模拟(生产环境中请直接删除下面两个引入的js)=====================-->
+<script src="lib/mockjs/dist/mock-min.js"></script>
+<script src="js/bootstrap-admin.mock.min.js"></script>
+<!--=================mockjs假数据模拟//=====================-->
+</body>
+</html>

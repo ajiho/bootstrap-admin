@@ -1,0 +1,20 @@
+{% macro breadcrumb(pathData) %}
+  <!--面包屑导航-->
+  <div class="row g-3 mb-3 align-items-center">
+    <div class="col-lg-6">
+      <h1 class="fs-4 m-0">{{ pathData|last }}</h1>
+    </div>
+    <div class="col-lg-6">
+      <nav aria-label="breadcrumb" class="d-flex align-items-center flex-lg-row-reverse">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+          {% for key,value in pathData %}
+            {% if key < pathData|length - 1 %}
+              <li class="breadcrumb-item active" aria-current="page">{{ value }}</li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+      </nav>
+    </div>
+  </div>
+{% endmacro %}

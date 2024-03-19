@@ -1,5 +1,5 @@
 @for $i from 12 through 20 {
-  .bsa-fs-#{$i} {
+  .#{$bsa-prefix}fs-#{$i} {
     font-size: $i * 1px !important;
   }
 }
@@ -8,7 +8,7 @@ $fs-start: 25;
 $fs-end: 60;
 
 @while $fs-start <= $fs-end {
-  .bsa-fs-#{$fs-start} {
+  .#{$bsa-prefix}fs-#{$fs-start} {
     font-size: $fs-start * 1px !important;
   }
 

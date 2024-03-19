@@ -1,0 +1,14 @@
+{% set mainPage = '应用' %}
+{% set page = '消息中心' %}
+
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+
+{% extends "layout/main.twig" %}
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['应用','消息中心']) }}
+  </div>
+{% endblock %}

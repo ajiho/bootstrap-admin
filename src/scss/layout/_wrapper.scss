@@ -1,0 +1,131 @@
+.#{$bsa-prefix}wrapper {
+  overflow-x: hidden;
+
+  // 内容区域
+  .#{$bsa-prefix}content-wrapper {
+    padding-top: var(--#{$bsa-prefix}header-height);
+    padding-bottom: var(--#{$bsa-prefix}footer-height);
+    padding-left: var(--#{$bsa-prefix}sidebar-width);
+    transition: .3s all;
+    @include media-breakpoint-down(lg) {
+      padding-left: 0;
+    }
+
+  }
+
+  @include media-breakpoint-down(lg) {
+    // 遮罩层效果
+    .#{$bsa-prefix}overlay {
+      z-index: calc(var(--#{$bsa-prefix}base-zindex) + 10);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #060505;
+      opacity: 0.5;
+      cursor: move;
+    }
+  }
+
+  &.toggled {
+
+    // 头部的左边距离
+    .#{$bsa-prefix}header {
+      left: var(--#{$bsa-prefix}sidebar-mini-width);
+
+      @include media-breakpoint-down(lg) {
+        left: 0;
+      }
+    }
+
+    // 内容包裹区域
+    .#{$bsa-prefix}content-wrapper {
+      padding-left: var(--#{$bsa-prefix}sidebar-mini-width);
+      @include media-breakpoint-down(lg) {
+        padding-left: 0;
+      }
+    }
+
+    //小屏幕下自动展开侧边栏
+    @include media-breakpoint-down(lg) {
+      .#{$bsa-prefix}sidebar-wrapper {
+        transform: translateX(0);
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+
+      &:not(.sidebar-hovered) {
+
+        // 侧边栏宽度变窄
+        .#{$bsa-prefix}sidebar-wrapper {
+          width: var(--#{$bsa-prefix}sidebar-mini-width);
+
+          // header居中
+          .card-header {
+            justify-content: center;
+
+            //logo名字隐藏
+            .#{$bsa-prefix}logo-text {
+              display: none !important;
+            }
+          }
+
+          .card-body {
+
+            .#{$bsa-prefix}navigation {
+              // 隐藏所有的ul
+              ul {
+                display: none;
+              }
+
+              li {
+
+                &.subheader {
+                  display: none;
+                }
+
+                // 让a链接居中
+                a {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  .prepend {
+                    margin-right: 0;
+                  }
+
+                  // 导航菜单文字隐藏
+                  .content {
+                    display: none;
+                  }
+
+                  .append {
+                    display: none;
+                  }
+
+                  // 箭头隐藏
+                  &.arrow:after {
+                    display: none
+                  }
+
+                }
+
+              }
+
+
+            }
+
+
+          }
+
+          // 侧边栏footer隐藏
+          .card-footer {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}

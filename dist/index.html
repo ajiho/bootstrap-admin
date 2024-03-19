@@ -1,337 +1,1549 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh" data-overlayscrollbars-initialize>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
-  <meta name="keywords" content="响应式后台模板,开源免费后台模板,bootstrap5后台管理系统模板">
-  <meta name="description" content="bootstrap-admin基于bootstrap5的免费开源的响应式后台管理模板">
-  <meta name="author" content="ajiho">
-  <link rel="stylesheet" href="lib/bootstrap-icons/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="lib/overlayscrollbars/styles/overlayscrollbars.min.css">
-  <link rel="stylesheet" href="css/bootstrap-admin.min.css">
-  <title>bootstrap-admin开源免费响应式后台管理系统模板</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
+    <meta name="keywords" content="响应式后台模板,开源免费后台模板,bootstrap5后台管理系统模板">
+    <meta name="description" content="bootstrap-admin基于bootstrap5的免费开源的响应式后台管理模板">
+    <meta name="author" content="ajiho">
+    <!--===================//公共css========================-->
+    <link rel="stylesheet" href="lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/overlayscrollbars/styles/overlayscrollbars.min.css">
+    <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+    <!--===================//公共css========================-->
+    <!--bootstrap-admin样式文件-->
+    <link rel="stylesheet" href="css/bootstrap-admin.min.css">
+    <title>bootstrap-admin开源免费响应式后台管理系统模板</title>
 </head>
 
+<body class="bg-body-tertiary" data-overlayscrollbars-initialize>
+    <!--wrapper开始-->
+    <div class="bsa-wrapper">
+        <!-- 头部布局开始 -->
+        <ul class="bsa-header">
+            <!-- 侧边栏触发按钮(移动端时显示) -->
+            <li>
+                <div class="bsa-header-item bsa-sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </div>
+            </li>
+            <!--  占位(可以让后面的li居右)  -->
+            <li class="flex-grow-1"></li>
+            <!--  搜索(不需要可以删除)  -->
+            <li>
+                <div class="bsa-header-item bsa-search-form-open-btn">
+                    <i class="bi bi-search"></i>
+                </div>
+                <form class="bsa-search-form" action="search.html">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索关键词" aria-label="搜索关键词">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-outline-secondary bsa-search-form-close-btn" type="button"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                </form>
+            </li>
+            <!--  通知(如果有新消息则添加类名.bsa-has-msg)  -->
+            <li>
+                <div class="bsa-header-item" data-bsa-href="message.html">
+                    <i class="bi bi-bell bsa-has-msg"></i>
+                </div>
+            </li>
+            <!--  拓展菜单(建议把拓展放在此处,以免破坏头部整体布局,不需要可以直接删除)  -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <i class="bi bi-grid"></i>
+                </div>
+                <div class="dropdown-menu dropdown-menu-end p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header d-flex justify-content-between bg-body">
+                            <span class="bsa-fs-15">拓展菜单</span>
+                            <a href="javascript:" class="bsa-fs-13 text-decoration-none text-body-secondary">编辑</a>
+                        </div>
+                        <div class="card-body overflow-y-auto" data-overlayscrollbars-initialize>
+                            <div class="container-fluid">
+                                <div class="row row-cols-3 g-3">
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary  bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-envelope"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">邮箱</div>
+                                    </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="lockscreen.html">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-lock"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">锁屏</div>
+                                    </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">前台直达</div>
+                                    </a>
 
-<body>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单1</div>
+                                    </a>
 
-<ul class="bsa-header">
-  <!-- 侧边栏触发按钮(移动端时显示) -->
-  <li class="bsa-sidebar-toggler" data-bsa-toggle="pushmenu">
-    <div class="bsa-header-item">
-      <i class="bi bi-list"></i>
-    </div>
-  </li>
-  <!--  搜索组件(不需要可删除)  -->
-  <li>
-    <div class="bsa-header-item bsa-cursor-default">
-      <!--    搜索表单包裹区域        -->
-      <div class="bsa-search-form-wrapper"
-           data-bsa-toggle="navbar-search"
-           data-close-reset="false"
-           data-action="pages/search.html"
-           data-params='{"type":"article","user":"admin2"}'>
-        <div class="bsa-search-form">
-          <input type="text" class="form-control bsa-input-search" aria-label="搜索关键词"
-                 placeholder="搜索关键词">
-          <button class="bsa-search-submit-btn" type="submit"><i class="bi bi-search"></i></button>
-          <button class="bsa-search-close-btn" type="button"><i class="bi bi-x-lg"></i></button>
-        </div>
-      </div>
-      <!--    移动端搜索表单触发器(移动端会显示)        -->
-      <i class="bi bi-search bsa-search-form-toggler bsa-cursor-pointer"></i>
-    </div>
-  </li>
-  <!--  占位(可以让后面的li居右)  -->
-  <li class="flex-grow-1"></li>
-  <!--  通知(如果有新消息则添加类名.bsa-has-msg)  -->
-  <li>
-    <div class="bsa-header-item" data-qt-tab='{"title":"消息中心","url":"pages/message.html"}'
-         data-qt-target=".qtab">
-      <i class="bi bi-bell bsa-has-msg"></i>
-    </div>
-  </li>
-  <!--  拓展菜单(建议把拓展放在此处,以免破坏头部整体布局,不需要可以直接删除)  -->
-  <li class="dropdown">
-    <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-      <i class="bi bi-grid"></i>
-    </div>
-    <div class="dropdown-menu dropdown-menu-end p-0">
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between bg-body">
-          <span class="bsa-fs-15">拓展菜单</span>
-          <a href="javascript:" class="bsa-fs-13 text-decoration-none text-body-secondary">编辑</a>
-        </div>
-        <div class="card-body">
-          <div class="container-fluid">
-            <div class="row row-cols-3 g-3">
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary  bsa-wh-45 rounded-circle">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">邮箱</div>
-              </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单2</div>
+                                    </a>
 
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="pages/lockscreen.html">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-lock"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">锁屏</div>
-              </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单3</div>
+                                    </a>
 
-              <a
-                class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">前台直达</div>
-              </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单4</div>
+                                    </a>
 
-              <a
-                class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单4</div>
-              </a>
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单5</div>
-              </a>
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单6</div>
-              </a>
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单7</div>
-              </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单5</div>
+                                    </a>
 
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
-                </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单8</div>
-              </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单6</div>
+                                    </a>
 
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center bg-body">
+                            <a href="javascript:" class="bsa-fs-14 text-decoration-none text-body-secondary">查看更多菜单</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单9</div>
-              </a>
-
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
+            </li>
+            <!--  全屏  -->
+            <li>
+                <div class="bsa-header-item bsa-fullscreen-trigger">
+                    <i class="bi bi-arrows-fullscreen"></i>
                 </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单10</div>
-              </a>
-
-              <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1"
-                 href="javascript:">
-                <div
-                  class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
-                  <i class="bi bi-link"></i>
+            </li>
+            <!--  主题配色  -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <i class="bi bi-palette"></i>
                 </div>
-                <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单11</div>
-              </a>
+                <div class="dropdown-menu dropdown-menu-end p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header d-flex justify-content-between bg-body">
+                            <span class="bsa-fs-15">主题配色</span>
+                        </div>
+                        <div class="card-body">
+                            <!--    配色包裹      -->
+                            <div class="bsa-theme-switcher-wrapper">
+                                <input aria-label="light" class="form-check-input" type="checkbox" value="light">
+                                <input aria-label="dark" class="form-check-input" type="checkbox" value="dark">
+                                <input aria-label="indigo" class="form-check-input" type="checkbox" value="indigo">
+                                <input aria-label="green" class="form-check-input" type="checkbox" value="green">
+                                <input aria-label="blue" class="form-check-input" type="checkbox" value="blue">
+                                <input aria-label="yellow" class="form-check-input" type="checkbox" value="yellow">
+                                <input aria-label="pink" class="form-check-input" type="checkbox" value="pink">
+                                <input aria-label="red" class="form-check-input" type="checkbox" value="red">
+                                <input aria-label="orange" class="form-check-input" type="checkbox" value="orange">
+                                <input aria-label="cyan" class="form-check-input" type="checkbox" value="cyan">
+                                <input aria-label="teal" class="form-check-input" type="checkbox" value="teal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!--    管理员信息    -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown">
+                    <div class="d-flex align-items-center">
+                        <img src="img/avatar.jpg" class="bsa-user-avatar" alt="用户头像">
+                        <!-- 如果你只需要头像,那么你可以直接把下面这部分删除  -->
+                        <div class="bsa-user-details">
+                            <div class="bsa-ellipsis-1 bsa-fs-15">欲饮琵琶码上催</div>
+                            <!-- 管理员角色RBAC权限设计时可用(不需要可删除,上面的用户名可自动垂直居中)  -->
+                            <div class="bsa-ellipsis-1 bsa-fs-13 text-muted">超级管理员</div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="profile.html">
+                            <i class="bi bi-person me-2"></i>个人资料
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="reset-password.html">
+                            <i class="bi bi-key me-2"></i>修改密码
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bsa-logout-trigger" href="javascript:">
+                            <i class="bi bi-box-arrow-right me-2"></i>退出登录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 头部布局结束 -->
+        <!--  侧边栏包裹开始  -->
+        <div class="bsa-sidebar-wrapper">
+            <div class="card border-0 h-100">
+                <!--  侧边栏头部(用于展示品牌logo)  -->
+                <div class="card-header bg-body d-flex align-items-center flex-shrink-0 border-bottom-0">
+                    <img src="img/favicon-32x32.png" class="bsa-logo-icon" alt="logo-icon">
+                    <div class="bsa-logo-text ms-2 bsa-ellipsis-2">bootstrap-admin</div>
+                </div>
+                <!--  侧边栏身体部分(用于主要的侧边栏菜单)  -->
+                <div class="card-body px-0 py-1 overflow-y-auto" data-overlayscrollbars-initialize>
+                    <!--  导航菜单部分  -->
+                    <ul class="bsa-navigation">
+                        <li>
+                            <a class="active" href="index.html">
+                                <div class="prepend"><i class="bi bi-house"></i></div>
+                                <div class="content">首页</div>
+                            </a>
+                        </li>
+                        <!--  分割线  -->
+                        <li class="separator"></li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-person-lock"></i></div>
+                                <div class="content">权限管理</div>
+                                <div class="append">
+                                    <span class="badge text-bg-primary">6</span>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="user-list.html">
+                                        <div class="content">用户列表</div>
+                                        <div class="append">
+                                            <span class="badge text-bg-primary">2</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="role-list.html">
+                                        <div class="content">角色列表</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="node-list.html">
+                                        <div class="content">节点列表</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-filetype-html"></i></div>
+                                <div class="content">示例页面</div>
+                                <div class="append">
+                                    <span class="badge rounded-pill text-bg-danger">New</span>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="login.html">
+                                        <div class="content">登录页</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="error.html">
+                                        <div class="content">错误页面</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lockscreen.html">
+                                        <div class="content">锁屏页</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="timeline.html">
+                                        <div class="content">时间轴</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-grid"></i></div>
+                                <div class="content">应用</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="message.html">
+                                        <div class="content">消息中心</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-box.html">
+                                        <div class="content">邮箱</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chat-box.html">
+                                        <div class="content">聊天框</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="calendar.html">
+                                        <div class="content">日历</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--  副标题  -->
+                        <li class="subheader">LABELS</li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-gear"></i></div>
+                                <div class="content">设置</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">系统设置</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="sys-website.html">
+                                                <div class="content">网站设置</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="sys-email.html">
+                                                <div class="content">邮件服务</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">我的设置</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="profile.html">
+                                                <div class="content">个人资料</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="reset-password.html">
+                                                <div class="content">修改密码</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subheader">布局&模式</li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-columns"></i></div>
+                                <div class="content">布局和模式</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">顶部菜单</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">布局1</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">布局2</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">IFrame+多tab模式</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://www.bootstrap-admin.top/docs">
+                                <div class="prepend"><i class="bi bi-filetype-doc"></i></div>
+                                <div class="content">文档</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-list-nested"></i></div>
+                                <div class="content">多级菜单</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:" class="arrow">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:">
+                                                        <div class="content">三级菜单</div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:" class="arrow">
+                                                        <div class="content">三级菜单</div>
+                                                    </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="javascript:">
+                                                                <div class="content">四级菜单</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:" class="arrow">
+                                                                <div class="content">四级菜单</div>
+                                                            </a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--  侧边栏底部(不需要可删除)  -->
+                <div class="card-footer bg-body bore">
+                    Version: v2.0.1
+                </div>
             </div>
-          </div>
         </div>
-        <div class="card-footer text-center bg-body">
-          <a href="javascript:" class="bsa-fs-14 text-decoration-none text-body-secondary">查看更多菜单</a>
+        <!--  侧边栏包裹结束  -->
+        <!--页面内容包裹开始-->
+        <div class="bsa-content-wrapper">
+            <!--内容真正的放置区域-->
+
+            <div class="container-fluid p-3">
+
+                <!--面包屑导航-->
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="fs-4 m-0">首页</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <nav aria-label="breadcrumb" class="d-flex align-items-center flex-lg-row-reverse">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">首页</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <!--数据概览信息-->
+                <div class="row g-3 mb-3">
+                    <div class="col-lg-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="me-1">
+                                        <h6 class="mb-2 bsa-ellipsis-1">今日收入</h6>
+                                        <h4 class="mb-1 bsa-ellipsis-1 animation-number">13145.20</h4>
+                                    </div>
+                                    <i class="bi bi-currency-yen fs-1 text-danger"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="me-1">
+                                        <h6 class="mb-2 bsa-ellipsis-1">用户总数</h6>
+                                        <h4 class="mb-1 bsa-ellipsis-1 animation-number">1546</h4>
+                                    </div>
+                                    <i class="bi bi-people fs-1 text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="me-1">
+                                        <h6 class="mb-2 bsa-ellipsis-1">订单总数</h6>
+                                        <h4 class="mb-1 bsa-ellipsis-1 animation-number">2000</h4>
+                                    </div>
+                                    <i class="bi bi-cart fs-1 text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="me-1">
+                                        <h6 class="mb-2 bsa-ellipsis-1">留言</h6>
+                                        <h4 class="mb-1 bsa-ellipsis-1 animation-number">1000</h4>
+                                    </div>
+                                    <i class="bi bi-chat fs-1 text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--开源信息-->
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                版本信息
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive">
+                                    <table class="table align-middle table-bordered   mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th>当前版本</th>
+                                                <td>v2.0.1</td>
+                                            </tr>
+                                            <tr>
+                                                <th>基于框架</th>
+                                                <td>bootstrap v5.3.3</td>
+                                            </tr>
+                                            <tr>
+                                                <th>主要特色</th>
+                                                <td>零门槛 / 响应式 / 清爽 / 极简</td>
+                                            </tr>
+                                            <tr>
+                                                <th>获取渠道</th>
+                                                <td>
+                                                    <a class="btn btn-danger" href="https://gitee.com/ajiho/bootstrap-admin" target="_blank">Gitee</a>
+                                                    <a class="btn btn-success" href="https://gitee.com/ajiho/bootstrap-admin/releases" target="_blank">立即下载</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--chart.js图表-->
+                <div class="row g-3 mb-3">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                近七天pv值
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chart-bar"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                年营业额走势
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chart-line"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <!--echarts实现的注册用户分布地区图表-->
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                注册用户地区分布
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">排名</th>
+                                                        <th scope="col">地区</th>
+                                                        <th scope="col">人数</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>贵州省</td>
+                                                        <td>9347</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>江西省</td>
+                                                        <td>8957</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>北京市</td>
+                                                        <td>8542</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>台湾省</td>
+                                                        <td>8412</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>湖北省</td>
+                                                        <td>8344</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>福建省</td>
+                                                        <td>8274</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>山西省</td>
+                                                        <td>8169</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>黑龙江省</td>
+                                                        <td>7394</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td>重庆市</td>
+                                                        <td>7308</td>
+                                                    </tr>
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="geo" style="height: 400px;width: 100%"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card border-0 mb-3 shadow-sm">
+                            <div class="card-header bg-body">
+                                设备存储情况
+                            </div>
+                            <div class="card-body">
+                                <h4 class="mb-3">36666/50000</h4>
+                                <hr>
+                                <div class="mb-4">
+                                    <p class="d-flex justify-content-between">图片 <span class="text-muted">20GB</span></p>
+                                    <div class="progress" style="height:5px;">
+                                        <div class="progress-bar bg-success" style="width:80%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="d-flex justify-content-between">文档 <span class="text-muted">5GB</span></p>
+                                    <div class="progress" style="height:5px;">
+                                        <div class="progress-bar bg-danger" style="width:60%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="d-flex justify-content-between">视频 <span class="text-muted">80GB</span></p>
+                                    <div class="progress" style="height:5px;">
+                                        <div class="progress-bar bg-primary" style="width:40%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="d-flex justify-content-between">音频 <span class="text-muted">80GB</span></p>
+                                    <div class="progress" style="height:5px;">
+                                        <div class="progress-bar bg-primary" style="width:40%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="d-flex justify-content-between">缓存(40%) <span class="text-muted">80GB</span></p>
+                                    <div class="progress" style="height:5px;">
+                                        <div class="progress-bar bg-primary" style="width:40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--chart.js图表-->
+                <div class="row g-3 mb-3">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                媒体数据
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chart3"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                房源租赁概况
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chart4"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--echarts图表-->
+                <div class="row g-3 mb-3">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                世界人口总数量
+                            </div>
+                            <div class="card-body">
+                                <div class="echarts-1" style="height: 300px;width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                浏览器占比变化
+                            </div>
+                            <div class="card-body">
+                                <div class="echarts-2" style="height: 300px;width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--表格数据-->
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                订单摘要
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>订单号</th>
+                                                <th>商品</th>
+                                                <th>下单人</th>
+                                                <th>下单日期</th>
+                                                <th>价格</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>#157444491</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>#157444492</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>#157444493</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>#157444494</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>#157444495</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>#157444496</td>
+                                                <td>
+                                                    Apple iPhone 13 (A2634) 512GB
+                                                </td>
+                                                <td>欲饮琵琶码上催</td>
+                                                <td>2022/7/16</td>
+                                                <td>￥100.00</td>
+                                                <td>
+                                                    <span class="badge bg-success">交易成功</span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="javascript:" class="btn btn-sm btn-light"><i class="bi bi-gear"></i></a>
+                                                        <a href="javascript:" class="btn btn-sm btn-light ms-4"><i class="bi bi-arrow-down"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </li>
-  <!--  全屏  -->
-  <li class="bsa-fullscreen-toggler">
-    <div class="bsa-header-item">
-      <i class="bi bi-arrows-fullscreen"></i>
-    </div>
-  </li>
-  <!--  主题配色  -->
-  <li class="dropdown">
-    <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-      <i class="bi bi-palette"></i>
-    </div>
-    <div class="dropdown-menu dropdown-menu-end p-0">
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between bg-body">
-          <span class="bsa-fs-15">主题配色</span>
+        <!--页面内容包裹结束-->
+        <!--底部版权-->
+        <div class="bsa-footer d-flex align-items-center justify-content-center">
+            Copyright © 2024. All right reserved.
         </div>
-        <div class="card-body">
-          <!--    配色包裹      -->
-          <div class="bsa-theme-switcher-wrapper">
-            <input class="form-check-input" type="checkbox" value="light">
-            <input class="form-check-input" type="checkbox" value="dark">
-            <input class="form-check-input" type="checkbox" value="indigo">
-            <input class="form-check-input" type="checkbox" value="green">
-            <input class="form-check-input" type="checkbox" value="blue">
-            <input class="form-check-input" type="checkbox" value="yellow">
-            <input class="form-check-input" type="checkbox" value="pink">
-            <input class="form-check-input" type="checkbox" value="red">
-            <input class="form-check-input" type="checkbox" value="orange">
-            <input class="form-check-input" type="checkbox" value="cyan">
-            <input class="form-check-input" type="checkbox" value="teal">
-          </div>
-        </div>
-      </div>
     </div>
-  </li>
-  <!--    管理员信息    -->
-  <li class="dropdown">
-    <div class="bsa-header-item" data-bs-toggle="dropdown">
-      <div class="bsa-user-area">
-        <img src="img/avatar.jpg" class="bsa-user-avatar" alt="用户头像">
-        <div class="bsa-user-details">
-          <div class="bsa-ellipsis-1 bsa-fs-15">欲饮琵琶码上催</div>
-          <!-- 管理员角色RBAC权限设计时可用(不需要可删除,上面的用户名可自动垂直居中)  -->
-          <div class="bsa-ellipsis-1 bsa-fs-13 text-muted">超级管理员</div>
-        </div>
-      </div>
-    </div>
-    <ul class="dropdown-menu dropdown-menu-end">
-      <li>
-        <a class="dropdown-item" href="javascript:"
-           data-qt-tab='{"title":"个人资料","url":"pages/profile.html"}'
-           data-qt-target=".qtab">
-          <i class="bi bi-person me-2"></i>个人资料
-        </a>
-      </li>
-      <li>
-        <a class="dropdown-item bsa-clear-cache" href="javascript:"
-           data-qt-tab='{"title":"修改密码","url":"pages/password.html"}'
-           data-qt-target=".qtab">
-          <i class="bi bi-key me-2"></i>修改密码
-        </a>
-      </li>
-      <li>
-        <div class="dropdown-divider"></div>
-      </li>
-      <li class="bsa-logout"><a class="dropdown-item" href="javascript:"><i
-        class="bi bi-box-arrow-right me-2"></i>退出登录</a>
-      </li>
-    </ul>
-  </li>
-</ul>
+    <!--wrapper结束-->
+    <!--===================//公共js========================-->
+    <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/layer/dist/layer.js"></script>
+    <script src="lib/nprogress/nprogress.js"></script>
+    <script src="lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
+    <!--bootstrap-admin网络请求处理-->
+    <script src="js/bootstrap-admin.http.js"></script>
+    <!--bootstrap-admin核心js文件-->
+    <script src="js/bootstrap-admin.core.js"></script>
+    <!--===================公共js//========================-->
+    <!--===================//页面单独所需的js========================-->
+    <!--bootstrap-admin主页面js文件-->
+    <script src="js/bootstrap-admin.main.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 退出登录前询问
+            $(document).on('click', `.bsa-logout-trigger`, function() {
 
-<div class="bsa-sidebar">
-  <div class="card border-0 h-100">
-    <!--  侧边栏头部(用于展示品牌logo)  -->
-    <div class="card-header bg-body d-flex align-items-center flex-shrink-0">
-      <img src="img/favicon-32x32.png" class="bsa-logo-icon" alt="logo-icon">
-      <div class="bsa-logo-text ms-2 bsa-ellipsis-2">bootstrap-admin</div>
-    </div>
-    <!--  侧边栏身体部分(用于主要的侧边栏菜单)  -->
-    <div class="card-body p-0" data-overlayscrollbars-initialize>
+                layer.confirm('确定退出登录吗？', {
+                    btn: ['确定', '关闭'] //按钮
+                }, function() {
 
-    </div>
-    <!--  侧边栏底部(用于演示,不需要可删除)  -->
-    <div class="card-footer bg-body">
-      Version: 2.0.1
-    </div>
-  </div>
-</div>
+                    //发起ajax请求
+                    $.ajax({
+                        url: '/logout'
+                    }).then(response => {
+                        if (response.code === 200) {
 
+                            layer.msg('退出成功', {
+                                time: 1000,
+                                end: function() { // 关闭时的回调函数
+                                    //直接跳转到首页
+                                    location.replace('login.html')
+                                }
+                            });
+                        }
+                    });
+                });
 
-<!--内容区域(.bsa-content-fixed类删除后即可变成单页版本)-->
-<div class="bsa-content bsa-content-fixed">
-  index
-</div>
+            })
 
+        })
+    </script>
 
-<div class="bsa-footer">
-  <p class="mb-0">Copyright © 2023. All right reserved.</p>
-</div>
-
-<script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
-
-
-<script>
-
-  $(document).ready(function () {
-
-    //头部搜索框处理(不需要可以删除,不明白的可以看bootstrap-admin官方文档)
-    $(document).on('search.bsa.navbar-search', function (e, inputValue, data) {
-      //先得到请求地址,组合后大概是这样pages/search.html?keyword=dsadsa&type=article&user=admin2
-      let url = data.action + '?keyword=' + inputValue + '&' + $.param(data.params);
-
-      //然后通过tab打开一个搜索结果的窗口
-      Quicktab.get('.qtab').addTab({
-        title: '<i class="bi bi-search"></i><span class="text-danger ms-2">' + inputValue + '</span>',
-        url: url,
-        close: true,
-      })
-    })
-
-    //退出登录
-    $(document).on('click', '.bsa-logout', function (e) {
-      e.preventDefault();
-      $.modal({
-        body: '确定要退出吗？',
-        cancelBtn: true,
-        ok: function () {
-
-          //请求退出路由
-          $.ajax({
-            method: 'post',
-            url: '/logout',
-          }).then(response => {
-
-            if (response.code === 200) {//跳转到后台首页
-
-              $.toasts({
-                type: 'success',
-                content: '退出成功',
-                onHidden: function () {
-                  top.location.replace('/pages/login.html');
-                }
-              })
+    <script src="js/bootstrap-admin.utils.js"></script>
+    <script src="lib/chart.js/dist/chart.umd.js"></script>
+    <script src="lib/echarts/dist/echarts.min.js"></script>
+    <script src="lib/countup.js/dist/countUp.umd.js"></script>
+    <script>
+        $(document).ready(function() {
+            //初始化echarts图表
+            const myChart = echarts.init(document.querySelector('.echarts-1'))
+            const option = {
+                title: {
+                    text: '世界人口'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {},
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['巴西', '印度尼西亚', '美国', '印度', '中国', '全球']
+                },
+                series: [{
+                        name: '2011',
+                        type: 'bar',
+                        data: [18203, 23489, 29034, 104970, 131744, 630230]
+                    },
+                    {
+                        name: '2012',
+                        type: 'bar',
+                        data: [19325, 23438, 31000, 121594, 134141, 681807]
+                    }
+                ]
             }
-          });
+            myChart.setOption(option)
+            const myChart2 = echarts.init(document.querySelector('.echarts-2'))
+            const option2 = {
+                title: {
+                    text: '浏览器比例',
+                    subtext: '主流浏览器',
+                    top: 10,
+                    left: 10
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    type: 'scroll',
+                    bottom: 10,
+                    data: (function() {
+                        var list = [];
+                        for (var i = 1; i <= 28; i++) {
+                            list.push(i + 2000 + '');
+                        }
+                        return list;
+                    })()
+                },
+                visualMap: {
+                    top: 'middle',
+                    right: 10,
+                    color: ['red', 'yellow'],
+                    calculable: true
+                },
+                radar: {
+                    indicator: [{
+                            text: 'IE8-',
+                            max: 400
+                        },
+                        {
+                            text: 'IE9+',
+                            max: 400
+                        },
+                        {
+                            text: 'Safari',
+                            max: 400
+                        },
+                        {
+                            text: 'Firefox',
+                            max: 400
+                        },
+                        {
+                            text: 'Chrome',
+                            max: 400
+                        }
+                    ]
+                },
+                series: (function() {
+                    var series = [];
+                    for (var i = 1; i <= 28; i++) {
+                        series.push({
+                            type: 'radar',
+                            symbol: 'none',
+                            lineStyle: {
+                                width: 1
+                            },
+                            emphasis: {
+                                areaStyle: {
+                                    color: 'rgba(0,250,0,0.3)'
+                                }
+                            },
+                            data: [{
+                                value: [
+                                    (40 - i) * 10,
+                                    (38 - i) * 4 + 60,
+                                    i * 5 + 10,
+                                    i * 9,
+                                    (i * i) / 2
+                                ],
+                                name: i + 2000 + ''
+                            }]
+                        });
+                    }
+                    return series;
+                })()
+            };
+            myChart2.setOption(option2)
+
+            const myChart3 = echarts.init(document.querySelector('.geo'));
+            //请求数据
+            $.ajax({
+                type: "GET",
+                url: "lib/china.json",
+                dataType: "json",
+                beforeSend: function(XMLHttpRequest) { //请求开始
+                    //遮罩层,增加用户体验
+                    myChart3.showLoading()
+                },
+                complete: function(XMLHttpRequest, textStatus) { //请求结束
+                    myChart3.hideLoading()
+                },
+                success: function(resp) {
+                    //注册地图数据
+                    echarts.registerMap('china', resp);
+
+                    //设置选项
+                    myChart3.setOption({
+                        title: {
+                            text: '注册用户分布图',
+                            subtext: '不完全统计',
+                        },
+                        tooltip: {
+                            formatter: '{b} 注册用户 {c}人',
+                        },
+                        visualMap: {
+                            orient: 'horizontal',
+                            left: 20,
+                            min: 0,
+                            max: 10000,
+                            text: ['高', '低'],
+                            calculable: true,
+                            inRange: {
+                                color: [
+                                    '#313695',
+                                    '#4575b4',
+                                    '#74add1',
+                                    '#abd9e9',
+                                    '#e0f3f8',
+                                    '#ffffbf',
+                                    '#fee090',
+                                    '#fdae61',
+                                    '#f46d43',
+                                    '#d73027',
+                                    '#a50026',
+                                ]
+                            }
+                        },
+                        series: [{
+                                type: 'map',
+                                map: 'china', //对应registerMap 注册名称
+                                roam: true, // 鼠标进行拖拽和缩放操作
+                                scaleLimit: {
+                                    min: 0.7,
+                                    max: 3
+                                },
+                                data: [
+
+                                    {
+                                        name: "贵州省",
+                                        value: 9347
+                                    },
+
+                                    {
+                                        name: "江西省",
+                                        value: 8957
+                                    },
+
+                                    {
+                                        name: "北京市",
+                                        value: 8542
+                                    },
+
+                                    {
+                                        name: "台湾省",
+                                        value: 8412
+                                    },
+
+                                    {
+                                        name: "湖北省",
+                                        value: 8344
+                                    },
+
+                                    {
+                                        name: "福建省",
+                                        value: 8274
+                                    },
+
+                                    {
+                                        name: "山西省",
+                                        value: 8169
+                                    },
+
+                                    {
+                                        name: "黑龙江省",
+                                        value: 7394
+                                    },
+
+                                    {
+                                        name: "重庆市",
+                                        value: 7308
+                                    },
+
+                                    {
+                                        name: "吉林省",
+                                        value: 7067
+                                    },
+
+                                    {
+                                        name: "辽宁省",
+                                        value: 6987
+                                    },
+
+                                    {
+                                        name: "江苏省",
+                                        value: 6733
+                                    },
+
+                                    {
+                                        name: "湖南省",
+                                        value: 6648
+                                    },
+
+                                    {
+                                        name: "香港特别行政区",
+                                        value: 6207
+                                    },
+
+                                    {
+                                        name: "天津市",
+                                        value: 6190
+                                    },
+
+                                    {
+                                        name: "宁夏回族自治区",
+                                        value: 6185
+                                    },
+
+                                    {
+                                        name: "四川省",
+                                        value: 6177
+                                    },
+
+                                    {
+                                        name: "青海省",
+                                        value: 6163
+                                    },
+
+                                    {
+                                        name: "安徽省",
+                                        value: 5901
+                                    },
+
+                                    {
+                                        name: "浙江省",
+                                        value: 5709
+                                    },
+
+                                    {
+                                        name: "陕西省",
+                                        value: 5335
+                                    },
+
+                                    {
+                                        name: "广西壮族自治区",
+                                        value: 5250
+                                    },
+
+                                    {
+                                        name: "上海市",
+                                        value: 5080
+                                    },
+
+                                    {
+                                        name: "广东省",
+                                        value: 5008
+                                    },
+
+                                    {
+                                        name: "山东省",
+                                        value: 4489
+                                    },
+
+                                    {
+                                        name: "云南省",
+                                        value: 3919
+                                    },
+
+                                    {
+                                        name: "新疆维吾尔自治区",
+                                        value: 3076
+                                    },
+
+                                    {
+                                        name: "南海诸岛",
+                                        value: 2246
+                                    },
+
+                                    {
+                                        name: "澳门特别行政区",
+                                        value: 2207
+                                    },
+
+                                    {
+                                        name: "甘肃省",
+                                        value: 1964
+                                    },
+
+                                    {
+                                        name: "河南省",
+                                        value: 1359
+                                    },
+
+                                    {
+                                        name: "河北省",
+                                        value: 1200
+                                    },
+
+                                    {
+                                        name: "西藏自治区",
+                                        value: 1192
+                                    },
+
+                                    {
+                                        name: "内蒙古自治区",
+                                        value: 546
+                                    },
+
+                                    {
+                                        name: "海南省",
+                                        value: 295
+                                    },
+
+                                ]
+                            },
+
+                        ],
+                    });
+                }
+            });
 
 
-        }
-      })
+            // 初始化chart.js图表
+            new Chart(document.getElementById('chart-bar').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['2022/7/11', '2022/7/12', '2022/7/13', '2022/7/14', '2022/7/15', '2022/7/16'],
+                    datasets: [{
+                        label: 'pv值',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)',
+                            'rgba(52,143,80, 0.6)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            new Chart(document.getElementById('chart-line').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+                    datasets: [{
+                        label: '营业额 单位/万元',
+                        data: [65, 90, 60, 50, 40, 30, 20],
+                        fill: false,
+                        borderColor: 'rgba(185,110,228,.5)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            new Chart(document.getElementById('chart3').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2022.8.3', '2022.8.4', '2022.8.5', '2022.8.6', '2022.8.7', '2022.8.9'],
+                    datasets: [{
+                            label: '粉丝',
+                            data: [65, 90, 60, 50, 40, 30, 120],
+                            fill: false,
+                            borderColor: 'rgba(252, 92, 125,.5)',
+                            tension: 0.1,
+                            cubicInterpolationMode: 'monotone',
+
+                        },
+                        {
+                            label: '被收藏',
+                            data: [30, 80, 70, 48, 64, 101, 10],
+                            fill: false,
+                            borderColor: 'rgba(10, 191, 188,.5)',
+                            tension: 0.1,
+                            cubicInterpolationMode: 'monotone',
+                        },
+                        {
+                            label: '获赞',
+                            data: [10, 37, 54, 68, 73, 98, 110],
+                            fill: false,
+                            borderColor: 'rgba(221, 100, 0,.5)',
+                            tension: 0.1,
+                            cubicInterpolationMode: 'monotone',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            new Chart(document.getElementById('chart4').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        '已租',
+                        '未租'
+                    ],
+                    datasets: [{
+                        label: 'Dataset 1',
+                        data: [300, 50],
+                        backgroundColor: [
+                            '#0abfbc',
+                            '#348f50'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '已租未租房源占比图'
+                        }
+                    }
+                }
+            });
 
 
-    });
+            //数字老虎机效果
+            $('.animation-number').each(function(index, element) {
+                const number = $(element).text();
+                const decimalPlaces = (number.split('.')[1] || '').length;
+                new countUp.CountUp(element, number, {
+                    //小数点后面的位数
+                    decimalPlaces: decimalPlaces,
+                    //持续时间
+                    duration: 2
+                }).start();
+            })
 
-  });
-</script>
+            //容器宽度大小改变时重新调整图表的大小
+            onResize(document.querySelector('.bsa-content-wrapper'), debounce(() => {
+
+                for (let id in Chart.instances) {
+                    Chart.instances[id].resize();
+                }
+
+                myChart.resize()
+                myChart2.resize()
+                myChart3.resize()
+            }))
+
+
+        });
+    </script>
+    <!--===================页面单独所需的//========================-->
+    <!--=================//mockjs假数据模拟(生产环境中请直接删除下面两个引入的js)=====================-->
+    <script src="lib/mockjs/dist/mock-min.js"></script>
+    <script src="js/bootstrap-admin.mock.min.js"></script>
+    <!--=================mockjs假数据模拟//=====================-->
 </body>
+
 </html>

@@ -1,61 +1,56 @@
-@use "sass:list";
+@use 'sass:list';
 
-.bsa-header {
+.#{$bsa-prefix}header {
   position: fixed;
   top: 0;
   right: 0;
-  left: var(--bsa-sidebar-width);
-  z-index: 80;
+  left: var(--#{$bsa-prefix}sidebar-width);
+  z-index: var(--#{$bsa-prefix}base-zindex);
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: var(--bsa-header-height);
-  padding: 0 12px;
+  height: var(--#{$bsa-prefix}header-height);
+  padding: 0 4px;
   margin: 0;
   list-style: none;
-
-  // background: var(--bsa-header-bg);
   background-color: var(--#{$prefix}body-bg);
-  border-bottom: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: 0 1px 1px -1px rgba(var(--#{$prefix}dark-rgb), 0.25);
+  transition: .3s padding-left, .3s left;
 
   // 移动端的时候left为0
   @include media-breakpoint-down(lg) {
     left: 0;
     padding: 0;
-
-    .bsa-search-form-wrapper {
-      display: none;
-
-      &.open {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: var(--bsa-header-height);
-        padding: 0 12px;
-        background-color: var(--#{$prefix}body-bg);
-        border-bottom: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
-
-        .bsa-search-form {
-          width: 100%;
-        }
-
-      }
-    }
   }
-
 
   // 每个li
   > li {
     height: inherit;
+
+    //搜索
+    .#{$bsa-prefix}search-form {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: #fff;
+      width: 100%;
+      display: none;
+      align-items: center;
+      padding: 0 16px;
+
+      &.open{
+        display: flex;
+      }
+    }
+
   }
 
-
   .dropdown {
+
     // lg屏幕下取消定位否则无法全屏
     @include media-breakpoint-down(lg) {
       position: static !important;
@@ -69,7 +64,7 @@
     border-radius: 10px;
 
     // 阴影效果
-    box-shadow: 0 .125rem .25rem rgba(var(--bs-secondary-color-rgb), .075);
+    box-shadow: 0 0.125rem 0.25rem rgb(var(--#{$bsa-prefix}secondary-color-rgb) 0.075);
 
     @include media-breakpoint-down(lg) {
       min-width: 100%;
@@ -81,13 +76,12 @@
       max-height: 280px;
       border: 0;
 
-
       @include media-breakpoint-down(lg) {
         min-width: 100%;
       }
 
       .card-body {
-        overflow: hidden;
+        // overflow: hidden;
       }
     }
 
@@ -99,98 +93,24 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
   }
 
-  // 侧边栏的触发按器
-  .bsa-sidebar-toggler {
-    display: none;
-
-    // lg屏幕下显示toggler
-    @include media-breakpoint-down(lg) {
-      display: block;
-    }
-  }
-
-  // 搜索的表单的触发器
-  .bsa-search-form-toggler {
-    display: none;
-
-    // lg屏幕下显示放大镜图标
-    @include media-breakpoint-down(lg) {
-      display: inline;
-    }
-  }
-
-
-  // 搜索表单
-  .bsa-search-form {
-    position: relative;
-    width: 240px;
-
-    // 表单样式覆盖
-    .form-control {
-      padding-right: 44px;
-      padding-left: 20px;
-      border-radius: 30px;
-
-      &:focus {
-        border-color: var(--#{$prefix}border-color);
-        box-shadow: none;
-      }
-    }
-
-    // 搜索图标和关闭图标
-    .bsa-search-close-btn,
-    .bsa-search-submit-btn {
-      position: absolute;
-      top: 50%;
-      right: 15px;
-      width: 24px;
-      height: inherit;
-      padding: 0;
-      font-size: 18px;
-      color: var(--#{$prefix}body-color);
-      background-color: transparent;
-      border: 0;
-      transform: translateY(-50%);
-    }
-
-    // 放大镜图标
-    .bsa-search-submit-btn {
-      // lg屏幕下隐藏
-      @include media-breakpoint-down(lg) {
-        display: none;
-      }
-    }
-
-    // 关闭图标默认pc状态下是隐藏的
-    .bsa-search-close-btn {
-      display: none;
-
-      // lg屏幕下显示
-      @include media-breakpoint-down(lg) {
-        display: inline;
-      }
-    }
-
-  }
 
 }
 
 
 // 主题色
-.bsa-theme-switcher-wrapper {
+.#{$bsa-prefix}theme-switcher-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     position: relative;
     width: 30px;
     height: 30px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     cursor: pointer;
     visibility: hidden;
 
@@ -199,9 +119,9 @@
       width: 30px;
       height: 30px;
       visibility: visible;
-      content: " ";
+      content: ' ';
       background-color: #ccc;
-      border: var(--bs-border-width) solid var(--bs-border-color);
+      border: var(--#{$bsa-prefix}border-width) solid var(--#{$bsa-prefix}border-color);
       border-radius: 50%;
     }
 
@@ -212,72 +132,89 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
-      content: "✓";
+      content: '✓';
     }
 
-
-    &[value="light"]::after {
+    &[value='light']::after {
       background-color: #fff;
     }
 
-    &[value="light"]:checked::after {
-      color: var(--bs-body-color);
+    &[value='light']:checked::after {
+      color: var(--#{$bsa-prefix}body-color);
     }
 
-    &[value="dark"]::after {
+    &[value='dark']::after {
       background-color: #212529;
     }
 
-    &[value="indigo"]::after {
+    &[value='indigo']::after {
       background-color: #6610f2;
     }
 
-    &[value="green"]::after {
+    &[value='green']::after {
       background-color: #198754;
     }
 
-    &[value="blue"]::after {
+    &[value='blue']::after {
       background-color: #0d6efd;
     }
 
-    &[value="yellow"]::after {
+    &[value='yellow']::after {
       background-color: #ffc107;
     }
 
-    &[value="orange"]::after {
+    &[value='orange']::after {
       background-color: #fd7e14;
     }
 
-    &[value="teal"]::after {
+    &[value='teal']::after {
       background-color: #20c997;
     }
 
-    &[value="cyan"]::after {
+    &[value='cyan']::after {
       background-color: #0dcaf0;
     }
 
-    &[value="pink"]::after {
+    &[value='pink']::after {
       background-color: #d63384;
     }
 
-    &[value="red"]::after {
+    &[value='red']::after {
       background-color: #dc3545;
     }
   }
 }
 
-.bsa-header-item {
+.#{$bsa-prefix}header-item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: inherit;
-  padding: 0 20px;
-  font-size: 24px;
-
-  // color: var(--bsa-header-item-color);
+  padding: 0 12px;
+  font-size: 20px;
   color: var(--#{$prefix}body-color);
-  cursor: pointer;
   background: inherit;
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    content: '';
+    background-color: #212529;
+    border-radius: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
 
   // lg屏幕下每个item的字体和间距再小一点，保证可以展示头部所有的项目
   @include media-breakpoint-down(lg) {
@@ -293,52 +230,43 @@
     padding: 0 12px;
   }
 
-
   @include media-breakpoint-down(three-four-two) {
     padding: 0 8px;
   }
 
 
-  // 用户区域
-  .bsa-user-area {
-    display: flex;
-    align-items: center;
+  // 用户头像
+  .#{$bsa-prefix}user-avatar {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    user-select: none;
+    border-radius: 50%;
 
-    // 用户头像
-    .bsa-user-avatar {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      overflow: hidden;
-      user-select: none;
-      border-radius: 50%;
-
-      // lg屏幕下用户头像再放小一点
-      @include media-breakpoint-down(lg) {
-        width: 35px;
-        height: 35px;
-      }
-
-      // 小于342像素时
-      @include media-breakpoint-down(three-four-two) {
-        width: 30px;
-        height: 30px;
-      }
-
+    // lg屏幕下用户头像再放小一点
+    @include media-breakpoint-down(lg) {
+      width: 32px;
+      height: 32px;
     }
 
+    // 小于342像素时
+    @include media-breakpoint-down(three-four-two) {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
-    // 用户详情
-    .bsa-user-details {
-      display: block;
-      flex-shrink: 0;
-      max-width: 150px;
-      margin-left: 8px;
+  // 用户详情
+  .#{$bsa-prefix}user-details {
+    display: block;
+    flex-shrink: 0;
+    max-width: 150px;
+    margin-left: 8px;
 
-      // xl设备下直接隐藏用户详情只展示头像
-      @include media-breakpoint-down(xl) {
-        display: none;
-      }
+    // xl设备下直接隐藏用户详情只展示头像
+    @include media-breakpoint-down(xl) {
+      display: none;
     }
   }
 }

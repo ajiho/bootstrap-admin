@@ -1,40 +1,42 @@
 // 侧边栏
-.bsa-sidebar {
+.#{$bsa-prefix}sidebar-wrapper {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
-  width: var(--bsa-sidebar-width);
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 20);
+  width: var(--#{$bsa-prefix}sidebar-width);
   background-color: var(--#{$prefix}body-bg);
-
-  // background: var(--bsa-sidebar-bg);
-  border-right: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
-
-  // 交给js插件部分来实现
-  // transition: 0.3s transform;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .12);
+  transition: 0.3s transform, 0.3s width;
   transform: translateX(0);
   will-change: transform;
 
-
+  //小屏幕下直接隐藏
   @include media-breakpoint-down(lg) {
     box-shadow: none;
-    transform: translateX(-101%);
+    transform: translateX(-100%);
   }
-
 
   .card-header {
-    height: var(--bsa-header-height);
-    border-bottom: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    height: var(--#{$bsa-prefix}header-height);
+    box-shadow: 0 1px 1px -1px rgba(var(--#{$prefix}dark-rgb), 0.25);
+
+
+    .#{$bsa-prefix}logo-text {
+      font-size: 18px;
+      margin-bottom: 0;
+      letter-spacing: 1px;
+      color: var(--#{$prefix}body-color);
+    }
   }
+
+
 
   .card-footer {
-    border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-top: none;
+    box-shadow: 0 -1px 1px -1px rgba(var(--#{$prefix}dark-rgb), 0.25);
   }
 
-
-  &.open {
-    transform: translateX(0);
-  }
 
 }

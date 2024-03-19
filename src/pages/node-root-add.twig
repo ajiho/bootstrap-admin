@@ -1,0 +1,110 @@
+{% set mainPage = '权限管理' %}
+{% set page = '节点列表' %}
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+{% extends "layout/main.twig" %}
+
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['权限管理','添加根节点']) }}
+    <div class="row g-3 mb-3 ">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <form id="form">
+              <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label text-sm-end">节点名称</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name" name="name" value="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="route_name" class="col-sm-2 col-form-label text-sm-end">路由别名</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="route_name" name="route_name" value="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="route_name" class="col-sm-2 col-form-label text-sm-end">是否菜单</label>
+                <div class="col-sm-10 d-flex align-items-center">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" aria-label="是否菜单" name="is-menu"  checked>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="icon" class="col-sm-2 col-form-label text-sm-end">节点图标</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="icon" name="icon" value="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-10 offset-sm-2">
+                  <button type="submit" class="btn btn-primary">添加</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+{% endblock %}
+
+
+{% block mainJs %}
+  <script src="lib/formvalidation/js/formValidation.js"></script>
+  <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
+  <script src="lib/formvalidation/js/language/zh_CN.js"></script>
+  <script>
+
+    $(document).ready(function () {
+
+      //前端表单验证
+      $('#form').formValidation({
+        fields: {
+          name: {
+            validators: {
+              notEmpty: true
+            }
+          },
+          route_name: {
+            validators: {
+              notEmpty: true
+            }
+          },
+          icon: {
+            validators: {
+              notEmpty: true
+            }
+          }
+        }
+      }).on('success.form.fv', function (e) {
+        //阻止表单提交
+        e.preventDefault();
+
+        //得到表单对象
+        const $form = $(e.target);
+        //获取数据
+        const data = $form.serialize();
+
+        //发起ajax请求
+        $.ajax({
+          url: '/node',
+          method: 'post',
+          //表单数据
+          data: data,
+        }).then(response => {
+          if (response.code === 200) {
+            layer.msg('添加成功', {time: 800, icon: 1}, () => location.replace('node-list.html'));
+          }
+        });
+      });
+
+    })
+  </script>
+{% endblock %}

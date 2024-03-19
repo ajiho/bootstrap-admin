@@ -1,41 +1,59 @@
-<!doctype html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
-  <meta name="keywords" content="响应式后台模板,开源免费后台模板,bootstrap5后台管理系统模板">
-  <meta name="description" content="bootstrap-admin基于bootstrap5的免费开源的响应式后台管理模板">
-  <meta name="author" content="ajiho">
-  <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/node_modules/overlayscrollbars/styles/overlayscrollbars.min.css">
-  <link rel="stylesheet" href="css/bootstrap-admin.min.css">
-  {% block css %}{% endblock %}
-  <title>bootstrap-admin开源免费响应式后台管理系统模板</title>
-</head>
+{# 继承母模板 #}
+{% extends "base.twig" %}
+
+{% block css %}
+  {% block mainCss %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+  <!--wrapper开始-->
+  <div class="bsa-wrapper">
+    {% include 'header.twig' %}
+    {% include 'sidebar.twig' %}
+    <!--页面内容包裹开始-->
+    <div class="bsa-content-wrapper">
+      <!--内容真正的放置区域-->
+      {% block mainContent %}{% endblock %}
+    </div>
+    <!--页面内容包裹结束-->
+    {% include 'footer.twig' %}
+  </div>
+  <!--wrapper结束-->
+{% endblock %}
 
 
-<body>
+{% block js %}
+  <!--bootstrap-admin主页面js文件-->
+  <script src="js/bootstrap-admin.main.js"></script>
+  <script>
+    $(document).ready(function () {
+      // 退出登录前询问
+      $(document).on('click', `.bsa-logout-trigger`, function () {
 
-{% include 'header.twig' %}
+        layer.confirm('确定退出登录吗？', {
+          btn: ['确定', '关闭'] //按钮
+        }, function(){
 
-{% include 'sidebar.twig' %}
+          //发起ajax请求
+          $.ajax({
+            url: '/logout'
+          }).then(response => {
+            if (response.code === 200) {
 
+              layer.msg('退出成功', {
+                time:1000,
+                end: function () { // 关闭时的回调函数
+                  //直接跳转到首页
+                  location.replace('login.html')
+                }
+              });
+            }
+          });
+        });
 
-<!--内容区域(.bsa-content-fixed类删除后即可变成单页版本)-->
-<div class="bsa-content bsa-content-fixed">{% block content %}{% endblock %}</div>
+      })
 
-
-{# 版权信息 #}
-{% include 'footer.twig' %}
-
-<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="/node_modules/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
-
-{# js部分每个页面都可以在这里拓展不同的js #}
-{% block js %}{% endblock %}
-</body>
-</html>
+    })
+  </script>
+  {% block mainJs %}{% endblock %}
+{% endblock %}

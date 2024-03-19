@@ -1,0 +1,117 @@
+{% set mainPage = '系统设置' %}
+{% set page = '邮件服务' %}
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+{% extends "layout/main.twig" %}
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['设置','系统设置','邮件服务']) }}
+
+    <div class="row g-3 mb-3">
+      <div class="col">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-body">
+            邮件服务
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-5">
+                <form id="form">
+                  <div class="row mb-3">
+                    <label for="smtp_server" class="col-sm-3 col-form-label text-sm-end">SMTP服务器</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="smtp_server" name="smtp_server"
+                             value="smtp.aliyun.com">
+                      <div class="form-text">如：smtp.163.com</div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="smtp_port" class="col-sm-3 col-form-label text-sm-end">SMTP端口号</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="smtp_port" name="smtp_port" value="25">
+                      <div class="form-text">一般为 25 或 465</div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="send_email" class="col-sm-3 col-form-label text-sm-end">发件人邮箱</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="send_email" name="send_email" value="lujiahao@88.com">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="send_nick" class="col-sm-3 col-form-label text-sm-end">发件人昵称</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="send_nick" name="send_nick" value="欲饮琵琶码上催">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="smtp_pass" class="col-sm-3 col-form-label text-sm-end">邮箱登录密码</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="smtp_pass" name="smtp_pass">
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <div class="col-sm-9 offset-sm-3">
+                      <button type="submit" class="btn btn-primary">确认修改</button>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
+
+
+{% block mainJs %}
+  <script src="lib/formvalidation/js/formValidation.js"></script>
+  <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
+  <script src="lib/formvalidation/js/language/zh_CN.js"></script>
+  <script>
+    $(document).ready(function () {
+      //前端表单验证
+      $('#form').formValidation({
+        fields: {
+          smtp_pass: {
+            validators: {
+              notEmpty: true,
+            }
+          }
+        }
+      }).on('success.form.fv', function (e) {
+        //阻止表单提交
+        e.preventDefault();
+        //得到表单对象
+        const $form = $(e.target);
+        const data = $form.serialize();
+
+        $.ajax({
+          url: "/login.php",
+          method: 'POST',
+          data
+        }).then(function (res) {
+          if (res.code === 200) {
+            //登录成功
+          } else {
+            //登录失败
+          }
+        });
+      });
+    })
+
+  </script>
+{% endblock %}
+
+

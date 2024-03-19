@@ -1,0 +1,683 @@
+/*!
+ * quicktab v0.0.2 (https://gitee.com/ajiho/quicktab)
+ * Copyright 2023-2024 ajiho
+ * license MIT (https://gitee.com/ajiho/quicktab/blob/master/LICENSE)
+ */
+[data-simplebar] {
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.simplebar-wrapper {
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.simplebar-mask {
+  direction: inherit;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: auto !important;
+  height: auto !important;
+  z-index: 0;
+}
+
+.simplebar-offset {
+  direction: inherit !important;
+  box-sizing: inherit !important;
+  resize: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.simplebar-content-wrapper {
+  direction: inherit;
+  box-sizing: border-box !important;
+  position: relative;
+  display: block;
+  height: 100%; /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+  width: auto;
+  max-width: 100%; /* Not required for horizontal scroll to trigger */
+  max-height: 100%; /* Needed for vertical scroll to trigger */
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.simplebar-content:before,
+.simplebar-content:after {
+  content: " ";
+  display: table;
+}
+
+.simplebar-placeholder {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer-wrapper {
+  box-sizing: inherit !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1px;
+  position: relative;
+  float: left;
+  max-height: 1px;
+  overflow: hidden;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+  flex-grow: inherit;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+
+.simplebar-height-auto-observer {
+  box-sizing: inherit;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1000%;
+  width: 1000%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.simplebar-track {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[data-simplebar].simplebar-dragging {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-content {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-track {
+  pointer-events: all;
+}
+
+.simplebar-scrollbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 10px;
+}
+
+.simplebar-scrollbar:before {
+  position: absolute;
+  content: "";
+  background: black;
+  border-radius: 7px;
+  left: 2px;
+  right: 2px;
+  opacity: 0;
+  transition: opacity 0.2s 0.5s linear;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.5;
+  transition-delay: 0s;
+  transition-duration: 0s;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 11px;
+}
+
+.simplebar-scrollbar:before {
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  left: 0;
+  height: 11px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+  right: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 0;
+  min-width: 10px;
+  width: auto;
+}
+
+/* Rtl support */
+[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
+  right: auto;
+  left: 0;
+}
+
+.simplebar-dummy-scrollbar-size {
+  direction: rtl;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  height: 500px;
+  width: 500px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: scrollbar !important;
+}
+
+.simplebar-dummy-scrollbar-size > div {
+  width: 200%;
+  height: 200%;
+  margin: 10px 0;
+}
+
+.simplebar-hide-scrollbar {
+  position: fixed;
+  left: 0;
+  visibility: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.quicktab {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 320px;
+  height: 222px;
+  background-color: #fff;
+}
+.quicktab *,
+.quicktab ::after,
+.quicktab ::before {
+  box-sizing: border-box;
+}
+.quicktab[class*=pen-] iframe {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.quicktab .tab-bar {
+  display: flex;
+  flex-shrink: 0;
+  min-height: 38px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  background-color: inherit;
+  border: 1px solid #f5f5f5;
+  border-right: none;
+}
+.quicktab .tab-bar.hide {
+  display: none;
+}
+.quicktab .tab-bar li {
+  height: 100%;
+  border-right: 1px solid #f5f5f5;
+}
+.quicktab .tab-bar li button {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 18px;
+  font-size: 16px;
+  color: #212529;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+.quicktab .tab-bar li button.disabled {
+  color: #b6b6b6;
+  pointer-events: none;
+  cursor: default;
+  background-color: #f1f1f1;
+}
+.quicktab .tab-bar li button svg {
+  width: 14px;
+  height: 14px;
+  fill: #212529;
+}
+.quicktab .tab-bar li.scroll {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.quicktab .tab-bar li.scroll::-webkit-scrollbar {
+  display: none;
+}
+.quicktab .tab-bar li.scroll button {
+  position: relative;
+  max-width: 180px;
+  border-right: 1px solid #f5f5f5;
+}
+.quicktab .tab-bar li.scroll button.hover svg {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  display: none;
+}
+.quicktab .tab-bar li.scroll button.hover:hover svg {
+  display: inline;
+}
+.quicktab .tab-bar li.scroll button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  content: "";
+  background-color: #7431fa;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+.quicktab .tab-bar li.scroll button:hover {
+  color: #7431fa;
+}
+.quicktab .tab-bar li.scroll button:hover::after {
+  width: 100%;
+}
+.quicktab .tab-bar li.scroll button.active {
+  color: #7431fa;
+}
+.quicktab .tab-bar li.scroll button.active::after {
+  width: 100%;
+}
+.quicktab .tab-bar li.scroll button span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quicktab .tab-bar li.scroll button svg {
+  flex-shrink: 0;
+  margin-left: 16px;
+  font-size: 12px;
+  border-radius: 50%;
+  fill: #c2c2c2;
+}
+.quicktab .tab-bar li.scroll button svg:hover {
+  background-color: #ff5722;
+  fill: #fff;
+}
+.quicktab .tab-bar li:not(.scroll) button:hover {
+  background-color: #fafafa;
+}
+.quicktab .tab-bar li:not(.scroll) button:active {
+  background-color: whitesmoke;
+}
+.quicktab .tab-body {
+  position: relative;
+  flex-grow: 1;
+  padding-left: 0;
+  margin: 0;
+  overflow: hidden;
+  list-style: none;
+  background-color: inherit;
+}
+.quicktab .tab-body li {
+  position: absolute;
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+.quicktab .tab-body li.active {
+  position: unset;
+  left: unset;
+}
+.quicktab .tab-body li iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.quicktab .tab-body li .mask {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 800ms;
+}
+.quicktab .tab-body li .mask .mask-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.quicktab-list-group {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  width: 120px;
+  max-height: 320px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.quicktab-list-group .simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 6px;
+}
+.quicktab-list-group .simplebar-vertical .simplebar-scrollbar::before {
+  inset: 2px;
+  background-color: #7431fa;
+}
+.quicktab-list-group.active {
+  display: flex;
+}
+.quicktab-list-group li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #212529;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.quicktab-list-group li.separator {
+  height: 0;
+  padding: 0;
+  margin: 0.35em 0;
+  overflow: hidden;
+  border-top: 1px solid #e6e6e6;
+}
+.quicktab-list-group li.separator:last-child {
+  display: none;
+}
+.quicktab-list-group li:hover, .quicktab-list-group li:focus {
+  color: #7431fa;
+  background-color: #f8f9fa;
+}
+.quicktab-list-group li.active, .quicktab-list-group li:active {
+  color: #fff;
+  background-color: #7431fa;
+}
+.quicktab-list-group li > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quicktab-loaders {
+  position: relative;
+  box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  color: #7431fa;
+}
+.quicktab-loaders > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  float: none;
+  width: 64px;
+  height: 64px;
+  background-color: currentcolor;
+  border: 0 solid currentcolor;
+  border-radius: 100%;
+  opacity: 0;
+  animation: ball-scale-multiple 1s 0s linear infinite;
+}
+.quicktab-loaders > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.quicktab-loaders > div:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ball-scale-multiple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  5% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.quicktab-dropdown {
+  position: fixed;
+  display: none;
+  width: 320px;
+  max-width: 100%;
+  font-size: 14px;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.quicktab-dropdown *:focus {
+  outline: none;
+}
+.quicktab-dropdown.active {
+  display: inline-block;
+}
+.quicktab-dropdown .header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #7431fa;
+}
+.quicktab-dropdown .header svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+.quicktab-dropdown .header input {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}
+.quicktab-dropdown .body {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.quicktab-dropdown .body .simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 6px;
+}
+.quicktab-dropdown .body .simplebar-vertical .simplebar-scrollbar::before {
+  inset: 2px;
+  background-color: #7431fa;
+}
+.quicktab-dropdown .body .empty {
+  display: none;
+  padding: 12px;
+  text-align: center;
+}
+.quicktab-dropdown .body .highlighted {
+  font-weight: bold;
+  background-color: #ff0;
+}
+.quicktab-dropdown .body .icon-wrapper {
+  box-sizing: border-box;
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.quicktab-dropdown .body .icon-wrapper svg {
+  width: 16px;
+  height: 16px;
+  fill: #212529;
+}
+.quicktab-dropdown .body .icon-wrapper:hover {
+  background-color: #dbdbdb;
+}
+.quicktab-dropdown .body .icon-wrapper:focus {
+  border: 2px solid #7431fa;
+}
+.quicktab-dropdown .body .sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 14px 16px;
+  font-size: 14px;
+  background-color: #fff;
+}
+.quicktab-dropdown .body .sticky.has-icon {
+  cursor: pointer;
+}
+.quicktab-dropdown .body .sticky.has-icon .icon-wrapper {
+  display: flex;
+}
+.quicktab-dropdown .body .sticky .subheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.quicktab-dropdown .body .sticky .subheader .subheader-text {
+  flex-grow: 1;
+  min-width: 0;
+  margin-right: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quicktab-dropdown .body .section {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.quicktab-dropdown .body .section li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.quicktab-dropdown .body .section li .details {
+  flex-grow: 1;
+  min-width: 0;
+  margin-right: 8px;
+  font-size: 14px;
+}
+.quicktab-dropdown .body .section li .details p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quicktab-dropdown .body .section li .details p:first-child {
+  font-weight: 400;
+}
+.quicktab-dropdown .body .section li .details p:last-child {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 90%;
+  font-weight: lighter;
+}
+.quicktab-dropdown .body .section li .details p:last-child .dot {
+  margin: 0 8px;
+  font-weight: 800;
+}
+.quicktab-dropdown .body .section li .details p:last-child .url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quicktab-dropdown .body .section li:hover {
+  background-color: #ededed;
+}
+.quicktab-dropdown .body .section li:hover .icon-wrapper {
+  display: flex;
+}
+.quicktab-dropdown .body .section li.active {
+  background-color: #e4e4e4;
+}
+.quicktab-dropdown .body .section li.active .icon-wrapper {
+  display: flex;
+}
+
+/*# sourceMappingURL=quicktab.css.map */

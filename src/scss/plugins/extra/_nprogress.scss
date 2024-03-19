@@ -1,0 +1,18 @@
+#nprogress .bar{
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 30);
+
+  @include media-breakpoint-down(lg) {
+    z-index: calc(var(--#{$bsa-prefix}base-zindex) + 2);
+  }
+
+}
+
+#nprogress .spinner{
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 30);
+
+  @include media-breakpoint-down(lg) {
+    z-index: calc(var(--#{$bsa-prefix}base-zindex) + 2);
+  }
+
+
+}

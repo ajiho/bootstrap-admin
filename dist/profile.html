@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="zh" data-overlayscrollbars-initialize>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
+    <meta name="keywords" content="响应式后台模板,开源免费后台模板,bootstrap5后台管理系统模板">
+    <meta name="description" content="bootstrap-admin基于bootstrap5的免费开源的响应式后台管理模板">
+    <meta name="author" content="ajiho">
+    <!--===================//公共css========================-->
+    <link rel="stylesheet" href="lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/overlayscrollbars/styles/overlayscrollbars.min.css">
+    <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+    <!--===================//公共css========================-->
+    <!--bootstrap-admin样式文件-->
+    <link rel="stylesheet" href="css/bootstrap-admin.min.css">
+    <title>bootstrap-admin开源免费响应式后台管理系统模板</title>
+</head>
+
+<body class="bg-body-tertiary" data-overlayscrollbars-initialize>
+    <!--wrapper开始-->
+    <div class="bsa-wrapper">
+        <!-- 头部布局开始 -->
+        <ul class="bsa-header">
+            <!-- 侧边栏触发按钮(移动端时显示) -->
+            <li>
+                <div class="bsa-header-item bsa-sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </div>
+            </li>
+            <!--  占位(可以让后面的li居右)  -->
+            <li class="flex-grow-1"></li>
+            <!--  搜索(不需要可以删除)  -->
+            <li>
+                <div class="bsa-header-item bsa-search-form-open-btn">
+                    <i class="bi bi-search"></i>
+                </div>
+                <form class="bsa-search-form" action="search.html">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索关键词" aria-label="搜索关键词">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-outline-secondary bsa-search-form-close-btn" type="button"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                </form>
+            </li>
+            <!--  通知(如果有新消息则添加类名.bsa-has-msg)  -->
+            <li>
+                <div class="bsa-header-item" data-bsa-href="message.html">
+                    <i class="bi bi-bell bsa-has-msg"></i>
+                </div>
+            </li>
+            <!--  拓展菜单(建议把拓展放在此处,以免破坏头部整体布局,不需要可以直接删除)  -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <i class="bi bi-grid"></i>
+                </div>
+                <div class="dropdown-menu dropdown-menu-end p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header d-flex justify-content-between bg-body">
+                            <span class="bsa-fs-15">拓展菜单</span>
+                            <a href="javascript:" class="bsa-fs-13 text-decoration-none text-body-secondary">编辑</a>
+                        </div>
+                        <div class="card-body overflow-y-auto" data-overlayscrollbars-initialize>
+                            <div class="container-fluid">
+                                <div class="row row-cols-3 g-3">
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary  bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-envelope"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">邮箱</div>
+                                    </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="lockscreen.html">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-lock"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">锁屏</div>
+                                    </a>
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">前台直达</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单1</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单2</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单3</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单4</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单5</div>
+                                    </a>
+
+                                    <a class="col text-decoration-none text-body-secondary d-flex flex-column align-items-center p-2 gap-1" href="javascript:">
+                                        <div class="d-flex align-items-center justify-content-center bsa-fs-25 bg-body-secondary bsa-wh-45 rounded-circle">
+                                            <i class="bi bi-link"></i>
+                                        </div>
+                                        <div class="bsa-fs-14 bsa-ellipsis-2 text-center">拓展菜单6</div>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center bg-body">
+                            <a href="javascript:" class="bsa-fs-14 text-decoration-none text-body-secondary">查看更多菜单</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!--  全屏  -->
+            <li>
+                <div class="bsa-header-item bsa-fullscreen-trigger">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+            </li>
+            <!--  主题配色  -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <i class="bi bi-palette"></i>
+                </div>
+                <div class="dropdown-menu dropdown-menu-end p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header d-flex justify-content-between bg-body">
+                            <span class="bsa-fs-15">主题配色</span>
+                        </div>
+                        <div class="card-body">
+                            <!--    配色包裹      -->
+                            <div class="bsa-theme-switcher-wrapper">
+                                <input aria-label="light" class="form-check-input" type="checkbox" value="light">
+                                <input aria-label="dark" class="form-check-input" type="checkbox" value="dark">
+                                <input aria-label="indigo" class="form-check-input" type="checkbox" value="indigo">
+                                <input aria-label="green" class="form-check-input" type="checkbox" value="green">
+                                <input aria-label="blue" class="form-check-input" type="checkbox" value="blue">
+                                <input aria-label="yellow" class="form-check-input" type="checkbox" value="yellow">
+                                <input aria-label="pink" class="form-check-input" type="checkbox" value="pink">
+                                <input aria-label="red" class="form-check-input" type="checkbox" value="red">
+                                <input aria-label="orange" class="form-check-input" type="checkbox" value="orange">
+                                <input aria-label="cyan" class="form-check-input" type="checkbox" value="cyan">
+                                <input aria-label="teal" class="form-check-input" type="checkbox" value="teal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!--    管理员信息    -->
+            <li class="dropdown">
+                <div class="bsa-header-item" data-bs-toggle="dropdown">
+                    <div class="d-flex align-items-center">
+                        <img src="img/avatar.jpg" class="bsa-user-avatar" alt="用户头像">
+                        <!-- 如果你只需要头像,那么你可以直接把下面这部分删除  -->
+                        <div class="bsa-user-details">
+                            <div class="bsa-ellipsis-1 bsa-fs-15">欲饮琵琶码上催</div>
+                            <!-- 管理员角色RBAC权限设计时可用(不需要可删除,上面的用户名可自动垂直居中)  -->
+                            <div class="bsa-ellipsis-1 bsa-fs-13 text-muted">超级管理员</div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="profile.html">
+                            <i class="bi bi-person me-2"></i>个人资料
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="reset-password.html">
+                            <i class="bi bi-key me-2"></i>修改密码
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item bsa-logout-trigger" href="javascript:">
+                            <i class="bi bi-box-arrow-right me-2"></i>退出登录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 头部布局结束 -->
+        <!--  侧边栏包裹开始  -->
+        <div class="bsa-sidebar-wrapper">
+            <div class="card border-0 h-100">
+                <!--  侧边栏头部(用于展示品牌logo)  -->
+                <div class="card-header bg-body d-flex align-items-center flex-shrink-0 border-bottom-0">
+                    <img src="img/favicon-32x32.png" class="bsa-logo-icon" alt="logo-icon">
+                    <div class="bsa-logo-text ms-2 bsa-ellipsis-2">bootstrap-admin</div>
+                </div>
+                <!--  侧边栏身体部分(用于主要的侧边栏菜单)  -->
+                <div class="card-body px-0 py-1 overflow-y-auto" data-overlayscrollbars-initialize>
+                    <!--  导航菜单部分  -->
+                    <ul class="bsa-navigation">
+                        <li>
+                            <a href="index.html">
+                                <div class="prepend"><i class="bi bi-house"></i></div>
+                                <div class="content">首页</div>
+                            </a>
+                        </li>
+                        <!--  分割线  -->
+                        <li class="separator"></li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-person-lock"></i></div>
+                                <div class="content">权限管理</div>
+                                <div class="append">
+                                    <span class="badge text-bg-primary">6</span>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="user-list.html">
+                                        <div class="content">用户列表</div>
+                                        <div class="append">
+                                            <span class="badge text-bg-primary">2</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="role-list.html">
+                                        <div class="content">角色列表</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="node-list.html">
+                                        <div class="content">节点列表</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-filetype-html"></i></div>
+                                <div class="content">示例页面</div>
+                                <div class="append">
+                                    <span class="badge rounded-pill text-bg-danger">New</span>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="login.html">
+                                        <div class="content">登录页</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="error.html">
+                                        <div class="content">错误页面</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lockscreen.html">
+                                        <div class="content">锁屏页</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="timeline.html">
+                                        <div class="content">时间轴</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-grid"></i></div>
+                                <div class="content">应用</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="message.html">
+                                        <div class="content">消息中心</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-box.html">
+                                        <div class="content">邮箱</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chat-box.html">
+                                        <div class="content">聊天框</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="calendar.html">
+                                        <div class="content">日历</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--  副标题  -->
+                        <li class="subheader">LABELS</li>
+                        <li class="open">
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-gear"></i></div>
+                                <div class="content">设置</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">系统设置</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="sys-website.html">
+                                                <div class="content">网站设置</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="sys-email.html">
+                                                <div class="content">邮件服务</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="open">
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">我的设置</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a class="active" href="profile.html">
+                                                <div class="content">个人资料</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="reset-password.html">
+                                                <div class="content">修改密码</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subheader">布局&模式</li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-columns"></i></div>
+                                <div class="content">布局和模式</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">顶部菜单</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">布局1</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">布局2</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">IFrame+多tab模式</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://www.bootstrap-admin.top/docs">
+                                <div class="prepend"><i class="bi bi-filetype-doc"></i></div>
+                                <div class="content">文档</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="arrow">
+                                <div class="prepend"><i class="bi bi-list-nested"></i></div>
+                                <div class="content">多级菜单</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:" class="arrow">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:">
+                                                        <div class="content">三级菜单</div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:" class="arrow">
+                                                        <div class="content">三级菜单</div>
+                                                    </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="javascript:">
+                                                                <div class="content">四级菜单</div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:" class="arrow">
+                                                                <div class="content">四级菜单</div>
+                                                            </a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:">
+                                                                        <div class="content">五级菜单</div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:" class="arrow">
+                                        <div class="content">一级菜单</div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:">
+                                                <div class="content">二级菜单</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--  侧边栏底部(不需要可删除)  -->
+                <div class="card-footer bg-body bore">
+                    Version: v2.0.1
+                </div>
+            </div>
+        </div>
+        <!--  侧边栏包裹结束  -->
+        <!--页面内容包裹开始-->
+        <div class="bsa-content-wrapper">
+            <!--内容真正的放置区域-->
+            <div class="container-fluid p-3">
+
+                <!--面包屑导航-->
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="fs-4 m-0">个人资料</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <nav aria-label="breadcrumb" class="d-flex align-items-center flex-lg-row-reverse">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">设置</li>
+                                <li class="breadcrumb-item active" aria-current="page">我的设置</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div class="row g-3 mb-3">
+                    <div class="col">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-body">
+                                设置我的资料
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <form id="form">
+                                            <div class="row mb-3">
+                                                <label for="role" class="col-sm-3 col-form-label text-sm-end">我的角色</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-select" name="role" aria-label="role" id="role">
+                                                        <option value="1" selected>超级管理员</option>
+                                                        <option value="2" disabled>普通管理员</option>
+                                                        <option value="3" disabled>审核员</option>
+                                                        <option value="4" disabled>编辑员</option>
+                                                    </select>
+                                                    <div class="form-text">当前角色不可更改为其它角色</div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="username" class="col-sm-3 col-form-label text-sm-end">用户名</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="username" name="username" readonly value="admin88" disabled>
+                                                    <div class="form-text">不可修改。一般用于后台登入名</div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="nickname" class="col-sm-3 col-form-label text-sm-end">昵称</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="nickname" name="nickname" value="欲饮琵琶码上催">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="nickname" class="col-sm-3 col-form-label text-sm-end">性别</label>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex align-items-center h-100">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                                                            <label class="form-check-label" for="inlineRadio1">男</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                            <label class="form-check-label" for="inlineRadio2">女</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="nickname" class="col-sm-3 col-form-label text-sm-end">头像</label>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group mb-3">
+                                                        <input type="file" class="form-control" id="avatar" name="avatar">
+                                                        <label class="input-group-text" for="avatar"><i class="bi bi-cloud-upload"></i> 上传图片</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="phone" class="col-sm-3 col-form-label text-sm-end">手机</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="phone" name="phone" value="19978451354">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="email" class="col-sm-3 col-form-label text-sm-end">邮箱</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="email" name="email" value="lujiahao@88.com">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="desc" class="col-sm-3 col-form-label text-sm-end">备注</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-9 offset-sm-3">
+                                                    <button type="submit" class="btn btn-primary">确认修改</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--页面内容包裹结束-->
+        <!--底部版权-->
+        <div class="bsa-footer d-flex align-items-center justify-content-center">
+            Copyright © 2024. All right reserved.
+        </div>
+    </div>
+    <!--wrapper结束-->
+    <!--===================//公共js========================-->
+    <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/layer/dist/layer.js"></script>
+    <script src="lib/nprogress/nprogress.js"></script>
+    <script src="lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
+    <!--bootstrap-admin网络请求处理-->
+    <script src="js/bootstrap-admin.http.js"></script>
+    <!--bootstrap-admin核心js文件-->
+    <script src="js/bootstrap-admin.core.js"></script>
+    <!--===================公共js//========================-->
+    <!--===================//页面单独所需的js========================-->
+    <!--bootstrap-admin主页面js文件-->
+    <script src="js/bootstrap-admin.main.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 退出登录前询问
+            $(document).on('click', `.bsa-logout-trigger`, function() {
+
+                layer.confirm('确定退出登录吗？', {
+                    btn: ['确定', '关闭'] //按钮
+                }, function() {
+
+                    //发起ajax请求
+                    $.ajax({
+                        url: '/logout'
+                    }).then(response => {
+                        if (response.code === 200) {
+
+                            layer.msg('退出成功', {
+                                time: 1000,
+                                end: function() { // 关闭时的回调函数
+                                    //直接跳转到首页
+                                    location.replace('login.html')
+                                }
+                            });
+                        }
+                    });
+                });
+
+            })
+
+        })
+    </script>
+    <script src="lib/formvalidation/js/formValidation.js"></script>
+    <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
+    <script src="lib/formvalidation/js/language/zh_CN.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#form').formValidation({
+                fields: {
+                    desc: {
+                        validators: {
+                            notEmpty: true,
+                        }
+                    }
+                }
+            }).on('success.form.fv', function(e) {
+                //阻止表单提交
+                e.preventDefault();
+                //得到表单对象
+                const $form = $(e.target);
+                const data = $form.serialize();
+
+                //得到序列化数据
+                $.ajax({
+                    url: "/login.php",
+                    method: 'POST',
+                    data
+                }).then(function(res) {
+                    if (res.code === 200) {
+                        //登录成功
+                    } else {
+                        //登录失败
+                    }
+                });
+
+            });
+        })
+    </script>
+    <!--===================页面单独所需的//========================-->
+    <!--=================//mockjs假数据模拟(生产环境中请直接删除下面两个引入的js)=====================-->
+    <script src="lib/mockjs/dist/mock-min.js"></script>
+    <script src="js/bootstrap-admin.mock.min.js"></script>
+    <!--=================mockjs假数据模拟//=====================-->
+</body>
+
+</html>

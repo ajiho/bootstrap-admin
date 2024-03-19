@@ -1,12 +1,28 @@
-@import "variables";
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/variables-dark";
-@import "node_modules/bootstrap/scss/mixins";
-@import "root";
-@import "reboot";
-@import "layout";
-@import "pages";
-@import "animations";
-@import "helpers";
+// @import "functions";
+@import 'variables';
+@import "mixins";
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/variables-dark';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import 'root';
+@import 'reboot';
+@import 'layout';
+@import 'pages';
+@import 'component';
+@import 'animations';
+@import 'helpers';
+@import "plugins";
 
+
+.os-scrollbar .os-scrollbar-handle {
+    background-color: rgba(var(--bs-tertiary-color-rgb), .08);
+}
+
+.os-scrollbar .os-scrollbar-handle:hover {
+    background-color: rgba(var(--bs-tertiary-color-rgb), .18);
+}
+
+.os-scrollbar .os-scrollbar-handle:active {
+    background-color: rgba(var(--bs-tertiary-color-rgb), .28);
+}

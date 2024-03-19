@@ -1,0 +1,242 @@
+{% set mainPage = '权限管理' %}
+{% set page = '角色列表' %}
+
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+
+{% extends "layout/main.twig" %}
+
+
+{% block mainCss %}
+  <!--  bootstrap-table插件的样式    -->
+  <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.min.css">
+  <link rel="stylesheet"
+        href="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css">
+{% endblock %}
+
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['权限管理','角色列表']) }}
+
+    <div class="row g-3 mb-3 ">
+      <div class="col-12 bsa-search-area">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <form class="row row-cols-sm-auto g-3 py-2 align-items-center" id="queryForm">
+              <div class="col-12">
+                <div class="row">
+                  <label for="name" class="col-sm-auto col-form-label">角色名称</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="name" name="name">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 gap-2">
+                <button type="button" class="btn btn-light bsa-search-btn">
+                  <i class="bi bi-search"></i>搜索
+                </button>
+                <button type="button" class="btn btn-light bsa-reset-btn">
+                  <i class="bi bi-arrow-clockwise"></i>重置
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <!--  表格上方左侧的工具条区域    -->
+            <div id="toolbar" class="d-flex flex-wrap gap-2 mb-2">
+              <button class="btn btn-light add-btn" data-bsa-href="role-add.html"><i
+                  class="bi bi-plus"></i> 新增
+              </button>
+              <button class="btn btn-light batch-btn" disabled><i class="bi bi-trash"></i> 批量删除</button>
+              <button class="btn btn-light"><i class="bi bi-box-arrow-down"></i> 导入</button>
+              <button class="btn btn-light"><i class="bi bi-box-arrow-up"></i> 导出</button>
+            </div>
+            <!--  数据表格    -->
+            <table id="table"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block mainJs %}
+
+  <script src="js/bootstrap-admin.bootstrap-table.js"></script>
+  <script src="lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+  <script src="lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+  <script src="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      const $table = $('#table');
+      // 列配置
+      const columns = [
+        {
+          checkbox: true,
+          visible: true,
+        },
+        {
+          title: 'ID',
+          field: 'id',
+          align: 'center',
+          // true:启用排序
+          sortable: true,
+        },
+        {
+          title: '角色名称',
+          field: 'name',
+          align: 'center'
+        },
+        {
+          title: '加入时间',
+          field: 'create_at',
+          align: 'center',
+        },
+        {
+          title: '操作',
+          align: 'center',
+          formatter: formatAction
+        }
+      ]
+      $table.bootstrapTable({
+        // 请求方法
+        method: 'get',
+        // 请求地址
+        url: '/role',
+        // 请求得到的数据类型
+        dataType: 'json',
+        // 响应处理,如果服务端返回的数据不是指定的格式，可以在前端进行处理
+        responseHandler: function (res) {
+          return res.data;
+        },
+        queryParams: function (params) {//params是一个对象
+          //左边是发送到服务端的字段参数，这里是随便做的示例,根据需求跳调整
+          return {
+            // 每页数据量
+            limit: params.limit,
+            // sql语句起始索引
+            offset: params.offset,
+            page: (params.offset / params.limit) + 1,
+            // 排序的列名
+            sort: params.sort,
+            // 排序方式 'asc' 'desc'
+            sortOrder: params.order,
+            //角色名称
+            name: $('input[name=name]').val(),
+          }
+        },
+        ...$.bootstrapTable.Default.pagination,
+        ...$.bootstrapTable.Default.icon,
+        ...$.bootstrapTable.Default.toolbar,
+        ...$.bootstrapTable.Default.table,
+        columns
+      });
+
+
+      //批量删除处理
+      $.bootstrapTable.updateButtonStateOnSelection($table, '.batch-btn', function (ids, selectedRows) {
+
+        layer.confirm('确定批量删除吗？', {
+          icon: 3,
+          btn: ['确定', '关闭'] //按钮
+        }, function () {
+          //发起ajax请求
+          $.ajax({
+            url: '/role/delall',
+            method: 'delete',
+            data: {
+              id: ids
+            }
+          }).then(response => {
+            if (response.code === 200) {
+
+              layer.msg('删除成功', {time: 1000, icon: 1}, () => {
+                $.bootstrapTable.refresh($table)
+              });
+            }
+          });
+        });
+      })
+
+      function formatAction(value, row, index, field) {
+
+        const $btnTpl = $('<button type="button" class="btn btn-light btn-sm"></button>');
+        const $popoverContentWrapper = $('<div class="d-flex gap-2 align-items-center flex-wrap"></div');
+
+        const editBtnHtml = $btnTpl.clone()
+          .addClass('me-2')
+          .attr('data-bs-toggle', 'tooltip')
+          .attr('data-bsa-href', 'role-edit.html')
+          .attr('data-bs-placement', 'top')
+          .attr('data-bs-title', '修改角色')
+          .html('<i class="bi bi-pencil"></i>')
+          .prop('outerHTML');
+
+
+        const moreBtn1 = $btnTpl.clone()
+          .addClass('node-btn')
+          .attr('data-bsa-href', 'role-node.html')
+          .html('<i class="bi bi bi-check2-circle me-2"></i>分配节点')
+          .prop('outerHTML');
+
+
+        const $moreBtn2 = $btnTpl.clone()
+          .addClass('role-del-btn')
+          .html('<i class="bi bi-trash me-2"></i>删除');
+        // 将row数据批量以属性的形式绑定到dom上,删除处理需要用到
+        $.each(row, function (key, value) {
+          $moreBtn2.attr('data-bsa-' + key, value);
+        });
+
+        const moreBtnHtml = $btnTpl.clone()
+          .addClass('more-btn')
+          .attr('data-bs-toggle', 'popover')
+          .attr('data-bs-html', 'true')
+          .attr('data-bs-title', '更多操作')
+          .attr('data-bs-content', $popoverContentWrapper.html(moreBtn1 + $moreBtn2.prop('outerHTML')).prop('outerHTML'))
+          .html('<i class="bi bi-three-dots me-2"></i>更多')
+          .prop('outerHTML');
+
+        return editBtnHtml + moreBtnHtml;
+      }
+
+
+      //删除处理
+      $(document).on('click', '.role-del-btn', function () {
+
+        //获取到需要的数据
+        const id = $(this).attr('data-bsa-id');
+        const name = $(this).attr('data-bsa-name');
+
+        layer.confirm(`确定删除角色[${name}]吗？`, {
+          icon: 3,
+          btn: ['确定', '关闭'] //按钮
+        }, function () {
+          //发起ajax请求
+          $.ajax({
+            url: `/role/${id}`,
+            method: 'delete',
+          }).then(response => {
+            if (response.code === 200) {
+
+              layer.msg('删除成功', {time: 800, icon: 1}, () => {
+                $.bootstrapTable.refresh($table)
+              });
+            }
+          });
+        });
+
+      })
+
+
+    })
+  </script>
+{% endblock %}

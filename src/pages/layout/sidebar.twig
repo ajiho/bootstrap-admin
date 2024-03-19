@@ -1,17 +1,282 @@
-<div class="bsa-sidebar">
+<!--  侧边栏包裹开始  -->
+<div class="bsa-sidebar-wrapper">
   <div class="card border-0 h-100">
     <!--  侧边栏头部(用于展示品牌logo)  -->
-    <div class="card-header bg-body d-flex align-items-center flex-shrink-0">
+    <div class="card-header bg-body d-flex align-items-center flex-shrink-0 border-bottom-0">
       <img src="img/favicon-32x32.png" class="bsa-logo-icon" alt="logo-icon">
       <div class="bsa-logo-text ms-2 bsa-ellipsis-2">bootstrap-admin</div>
     </div>
     <!--  侧边栏身体部分(用于主要的侧边栏菜单)  -->
-    <div class="card-body p-0" data-overlayscrollbars-initialize>
+    <div class="card-body px-0 py-1 overflow-y-auto" data-overlayscrollbars-initialize>
+      <!--  导航菜单部分  -->
+      <ul class="bsa-navigation">
+        <li>
+          <a {% if mainPage == "首页" and page == "首页" %}class="active"{% endif %} href="index.html">
+            <div class="prepend"><i class="bi bi-house"></i></div>
+            <div class="content">首页</div>
+          </a>
+        </li>
+        <!--  分割线  -->
+        <li class="separator"></li>
+        <li {% if mainPage == "权限管理"%}class="open" {% endif %}>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-person-lock"></i></div>
+            <div class="content">权限管理</div>
+            <div class="append">
+              <span class="badge text-bg-primary">6</span>
+            </div>
+          </a>
+          <ul>
+            <li>
+              <a {% if page == "用户列表"%}class="active" {% endif %} href="user-list.html">
+                <div class="content">用户列表</div>
+                <div class="append">
+                  <span class="badge text-bg-primary">2</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "角色列表"%}class="active" {% endif %} href="role-list.html">
+                <div class="content">角色列表</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "节点列表"%}class="active" {% endif %} href="node-list.html">
+                <div class="content">节点列表</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li {% if mainPage == "示例页面"%}class="open" {% endif %}>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-filetype-html"></i></div>
+            <div class="content">示例页面</div>
+            <div class="append">
+              <span class="badge rounded-pill text-bg-danger">New</span>
+            </div>
+          </a>
+          <ul>
+            <li>
+              <a href="login.html">
+                <div class="content">登录页</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "错误页面"%}class="active" {% endif %} href="error.html">
+                <div class="content">错误页面</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "锁屏页"%}class="active" {% endif %} href="lockscreen.html">
+                <div class="content">锁屏页</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "时间轴"%}class="active" {% endif %} href="timeline.html">
+                <div class="content">时间轴</div>
+              </a>
+            </li>
+          </ul>
+        </li>
 
+        <li {% if mainPage == "应用"%}class="open" {% endif %}>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-grid"></i></div>
+            <div class="content">应用</div>
+          </a>
+          <ul>
+            <li>
+              <a {% if page == "消息中心"%}class="active" {% endif %} href="message.html">
+                <div class="content">消息中心</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "邮箱"%}class="active" {% endif %} href="email-box.html">
+                <div class="content">邮箱</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "聊天框"%}class="active" {% endif %} href="chat-box.html">
+                <div class="content">聊天框</div>
+              </a>
+            </li>
+            <li>
+              <a {% if page == "日历"%}class="active" {% endif %} href="calendar.html">
+                <div class="content">日历</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!--  副标题  -->
+        <li class="subheader">LABELS</li>
+        <li {% if mainPage in ['系统设置', '我的设置'] %}class="open" {% endif %}>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-gear"></i></div>
+            <div class="content">设置</div>
+          </a>
+          <ul>
+            <li {% if mainPage == "系统设置"%}class="open" {% endif %}>
+              <a href="javascript:" class="arrow">
+                <div class="content">系统设置</div>
+              </a>
+              <ul>
+                <li>
+                  <a {% if page == "网站设置"%}class="active" {% endif %} href="sys-website.html">
+                    <div class="content">网站设置</div>
+                  </a>
+                </li>
+                <li>
+                  <a {% if page == "邮件服务"%}class="active" {% endif %} href="sys-email.html">
+                    <div class="content">邮件服务</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li {% if mainPage == "我的设置"%}class="open" {% endif %}>
+              <a href="javascript:" class="arrow">
+                <div class="content">我的设置</div>
+              </a>
+              <ul>
+                <li>
+                  <a {% if page == "个人资料"%}class="active" {% endif %} href="profile.html">
+                    <div class="content">个人资料</div>
+                  </a>
+                </li>
+                <li>
+                  <a {% if page == "修改密码"%}class="active" {% endif %} href="reset-password.html">
+                    <div class="content">修改密码</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="subheader">布局&模式</li>
+        <li>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-columns"></i></div>
+            <div class="content">布局和模式</div>
+          </a>
+          <ul>
+            <li>
+              <a href="javascript:">
+                <div class="content">顶部菜单</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:">
+                <div class="content">布局1</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:">
+                <div class="content">布局2</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:">
+                <div class="content">IFrame+多tab模式</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.bootstrap-admin.top/docs">
+            <div class="prepend"><i class="bi bi-filetype-doc"></i></div>
+            <div class="content">文档</div>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:" class="arrow">
+            <div class="prepend"><i class="bi bi-list-nested"></i></div>
+            <div class="content">多级菜单</div>
+          </a>
+          <ul>
+            <li>
+              <a href="javascript:">
+                <div class="content">一级菜单</div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:" class="arrow">
+                <div class="content">一级菜单</div>
+              </a>
+              <ul>
+                <li>
+                  <a href="javascript:">
+                    <div class="content">二级菜单</div>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:" class="arrow">
+                    <div class="content">二级菜单</div>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="javascript:">
+                        <div class="content">三级菜单</div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:" class="arrow">
+                        <div class="content">三级菜单</div>
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="javascript:">
+                            <div class="content">四级菜单</div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:" class="arrow">
+                            <div class="content">四级菜单</div>
+                          </a>
+                          <ul>
+                            <li>
+                              <a href="javascript:">
+                                <div class="content">五级菜单</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:">
+                                <div class="content">五级菜单</div>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:">
+                                <div class="content">五级菜单</div>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:" class="arrow">
+                <div class="content">一级菜单</div>
+              </a>
+              <ul>
+                <li>
+                  <a href="javascript:">
+                    <div class="content">二级菜单</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
     </div>
-    <!--  侧边栏底部(用于演示,不需要可删除)  -->
-    <div class="card-footer bg-body">
-      Version: 2.0.1
+    <!--  侧边栏底部(不需要可删除)  -->
+    <div class="card-footer bg-body bore">
+      Version: {{ bsaVersion }}
     </div>
   </div>
 </div>
+<!--  侧边栏包裹结束  -->

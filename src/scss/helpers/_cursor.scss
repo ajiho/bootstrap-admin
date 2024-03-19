@@ -1,8 +1,7 @@
-.bsa-cursor-pointer {
+.#{$bsa-prefix}cursor-pointer {
   cursor: pointer !important;
 }
 
-.bsa-cursor-default {
+.#{$bsa-prefix}cursor-default {
   cursor: default !important;
 }
-

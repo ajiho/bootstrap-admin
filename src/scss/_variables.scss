@@ -1,21 +1,25 @@
+@use 'sass:color';
+
 // 覆盖bootstrap的栅格变量,以便于添加自己的变量
 $grid-breakpoints: (
   xs: 0,
-  three-four-two:342px,
+  three-four-two: 342px,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
 ) !default;
 
+// 前缀
+$bsa-prefix: bsa- !default;
 
-// 头部菜单的高度
-$header-height: 60px !default;
 
-// 侧边栏宽度
-$sidebar-width: 240px !default;
 
-// 底部版权高度
-$footer-height: 38px !default;
+$navigation-arrow-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg>') !default;
+$navigation-padding-x: 16px !default;
+$navigation-padding-y: 8px !default;
+$navigation-active-color: #0d6efd !default;
+$navigation-prepend-margin-right: 10px !default;
+$navigation-prepend-font-size: 20px !default;
 

@@ -1,13 +1,11 @@
 :root {
   scroll-behavior: auto !important;
+
+  // bootstrap-admin的基础堆叠顺序
+  --#{$bsa-prefix}base-zindex: 2000;
+  // 布局的宽高设置
+  --#{$bsa-prefix}header-height: 60px;
+  --#{$bsa-prefix}sidebar-width: 240px;
+  --#{$bsa-prefix}sidebar-mini-width: 80px;
+  --#{$bsa-prefix}footer-height: 38px;
 }
-
-
-:root,
-[data-bs-theme="light"] {
-  // bsa自定义变量
-  --bsa-header-height: #{$header-height};
-  --bsa-sidebar-width: #{$sidebar-width};
-  --bsa-footer-height: #{$footer-height};
-}
-

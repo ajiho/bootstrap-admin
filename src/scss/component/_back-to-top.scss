@@ -1,0 +1,16 @@
+.#{$bsa-prefix}back-to-top {
+  position: fixed;
+  right: 12px;
+  bottom: 20px;
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 5);
+  display: none;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  background-color: #0d6efd;
+  border-radius: 10px;
+  cursor: pointer;
+}

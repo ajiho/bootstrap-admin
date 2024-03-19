@@ -1,0 +1,355 @@
+{% set mainPage = '权限管理' %}
+{% set page = '角色列表' %}
+
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+
+{% extends "layout/main.twig" %}
+
+{% block mainCss %}
+  <link rel="stylesheet" href="lib/jquery-treegrid/css/jquery.treegrid.css">
+  <!--  bootstrap-table插件的样式    -->
+  <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.min.css">
+  <link rel="stylesheet"
+        href="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css">
+{% endblock %}
+
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['权限管理','分配节点']) }}
+
+
+    <div class="row g-3 mb-3 ">
+      <!--基本信息-->
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-body">
+            基本信息
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row g-3">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <label for="username" class="col-sm-2 col-form-label text-sm-end">角色名称</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="username" name="username" value="研发组长" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 bsa-search-area">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <form class="row row-cols-sm-auto g-3 py-2 align-items-center">
+              <div class="col-12">
+                <div class="row">
+                  <label for="name" class="col-sm-auto col-form-label">节点名称</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="name" name="name">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <label for="status" class="col-sm-auto col-form-label">是否菜单</label>
+                  <div class="col">
+                    <select class="form-select" id="status" name="status">
+                      <option value="0" selected>所有</option>
+                      <option value="1">是</option>
+                      <option value="2">否</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 gap-2">
+                <button type="button" class="btn btn-light bsa-search-btn">
+                  <i class="bi bi-search"></i>搜索
+                </button>
+                <button type="button" class="btn btn-light bsa-reset-btn">
+                  <i class="bi bi-arrow-clockwise"></i>重置
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <!--  表格上方左侧的工具条区域    -->
+            <div id="toolbar" class="d-flex flex-wrap gap-2 mb-2">
+              <button class="btn btn-light bsa-slide-toggle-btn"><i class="bi bi-arrows-collapse"></i> 展开/折叠
+              </button>
+            </div>
+            <!--  数据表格    -->
+            <table id="table"></table>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary btn-submit">确定</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block mainJs %}
+  <script src="js/bootstrap-admin.bootstrap-table.js"></script>
+  <script src="lib/jquery.cookie/jquery.cookie.js"></script>
+  <script src="lib/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+  <script src="lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+  <script src="lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+  <!--bootstrap-table固定列拓展-->
+  <script src="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+  <!--bootstrap-table树列表treegrid拓展-->
+  <script src="lib/bootstrap-table/dist/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+
+      /**
+       * 选中父项时，同时选中子项
+       * @param datas 所有的数据
+       * @param row 当前数据
+       * @param id id 字段名
+       * @param pid 父id字段名
+       * @param checked 是否选中
+       */
+      function selectChilds(datas, row, id, pid, checked) {
+        for (let i in datas) {
+          if (datas[i][pid] === row[id]) {
+            datas[i][0] = checked;
+            selectChilds(datas, datas[i], id, pid, checked);
+          }
+        }
+      }
+
+      function selectParentUnchecked(datas, row, id, pid) {
+        let key = 0;
+        for (let i in datas) {
+          if (datas[i].pid === row.pid && datas[i][0] === true) {
+            key++
+          }
+        }
+        if (key === 0) {
+          for (let i in datas) {
+            if (datas[i][id] === row[pid]) {
+              datas[i][0] = false;
+              selectParentUnchecked(datas, datas[i], id, pid);
+            }
+          }
+        }
+      }
+
+      function selectParentChecked(datas, row, id, pid) {
+        for (let i in datas) {
+          if (datas[i][id] === row[pid]) {
+            datas[i][0] = true;
+            selectParentChecked(datas, datas[i], id, pid);
+          }
+        }
+      }
+
+      // 判断元素是否具有以某个字符串开头的类名
+      function hasClassStartsWith($element, str) {
+        const classList = $element.attr('class').split(' ');
+        for (let className of classList) {
+          if (className.startsWith(str)) {
+            return className
+          }
+        }
+        return false;
+      }
+
+
+      function splitByPrefix(str, prefix) {
+        const index = str.indexOf(prefix);
+        if (index !== 0) {
+          return null; // 前缀不匹配，返回null
+        }
+        return [prefix, str.slice(prefix.length)]; // 返回一个数组，包含前缀和剩余部分
+      }
+
+      const $table = $('#table');
+
+      //头部的那个复选框不要显示
+      $.bootstrapTable.Default.table.checkboxHeader = true
+      //单选效果
+      $.bootstrapTable.Default.table.singleSelect = false
+
+      $.bootstrapTable.Default.table.onClickRow = function (row, $element, field) {
+        // console.log('onClickRow')
+      }
+
+
+      //事件的处理
+      $.bootstrapTable.Default.table.onCheck = function (row, $element, field) {
+
+
+        // console.log(event.target)
+
+        //获取到所有的行数据
+        const data = $table.bootstrapTable('getData');
+
+        //找到上级的数据
+        // const parentRow = data.find(obj => obj.id === row.pid)
+        const parentIndex = data.findIndex(obj => obj.id === row.pid)
+        if (parentIndex !== -1) {
+          $table.bootstrapTable('check', parentIndex);
+        } else {
+
+          const filteredArray = data.filter(obj => obj.pid === row.id);
+          if (filteredArray.length > 0) {
+            filteredArray.forEach(function (childRow){
+              const rowIndex = data.findIndex(obj => obj.id === childRow.id)
+              $table.bootstrapTable('check', rowIndex);
+            })
+          }else{
+            console.log('勾选完毕')
+          }
+
+        }
+
+        // 勾选所有子级
+
+      }
+
+
+
+      const columns = [
+        {
+          checkbox: true,
+          visible: true,
+          //恢复勾选的逻辑
+          formatter: function (value, row, index) {
+            if (row.id === 3) {
+              return {
+                checked: true
+              }
+            }
+          }
+        },
+        {
+          field: 'name',
+          title: '节点名称',
+          width: 20,
+          widthUnit: '%'
+        },
+        {
+          field: 'route_name',
+          align: 'center',
+          title: '路由别名'
+        },
+
+        {
+          field: 'type',
+          title: '类型',
+          align: 'center',
+          formatter: formatType
+        },
+        {
+          field: 'icon',
+          title: '图标',
+          align: 'center',
+          formatter: formatIcon
+        },
+        {
+          title: '是否菜单',
+          field: 'is_menu',
+          align: 'center',
+          formatter: formatIsMenu
+        },
+        {
+          title: '加入时间',
+          field: 'create_at',
+          align: 'center',
+        }
+      ]
+
+
+      $.bootstrapTable.Default.table.idField = 'id'
+      $.bootstrapTable.Default.table.parentIdField = 'pid'
+      $.bootstrapTable.Default.pagination.pagination = false
+
+
+      //初始化treegrid拓展
+      $.bootstrapTable.treegridExtInit($table, 'name')
+      //展开折叠处理
+      $.bootstrapTable.treegridExtSlideToggleByButton($table, '.bsa-slide-toggle-btn')
+
+
+      $table.bootstrapTable({
+        // 请求方法
+        method: 'get',
+        // 请求地址
+        url: '/node',
+        // 请求得到的数据类型
+        dataType: 'json',
+        // 响应处理,如果服务端返回的数据不是指定的格式，可以在前端进行处理
+        responseHandler: function (res) {
+          return res.data;
+        },
+        queryParams: function (params) {//params是一个对象
+          //左边是发送到服务端的字段参数，这里是随便做的示例,根据需求跳调整
+          return {
+            // 每页数据量
+            limit: params.limit,
+            // sql语句起始索引
+            offset: params.offset,
+            page: (params.offset / params.limit) + 1,
+            // 排序的列名
+            sort: params.sort,
+            // 排序方式 'asc' 'desc'
+            sortOrder: params.order,
+            //节点名称
+            keywords: $('input[name=name]').val(),
+          }
+        },
+        ...$.bootstrapTable.Default.pagination,
+        ...$.bootstrapTable.Default.icon,
+        ...$.bootstrapTable.Default.toolbar,
+        ...$.bootstrapTable.Default.table,
+        columns
+      });
+
+
+      function formatIsMenu(value, row, index) {
+        if (value === 1) {
+          return '<span class="badge rounded-pill text-bg-success">是</span>'
+        }
+        return '-'
+      }
+
+
+      function formatType(value, row, index) {
+
+        if (value === 0) {
+          return '<span class="badge text-bg-primary">分类</span>'
+        } else if (value === 1) {
+          return '<span class="badge text-bg-success">显示</span>'
+        }
+        return '<span class="badge text-bg-danger">处理</span>'
+
+      }
+
+
+      function formatIcon(value, row, index) {
+        return `<i class="${value}"></i>`
+      }
+
+
+    })
+  </script>
+{% endblock %}

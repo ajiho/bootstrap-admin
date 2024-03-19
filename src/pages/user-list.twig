@@ -1,0 +1,529 @@
+{% set mainPage = '权限管理' %}
+{% set page = '用户列表' %}
+
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+
+{% extends "layout/main.twig" %}
+
+{% block mainCss %}
+  <!--  bootstrap-table插件的样式    -->
+  <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.min.css">
+  <link rel="stylesheet"
+        href="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css">
+  <!--  日期时间插件    -->
+  <link rel="stylesheet" href="lib/@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css"/>
+{% endblock %}
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['权限管理','用户列表']) }}
+
+    <div class="row g-3 mb-3 ">
+      <div class="col-12 bsa-search-area">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <form class="row row-cols-sm-auto g-3 py-2 align-items-center">
+              <div class="col-12">
+                <div class="row">
+                  <label for="username" class="col-sm-auto col-form-label">用户名</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="username" name="username">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <label for="keyword" class="col-sm-auto col-form-label">关键字</label>
+                  <div class="col">
+                    <input type="email" class="form-control" id="keyword" name="keyword">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <label for="phone" class="col-sm-auto col-form-label">手机号</label>
+                  <div class="col">
+                    <input type="email" class="form-control" id="phone" name="phone">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <label for="beginTime" class="col-sm-auto col-form-label">创建时间</label>
+                  <div class="col">
+                    <div class="input-group">
+                      <input type="text" readonly class="form-control" aria-label="q"
+                             placeholder="开始时间"
+                             name="beginTime" id="beginTime">
+                      <span class="input-group-text"><i class="bi bi-arrow-left-right"></i></span>
+                      <input type="text" readonly class="form-control" aria-label="q"
+                             placeholder="结束时间"
+                             name="endTime" id="endTime">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <label for="status" class="col-sm-auto col-form-label">用户状态</label>
+                  <div class="col">
+                    <select class="form-select" id="status" name="status">
+                      <option value="0" selected>所有</option>
+                      <option value="1">正常</option>
+                      <option value="2">停用</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 gap-2">
+                <button type="button" class="btn btn-light bsa-search-btn">
+                  <i class="bi bi-search"></i>搜索
+                </button>
+                <button type="button" class="btn btn-light bsa-reset-btn">
+                  <i class="bi bi-arrow-clockwise"></i>重置
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body bg-body">
+            <!--  表格上方左侧的工具条区域    -->
+            <div id="toolbar" class="d-flex flex-wrap gap-2 mb-2">
+              <button class="btn btn-light add-btn" data-bsa-href="user-add.html"><i
+                  class="bi bi-plus"></i> 新增
+              </button>
+              <button class="btn btn-light batch-btn" disabled><i class="bi bi-trash"></i> 批量删除</button>
+              <button class="btn btn-light"><i class="bi bi-box-arrow-down"></i> 导入</button>
+              <button class="btn btn-light"><i class="bi bi-box-arrow-up"></i> 导出</button>
+            </div>
+            <!--  数据表格    -->
+            <table id="table"></table>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+
+{% block mainJs %}
+  <script src="js/bootstrap-admin.bootstrap-table.js"></script>
+  <script src="lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+  <script src="lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+  <script src="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+  <script src="lib/@eonasdan/tempus-dominus/dist/js/tempus-dominus.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      /**
+       * bootstrap-table的官网是https://github.com/wenzhixin/bootstrap-table
+       * 后台模板的增删改查的主要驱动就是该插件，该插件熟练使用后curd会非常快，请一定要静下心来好好研究并学会该插件
+       * columns表示列，里面的对象 title是表头信息，field是服务端返回的字段名称
+       * 1.不做分页，返回的数据格式是 [{},{}]
+       * 2.如果要开启分页，需要配置pagination:true, sidePagination:'client|server'
+       * 3.客户端分页所需要的格式和不做分页时是一样的 都是 :[{},{}]
+       * 4.服务端分页返回的格式为：{rows:[{},{}],total:200}
+       */
+      const $table = $('#table');
+      // 列配置
+      const columns = [
+        {
+          checkbox: true,
+          //是否显示该列
+          visible: true,
+        },
+        {
+          //列的标题
+          title: 'ID',
+          //列的字段
+          field: 'id',
+          // 对齐方式:https://bootstrap-table.com/docs/api/column-options/#align
+          align: 'center',
+          // 是否作为排序列
+          sortable: true,
+          // 当列名称与实际名称不一致时可用
+          sortName: 'sortId',
+          //设置false可以让该列不出现在showColumns:true时右侧工具栏按钮弹出的下拉菜单列表中
+          switchable: false,
+          // 列的宽度
+          width: 8,
+          // 宽度单位
+          widthUnit: 'rem'
+        },
+        {
+          title: '用户名',
+          field: 'username',
+          align: 'center',
+          formatter: formatUsername
+        },
+        {
+          title: '姓名',
+          field: 'name',
+          align: 'center'
+        },
+        {
+          title: '角色',
+          field: 'role_id',
+          align: 'center',
+          formatter: formatRole
+        },
+        {
+          title: '性别',
+          field: 'gender',
+          align: 'center',
+          formatter: formatGender
+        },
+        {
+          title: '手机',
+          field: 'phone',
+          align: 'center',
+        },
+        {
+          title: '邮箱',
+          field: 'email',
+          align: 'center',
+        },
+        {
+          title: '加入时间',
+          field: 'create_at',
+          align: 'center',
+        },
+        {
+          title: '状态',
+          field: 'status',
+          align: 'center',
+          formatter: formatStatus,
+          events: {
+            'click .form-check-input': function (event, value, row, index) {
+              event.preventDefault();
+
+              //获取当前状态
+              const $checkbox = $(event.target);
+
+
+              //获取即将去往的选中状态
+              const status = $checkbox.prop('checked');
+
+
+              //发送ajax改变用户的状态
+              $.ajax({
+                url: `/user/ChangeStatus/${row.id}`,
+                method: 'get',
+              }).then(response => {
+                if (response.code === 200) {
+
+                  //修改状态
+                  $checkbox.prop('checked', status);
+
+                  //给出通知
+                  layer.msg('操作成功', {icon: 1, time: 2000});
+                }
+              });
+            }
+          }
+        },
+        {
+          title: '操作',
+          align: 'center',
+          formatter: formatAction
+        }
+      ]
+
+      $table.bootstrapTable({
+        // 请求方法
+        method: 'get',
+        // 请求地址
+        url: '/user',
+        // 请求得到的数据类型
+        dataType: 'json',
+        // 响应处理,如果服务端返回的数据不是指定的格式，可以在前端进行处理
+        responseHandler: function (res) {
+          return res.data;
+        },
+        queryParams: function (params) {//params是一个对象
+          //左边是发送到服务端的字段参数，这里是随便做的示例,根据需求跳调整
+          return {
+            // 每页数据量
+            limit: params.limit,
+            // sql语句起始索引
+            offset: params.offset,
+            page: (params.offset / params.limit) + 1,
+            // 排序的列名
+            sort: params.sort,
+            // 排序方式 'asc' 'desc'
+            sortOrder: params.order,
+            //关键词
+            keywords: $('input[name=keyword]').val(),
+            //开始时间
+            beginTime: $('input[name=beginTime]').val(),
+            //结束时间
+            endTime: $('input[name=endTime]').val(),
+          }
+        },
+        ...$.bootstrapTable.Default.pagination,
+        ...$.bootstrapTable.Default.icon,
+        ...$.bootstrapTable.Default.toolbar,
+        ...$.bootstrapTable.Default.table,
+        columns
+      });
+
+
+      //批量删除处理
+      $.bootstrapTable.updateButtonStateOnSelection($table, '.batch-btn', function (ids, selectedRows) {
+        //批量删除处理
+        layer.confirm('确定批量删除吗？', {
+          icon: 3,
+          btn: ['确定', '关闭'] //按钮
+        }, function () {
+          //发起ajax请求
+          $.ajax({
+            url: '/user/delall',
+            method: 'delete',
+            data: {
+              id: ids
+            }
+          }).then(response => {
+            if (response.code === 200) {
+
+              layer.msg('删除成功', {time: 800, icon: 1}, () => {
+
+                // location.reload();//可以直接刷新当前页面
+                $.bootstrapTable.refresh($table)
+
+              });
+            }
+          });
+        });
+      })
+
+
+      //value:当前数据 row:当前整行数据
+      function formatGender(value, row, index, field) {
+        return value === true ? '先生' : '女士';
+      }
+
+      function formatUsername(value, row, index, field) {
+        return `<a href="#">${value}</a>`;
+      }
+
+
+      function formatRole(value, row, index, field) {
+        switch (value) {
+          case 1:
+            return '经理'
+          case 2:
+            return '组长'
+          case 3:
+            return '研发组长'
+          case 4:
+            return '客服'
+          case 5:
+            return '文章审核员'
+          case 6:
+            return '销售'
+          default:
+            return '<span class="badge text-bg-danger">未分配</span>'
+        }
+
+      }
+
+      function formatStatus(value, row, index, field) {
+
+        const $element = $('<div class="form-check form-switch"><input class="form-check-input bsa-cursor-pointer" type="checkbox"> </div>');
+
+        return value === 1 ? $element.find('input').attr('checked', true).parent().prop('outerHTML') : $element.prop('outerHTML');
+      }
+
+
+      function formatAction(value, row, index, field) {
+
+        const $btnTpl = $('<button type="button" class="btn btn-light btn-sm"></button>');
+        const $popoverContentWrapper = $('<div class="d-flex gap-2 align-items-center flex-wrap"></div');
+
+
+        //这里是通过编程方式来增加按钮最后调用.prop('outerHTML')获取dom的html字符串
+        const editBtnHtml = $btnTpl.clone()
+          .addClass('me-2')
+          .attr('data-bs-toggle', 'tooltip')
+          // 绑定该属性可以跳转
+          .attr('data-bsa-href', `user-edit.html?id=${row.id}`)
+          .attr('data-bs-placement', 'top')
+          .attr('data-bs-title', '修改用户')
+          .html('<i class="bi bi-pencil"></i>')
+          .prop('outerHTML');
+
+
+        const moreBtn1 = $btnTpl.clone()
+          .addClass('reset-password-btn')
+          //通过data-bsa-*的属性绑定数据到dom上(其它属性名绑定不上,具体原因查看bootstrap-admin.core.js提示工具允许的属性和标签设置部分)
+          .attr('data-bsa-href', 'user-repassword.html?id=' + row.id)
+          .html('<i class="bi bi-key me-2"></i>重置密码')
+          .prop('outerHTML');
+
+
+        const moreBtn2 = $btnTpl.clone()
+          .attr('data-bsa-href', 'user-role.html?id=' + row.id)
+          .html('<i class="bi bi-person-check me-2"></i>分配角色')
+          .prop('outerHTML');
+
+
+        const $moreBtn3 = $btnTpl.clone()
+          .addClass('user-del-btn')
+          .html('<i class="bi bi-trash me-2"></i>删除');
+        $.each(row, function (key, value) {
+          $moreBtn3.attr('data-bsa-' + key, value);
+        });
+
+        const moreBtnHtml = $btnTpl.clone()
+          .addClass('more-btn')
+          .attr('data-bs-toggle', 'popover')
+          .attr('data-bs-html', 'true')
+          .attr('data-bs-title', '更多操作')
+          .attr('data-bs-content', $popoverContentWrapper.html(moreBtn1 + moreBtn2 + $moreBtn3.prop('outerHTML')).prop('outerHTML'))
+          .html('<i class="bi bi-three-dots me-2"></i>更多')
+          .prop('outerHTML');
+
+
+        return editBtnHtml + moreBtnHtml;
+      }
+
+
+      //删除处理
+      $(document).on('click', '.user-del-btn', function (event) {
+        event.preventDefault()
+        //获取数据
+        const id = $(this).attr('data-bsa-id');
+        const name = $(this).attr('data-bsa-name');
+
+        layer.confirm(`确定删除管理员[${name}]吗？`, {
+          icon: 3,
+          btn: ['确定', '关闭'] //按钮
+        }, function () {
+          //发起ajax请求
+          $.ajax({
+            url: `/user/${id}`,
+            method: 'delete',
+          }).then(response => {
+            if (response.code === 200) {
+
+              layer.msg('删除成功', {time: 800, icon: 1}, () => {
+                // location.reload();//可以直接刷新当前页面
+                bsTableRefresh($table)
+              });
+            }
+          });
+        });
+
+      })
+
+
+      //==============================日期时间插件====================================
+      //日期时间的翻译，由于该插件没有内置中文翻译，需要手动通过选项进行翻译
+      const td_zh = {
+        today: '回到今天',
+        clear: '清除选择',
+        close: '关闭选取器',
+        selectMonth: '选择月份',
+        previousMonth: '上个月',
+        nextMonth: '下个月',
+        selectYear: '选择年份',
+        previousYear: '上一年',
+        nextYear: '下一年',
+        selectDecade: '选择十年',
+        previousDecade: '上一个十年',
+        nextDecade: '下一个十年',
+        previousCentury: '上一个世纪',
+        nextCentury: '下一个世纪',
+        pickHour: '选取时间',
+        incrementHour: '增量小时',
+        decrementHour: '递减小时',
+        pickMinute: '选取分钟',
+        incrementMinute: '增量分钟',
+        decrementMinute: '递减分钟',
+        pickSecond: '选取秒',
+        incrementSecond: '增量秒',
+        decrementSecond: '递减秒',
+        toggleMeridiem: '切换上下午',
+        selectTime: '选择时间',
+        selectDate: '选择日期',
+      }
+      const tempusDominusConfig = {
+        //本地化控制
+        localization: {
+          ...td_zh,//展开语法
+          format: 'yyyy-MM-dd HH:mm:ss',
+        },
+        //布局控制
+        display: {
+          //视图模式(选择年份视图最先开始)
+          viewMode: 'calendar',
+          components: {
+            //是否开启日历，false:则是时刻模式
+            calendar: true,
+            //支持年份选择
+            year: true,
+            //是否开启月份选择
+            month: true,
+            //支持日期选择
+            date: true,
+            //底部按钮中那个时刻选择是否启用，false则表示隐藏，下面三个需要该选项为true时有效
+            clock: true,
+            //时
+            hours: true,
+            //分
+            minutes: true,
+            //秒
+            seconds: true
+          },
+          //图标
+          icons: {
+            time: 'bi bi-clock',
+            date: 'bi bi-calendar',
+            up: 'bi bi-arrow-up',
+            down: 'bi bi-arrow-down',
+            previous: 'bi bi-chevron-left',
+            next: 'bi bi-chevron-right',
+            today: 'bi bi-calendar-check',
+            clear: 'bi bi-trash',
+            close: 'bi bi-x',
+          },
+          //视图底部按钮
+          buttons: {
+            today: true,
+            clear: true,
+            close: true,
+          },
+        }
+      }
+      const td1 = new tempusDominus.TempusDominus(document.getElementById('beginTime'), tempusDominusConfig);
+      const td2 = new tempusDominus.TempusDominus(document.getElementById('endTime'), tempusDominusConfig);
+      //事件监听设定起始时间为td2实例的选中时间
+      td1.subscribe(tempusDominus.Namespace.events.change, (e) => {
+        td2.updateOptions({
+          restrictions: {
+            minDate: e.date,
+          },
+        });
+      });
+      //事件监听设定起始时间为td1实例的选中时间
+      td2.subscribe(tempusDominus.Namespace.events.change, (e) => {
+        td1.updateOptions({
+          restrictions: {
+            maxDate: e.date,
+          },
+        });
+      });
+    })
+  </script>
+{% endblock %}
