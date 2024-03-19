@@ -155,7 +155,10 @@
       //展开折叠处理
       $.bootstrapTable.treegridExtSlideToggleByButton($table, '.bsa-slide-toggle-btn')
 
-
+      //取消左侧列的冻结
+      $.extend($.bootstrapTable.Default.table, {
+        fixedNumber:0
+      });
 
       $table.bootstrapTable({
         // 请求方法

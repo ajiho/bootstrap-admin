@@ -6,6 +6,11 @@
 
 {% extends "layout/main.twig" %}
 
+
+{% block mainCss %}
+  <link rel="stylesheet" href="lib/uppy/dist/uppy.min.css">
+{% endblock %}
+
 {% block mainContent %}
   <div class="container-fluid p-3">
 
@@ -21,19 +26,6 @@
             <div class="row">
               <div class="col-md-5">
                 <form id="form">
-                  <div class="row mb-3">
-                    <label for="role" class="col-sm-3 col-form-label text-sm-end">我的角色</label>
-                    <div class="col-sm-9">
-                      <select class="form-select" name="role" aria-label="role" id="role">
-                        <option value="1" selected>超级管理员</option>
-                        <option value="2" disabled>普通管理员</option>
-                        <option value="3" disabled>审核员</option>
-                        <option value="4" disabled>编辑员</option>
-                      </select>
-                      <div class="form-text">当前角色不可更改为其它角色</div>
-                    </div>
-
-                  </div>
                   <div class="row mb-3">
                     <label for="username" class="col-sm-3 col-form-label text-sm-end">用户名</label>
                     <div class="col-sm-9">
@@ -66,12 +58,9 @@
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="nickname" class="col-sm-3 col-form-label text-sm-end">头像</label>
+                    <label for="avatar" class="col-sm-3 col-form-label text-sm-end">头像</label>
                     <div class="col-sm-9">
-                      <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="avatar" name="avatar">
-                        <label class="input-group-text" for="avatar"><i class="bi bi-cloud-upload"></i> 上传图片</label>
-                      </div>
+                      <div id="avatar"></div>
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -114,8 +103,39 @@
   <script src="lib/formvalidation/js/formValidation.js"></script>
   <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
   <script src="lib/formvalidation/js/language/zh_CN.js"></script>
-  <script>
+
+  <script src="lib/uppy/dist/uppy.min.js"></script>
+  <script type="module" src="lib/@uppy/locales/lib/zh_CN.js"></script>
+  <script type="module">
     $(document).ready(function () {
+
+
+      const uppy = new Uppy.Uppy({
+        debug: true,
+        locale: Uppy.locales.zh_CN,
+      });
+
+      uppy.use(Uppy.Dashboard, {
+        inline: true,
+        target: '#avatar',
+        height: 300
+      })
+        .use(Uppy.XHRUpload, {
+          id: 'XHRUpload',
+          endpoint: '/file/upload',
+          method: 'post',
+          formData: true,
+          fieldName: 'file',
+          bundle: true,
+          timeout: 30 * 1000,
+          limit: 0,
+        });
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+
+
       $('#form').formValidation({
         fields: {
           desc: {
@@ -131,16 +151,14 @@
         const $form = $(e.target);
         const data = $form.serialize();
 
-        //得到序列化数据
+        //ajax请求
         $.ajax({
-          url: "/login.php",
-          method: 'POST',
+          url: "/profile",
+          method: 'put',
           data
-        }).then(function (res) {
-          if (res.code === 200) {
-            //登录成功
-          } else {
-            //登录失败
+        }).then(function (response) {
+          if (response.code === 200) {
+            layer.msg('操作成功', {time: 800, icon: 1});
           }
         });
 

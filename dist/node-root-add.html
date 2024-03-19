@@ -285,6 +285,16 @@
                                         <div class="content">时间轴</div>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="table-simple.html">
+                                        <div class="content">简单表格</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="search.html">
+                                        <div class="content">搜索结果</div>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -575,6 +585,8 @@
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
     <script src="js/bootstrap-admin.main.js"></script>
+    <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
+    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script>
         $(document).ready(function() {
             // 退出登录前询问

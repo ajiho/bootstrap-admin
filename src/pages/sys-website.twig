@@ -88,7 +88,7 @@
               <div class="row mb-3">
                 <label for="copyright" class="col-sm-2 col-form-label text-sm-end">版权信息</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" id="copyright" rows="3" name="copyright">Copyright © 2023. All right reserved.</textarea>
+                  <textarea class="form-control" id="copyright" rows="3" name="copyright">Copyright © {{ year }}. All right reserved.</textarea>
                 </div>
               </div>
 
@@ -107,6 +107,7 @@
 {% endblock %}
 
 {% block mainJs %}
+
   <script src="lib/formvalidation/js/formValidation.js"></script>
   <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
   <script src="lib/formvalidation/js/language/zh_CN.js"></script>
@@ -128,16 +129,15 @@
         const $form = $(e.target);
         const data = $form.serialize();
 
+
         //ajax请求
         $.ajax({
-          url: "/login.php",
-          method: 'POST',
+          url: "/sys/website",
+          method: 'put',
           data
-        }).then(function (res) {
-          if (res.code === 200) {
-            //登录成功
-          } else {
-            //登录失败
+        }).then(function (response) {
+          if (response.code === 200) {
+            layer.msg('操作成功', {time: 800, icon: 1});
           }
         });
 

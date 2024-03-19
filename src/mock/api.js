@@ -4,53 +4,79 @@ let api = {
   //用户模块
   user: {
     //添加用户
-    create:'/user',
+    create: '/user',
     //更新用户
-    update:RegExp(/^\/user\/\d+$/),
+    update: RegExp(/^\/user\/\d+$/),
     //用户列表
-    index:RegExp(/\/user(\?.*)?$/),
+    index: RegExp(/\/user(\?.*)?$/),
     //改变用户状态
-    changeStatus:RegExp(/^\/user\/ChangeStatus\/\d+$/),
+    changeStatus: RegExp(/^\/user\/ChangeStatus\/\d+$/),
     //删除用户
-    delete:RegExp(/^\/user\/\d+$/),
+    delete: RegExp(/^\/user\/\d+$/),
     //批量删除
-    delall:'/user/delall',
+    delall: '/user/delall',
     //分配角色
-    role:RegExp(/^\/user\/role\/\d+$/),
+    role: RegExp(/^\/user\/role\/\d+$/),
     //重置密码
-    repassword:RegExp(/^\/user\/repassword\/\d+$/),
+    repassword: RegExp(/^\/user\/repassword\/\d+$/),
   },
 
   //登录
-  login:'/login',
+  login: '/login',
   //退出
-  logout:'/logout',
+  logout: '/logout',
 
   //角色模块
   role: {
     //列表
-    index:RegExp(/\/role(\?.*)?$/),
+    index: RegExp(/\/role(\?.*)?$/),
     //添加
-    create:'/role',
+    create: '/role',
     //修改
-    update:RegExp(/^\/role\/\d+$/),
+    update: RegExp(/^\/role\/\d+$/),
     //删除
-    delete:RegExp(/^\/role\/\d+$/),
+    delete: RegExp(/^\/role\/\d+$/),
     //批量删除
-    delall:'/role/delall'
+    delall: '/role/delall'
   },
 
   //节点模块
   node: {
     //列表
-    index:RegExp(/\/node(\?.*)?$/),
+    index: RegExp(/\/node(\?.*)?$/),
     //删除
-    delete:RegExp(/^\/node\/\d+$/),
+    delete: RegExp(/^\/node\/\d+$/),
     //添加
-    create:'/node',
+    create: '/node',
     //修改
-    update:RegExp(/^\/node\/\d+$/),
-  }
+    update: RegExp(/^\/node\/\d+$/),
+  },
+
+  //系统
+  sys: {
+    //网站设置
+    website: '/sys/website',
+    //邮箱服务
+    email: '/sys/email'
+  },
+
+
+  profile: '/profile',
+
+  //修改个人资料
+  resetPwd: '/resetPwd',
+
+  //通知列表
+  notice: {
+    index: RegExp(/\/notice(\?.*)?$/),
+    //删除处理
+    delall:'/notice/delall',
+    //已读处理
+    read:'/notice/read',
+    //全部已读
+    readall:'/notice/readall',
+  },
+
 
 }
 

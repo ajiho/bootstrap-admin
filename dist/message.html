@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="lib/overlayscrollbars/styles/overlayscrollbars.min.css">
     <link rel="stylesheet" href="lib/nprogress/nprogress.css">
     <!--===================//公共css========================-->
+    <!--  bootstrap-table插件的样式    -->
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css">
     <!--bootstrap-admin样式文件-->
     <link rel="stylesheet" href="css/bootstrap-admin.min.css">
     <title>bootstrap-admin开源免费响应式后台管理系统模板</title>
@@ -285,6 +288,16 @@
                                         <div class="content">时间轴</div>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="table-simple.html">
+                                        <div class="content">简单表格</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="search.html">
+                                        <div class="content">搜索结果</div>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -508,6 +521,38 @@
                     </div>
                 </div>
 
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <ul class="nav nav-underline bsa-msg-type-nav">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active text-dark-emphasis" type="button" data-type="0" role="tab">全部消息
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link text-dark-emphasis" type="button" data-type="1" role="tab">通知
+                                            <span class="badge text-bg-warning align-text-bottom">4</span>
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link text-dark-emphasis" type="button" data-type="2" role="tab">私信
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div id="toolbar" class="d-flex flex-wrap gap-2 my-2">
+                                    <button class="btn btn-outline-secondary btn-sm del-btn">删除</button>
+                                    <button class="btn btn-outline-secondary btn-sm read-btn">标记已读</button>
+                                    <button class="btn btn-outline-secondary btn-sm read-all-btn">全部已读</button>
+                                </div>
+                                <!--隐藏域,保存类型-->
+                                <input type="hidden" name="type">
+                                <table id="table"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--页面内容包裹结束-->
@@ -532,6 +577,8 @@
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
     <script src="js/bootstrap-admin.main.js"></script>
+    <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
+    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script>
         $(document).ready(function() {
             // 退出登录前询问
@@ -558,6 +605,183 @@
                     });
                 });
 
+            })
+
+        })
+    </script>
+
+    <script src="js/bootstrap-admin.bootstrap-table.js"></script>
+    <script src="lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="lib/bootstrap-table/dist/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const $table = $('#table');
+            // 列配置
+            const columns = [{
+                    checkbox: true,
+                    visible: true,
+                },
+                {
+                    title: '标题内容',
+                    field: 'title',
+                    align: 'left',
+                    formatter: formatTitle
+                },
+                {
+                    title: '时间',
+                    field: 'create_at',
+                    align: 'center',
+                },
+            ]
+
+
+            //对一些预设参数的修改
+            $.bootstrapTable.Default.table.fixedRightNumber = 0;
+            $.bootstrapTable.Default.table.showColumns = false;
+            $.bootstrapTable.Default.table.showToggle = false;
+            $.bootstrapTable.Default.toolbar.buttons = {};
+
+
+            $table.bootstrapTable({
+                // 请求方法
+                method: 'get',
+                // 请求地址
+                url: '/notice',
+                // 请求得到的数据类型
+                dataType: 'json',
+                // 响应处理,如果服务端返回的数据不是指定的格式，可以在前端进行处理
+                responseHandler: function(res) {
+                    return res.data;
+                },
+                queryParams: function(params) { //params是一个对象
+                    //左边是发送到服务端的字段参数，这里是随便做的示例,根据需求跳调整
+                    return {
+                        // 每页数据量
+                        limit: params.limit,
+                        // sql语句起始索引
+                        offset: params.offset,
+                        page: (params.offset / params.limit) + 1,
+                        // 排序的列名
+                        sort: params.sort,
+                        // 排序方式 'asc' 'desc'
+                        sortOrder: params.order,
+                        // 通知类型
+                        type: $('input[name=type]').val(),
+                    }
+                },
+                ...$.bootstrapTable.Default.pagination,
+                ...$.bootstrapTable.Default.icon,
+                ...$.bootstrapTable.Default.toolbar,
+                ...$.bootstrapTable.Default.table,
+                columns
+            });
+
+
+
+            function formatTitle(value, row, index, field) {
+                return `<a class="text-decoration-none link-body-emphasis" href="message-detail.html?id=${row.id}">${value}</a>`;
+            }
+
+
+            //批量删除处理
+            $.bootstrapTable.updateButtonStateOnSelection($table, '.del-btn', function(ids, selectedRows) {
+                //批量删除处理
+                layer.confirm('确定删除所选数据吗？', {
+                    icon: 3,
+                    btn: ['确定', '关闭'] //按钮
+                }, function() {
+                    //发起ajax请求
+                    $.ajax({
+                        url: '/notice/delall',
+                        method: 'delete',
+                        data: {
+                            id: ids
+                        }
+                    }).then(response => {
+                        if (response.code === 200) {
+
+                            layer.msg('删除成功', {
+                                time: 800,
+                                icon: 1
+                            }, () => {
+
+                                // location.reload();//可以直接刷新当前页面
+                                $.bootstrapTable.refresh($table)
+
+                            });
+                        }
+                    });
+                });
+            })
+
+
+            //标记已读处理
+            $.bootstrapTable.updateButtonStateOnSelection($table, '.read-btn', function(ids, selectedRows) {
+
+                //发起ajax请求
+                $.ajax({
+                    url: '/notice/read',
+                    method: 'put',
+                    data: {
+                        id: ids
+                    }
+                }).then(response => {
+                    if (response.code === 200) {
+                        layer.msg('标记已读成功', {
+                            time: 800,
+                            icon: 1
+                        }, () => $.bootstrapTable.refresh($table));
+                    }
+                });
+
+            })
+
+
+
+
+
+
+
+            //全部已读处理
+            $(document).on('click', '.read-all-btn', function(event) {
+                //发起ajax请求
+                $.ajax({
+                    url: '/notice/readall',
+                    method: 'put',
+                }).then(response => {
+                    if (response.code === 200) {
+
+                        //此时可以把头部的铃铛摇晃效果去除
+                        $('.bsa-has-msg').removeClass('bsa-has-msg');
+
+                        layer.msg('全部消息：全部已读', {
+                            time: 800,
+                            icon: 1
+                        }, () => $.bootstrapTable.refresh($table));
+                    }
+                });
+            })
+
+
+
+            //切换类型处理
+            $(document).on('click', '.bsa-msg-type-nav button', function(event) {
+                event.preventDefault();
+
+                const $btn = $(this);
+
+                //下面两行用于切换激活类
+                $('.bsa-msg-type-nav button').removeClass('active');
+                $btn.addClass('active');
+
+                //给隐藏域设置值
+                const type = $btn.attr('data-type');
+                $('input[name=type]').val(type)
+
+                //刷新数据表格
+                $.bootstrapTable.refresh($table)
             })
 
         })

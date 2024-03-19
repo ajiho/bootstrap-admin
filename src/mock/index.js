@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 import './extend'
 import Utils from "./utils";
 import Api from "./api";
-import { roleList,userList,nodeList } from './data/index';
+import { roleList,userList,nodeList,noticeList } from './data/index';
 
 
 
@@ -72,3 +72,26 @@ Mock.mock(Api.node.create, 'post', Utils.template())
 
 //修改节点
 Mock.mock(Api.node.update, 'put', Utils.template())
+
+//网站设置
+Mock.mock(Api.sys.website, 'put', Utils.template())
+//邮箱服务
+Mock.mock(Api.sys.email, 'put', Utils.template())
+
+//个人资料修改
+Mock.mock(Api.profile, 'put', Utils.template())
+
+//个人密码修改
+Mock.mock(Api.resetPwd, 'put', Utils.template())
+
+
+//通知列表
+Mock.mock(Api.notice.index, 'get', Utils.template(noticeList,50))
+
+//删除通知
+Mock.mock(Api.notice.delall, 'delete', Utils.template())
+
+//已读处理
+Mock.mock(Api.notice.read, 'put', Utils.template())
+//全部已读
+Mock.mock(Api.notice.readall, 'put', Utils.template())

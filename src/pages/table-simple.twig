@@ -1,0 +1,14 @@
+{% set mainPage = '示例页面' %}
+{% set page = '简单表格' %}
+
+
+{% from './components/breadcrumb.twig' import breadcrumb %}
+
+
+{% extends "layout/main.twig" %}
+
+{% block mainContent %}
+  <div class="container-fluid p-3">
+    {{ breadcrumb(['示例页面','简单表格']) }}
+  </div>
+{% endblock %}

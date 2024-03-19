@@ -1,11 +1,16 @@
 $(document).ready(function () {
-
   // 侧边栏toggle
   $(document).on('click', '.bsa-sidebar-toggle', function () {
     const $overlay = $('.bsa-overlay');
     const $wrapper = $('.bsa-wrapper');
+    if($wrapper.hasClass('toggled')){
+      $wrapper.removeClass('toggled');
+      bodyScrollLock.unlock('body')
+    }else{
+      $wrapper.addClass('toggled');
+      bodyScrollLock.lock('body');
+    }
 
-    $wrapper.toggleClass('toggled');
     if ($overlay.length === 0) {
       $('<div class="bsa-overlay"></div>').prependTo($wrapper);
     } else {
@@ -17,6 +22,7 @@ $(document).ready(function () {
   $(document).on('click', '.bsa-overlay', function () {
     $(this).remove();
     $('.bsa-wrapper').toggleClass('toggled');
+    bodyScrollLock.unlock('body')
   });
 
 
@@ -39,10 +45,12 @@ $(document).ready(function () {
   })
 
 
+  // 搜索的展开
   $(document).on('click', '.bsa-search-form-open-btn', function () {
     $('.bsa-search-form').addClass('open')
   })
 
+  // 搜索的关闭
   $(document).on('click', '.bsa-search-form-close-btn', function () {
     $('.bsa-search-form').removeClass('open')
   })

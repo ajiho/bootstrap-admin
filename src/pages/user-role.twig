@@ -107,6 +107,11 @@
 
       const $table = $('#table');
 
+      $.extend($.bootstrapTable.Default.table, {
+        //右侧不要固定列
+        fixedRightNumber:0
+      });
+
       // 列配置
       const columns = [
         {

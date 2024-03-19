@@ -289,6 +289,16 @@
                                         <div class="content">时间轴</div>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="table-simple.html">
+                                        <div class="content">简单表格</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="search.html">
+                                        <div class="content">搜索结果</div>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -617,6 +627,8 @@
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
     <script src="js/bootstrap-admin.main.js"></script>
+    <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
+    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script>
         $(document).ready(function() {
             // 退出登录前询问
@@ -664,15 +676,15 @@
             const $table = $('#table');
 
 
-            const myTableOptions = {
+            //拓展默认的参数
+            $.extend($.bootstrapTable.Default.table, {
                 //头部的那个复选框 true:显示 false:不显示
                 checkboxHeader: true,
                 //单选效果 false:启用 true:不启用
-                singleSelect: false
-            };
-
-            //拓展默认的参数
-            $.extend($.bootstrapTable.Default.table, myTableOptions);
+                singleSelect: false,
+                //右侧不要固定列
+                fixedRightNumber: 0
+            });
 
 
             $.bootstrapTable.toggleCheckRelation($table)

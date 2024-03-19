@@ -67,6 +67,7 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@uppy/locales": "^3.5.2",
     "autoprefixer": "^10.4.17",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -91,6 +92,7 @@
     "node-css-mqpacker": "^9.0.0",
     "nodemon": "^3.1.0",
     "npm-run-all2": "^6.1.2",
+    "nprogress": "^0.2.0",
     "overlayscrollbars": "^2.6.0",
     "postcss": "^8.4.36",
     "postcss-cli": "^11.0.0",
@@ -103,11 +105,10 @@
     "stylelint": "^16.2.1",
     "stylelint-config-recess-order": "^4.4.0",
     "stylelint-config-standard-scss": "^13.0.0",
+    "tua-body-scroll-lock": "^1.4.1",
     "twig": "^1.17.1",
+    "uppy": "^3.23.0",
     "vitepress": "^1.0.0-rc.44",
     "vitepress-plugin-tabs": "^0.5.0"
-  },
-  "dependencies": {
-    "nprogress": "^0.2.0"
   }
 }

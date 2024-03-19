@@ -220,7 +220,7 @@
                     <!--  导航菜单部分  -->
                     <ul class="bsa-navigation">
                         <li>
-                            <a class="active" href="index.html">
+                            <a href="index.html">
                                 <div class="prepend"><i class="bi bi-house"></i></div>
                                 <div class="content">首页</div>
                             </a>
@@ -256,7 +256,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="open">
                             <a href="javascript:" class="arrow">
                                 <div class="prepend"><i class="bi bi-filetype-html"></i></div>
                                 <div class="content">示例页面</div>
@@ -283,6 +283,16 @@
                                 <li>
                                     <a href="timeline.html">
                                         <div class="content">时间轴</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="table-simple.html">
+                                        <div class="content">简单表格</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="active" href="search.html">
+                                        <div class="content">搜索结果</div>
                                     </a>
                                 </li>
                             </ul>
@@ -517,7 +527,6 @@
                                     <div class="">耗时：350ms</div>
                                     <hr>
                                 </div>
-
                                 <div class="row gap-3">
                                     <div class="col-12">
                                         <div class="row">
@@ -616,8 +625,6 @@
                                         </nav>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -647,6 +654,8 @@
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
     <script src="js/bootstrap-admin.main.js"></script>
+    <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
+    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script>
         $(document).ready(function() {
             // 退出登录前询问

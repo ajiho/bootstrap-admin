@@ -97,17 +97,17 @@
         const $form = $(e.target);
         const data = $form.serialize();
 
+        //ajax请求
         $.ajax({
-          url: "/login.php",
-          method: 'POST',
+          url: "/sys/email",
+          method: 'put',
           data
-        }).then(function (res) {
-          if (res.code === 200) {
-            //登录成功
-          } else {
-            //登录失败
+        }).then(function (response) {
+          if (response.code === 200) {
+            layer.msg('操作成功', {time: 800, icon: 1});
           }
         });
+
       });
     })
 

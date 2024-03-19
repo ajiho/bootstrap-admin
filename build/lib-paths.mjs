@@ -187,8 +187,41 @@ let copyPaths = [
       ];
     }
   },
+  {
+    form: 'node_modules/@uppy/locales',
+    to: `${dist}@uppy/locales`,
+    get del() {
+      return [
+        `${this.to}/*`,
+        `!${this.to}/dist`,
+        `!${this.to}/lib`,
+      ];
+    }
+  },
+  {
+    form: 'node_modules/uppy',
+    to: `${dist}uppy`,
+    get del() {
+      return [
+        `${this.to}/*`,
+        `!${this.to}/dist`,
+      ];
+    }
+  },
+  {
+    form: 'node_modules/tua-body-scroll-lock',
+    to: `${dist}tua-body-scroll-lock`,
+    get del() {
+      return [
+        `${this.to}/*`,
+        `!${this.to}/dist`,
+      ];
+    }
+  },
 ];
 
-console.log(copyPaths)
+
+
+
 
 export default copyPaths;

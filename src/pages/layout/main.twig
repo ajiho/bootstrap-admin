@@ -25,6 +25,8 @@
 {% block js %}
   <!--bootstrap-admin主页面js文件-->
   <script src="js/bootstrap-admin.main.js"></script>
+  <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
+  <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
   <script>
     $(document).ready(function () {
       // 退出登录前询问
@@ -32,7 +34,7 @@
 
         layer.confirm('确定退出登录吗？', {
           btn: ['确定', '关闭'] //按钮
-        }, function(){
+        }, function () {
 
           //发起ajax请求
           $.ajax({
@@ -41,7 +43,7 @@
             if (response.code === 200) {
 
               layer.msg('退出成功', {
-                time:1000,
+                time: 1000,
                 end: function () { // 关闭时的回调函数
                   //直接跳转到首页
                   location.replace('login.html')
