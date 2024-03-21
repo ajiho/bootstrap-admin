@@ -1,0 +1,9 @@
+.offcanvas{
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 150) !important;
+}
+
+
+
+.offcanvas-backdrop{
+  z-index: calc(var(--#{$bsa-prefix}base-zindex) + 100) !important;
+}

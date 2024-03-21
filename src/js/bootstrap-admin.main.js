@@ -1,15 +1,11 @@
 $(document).ready(function () {
+
   // 侧边栏toggle
   $(document).on('click', '.bsa-sidebar-toggle', function () {
     const $overlay = $('.bsa-overlay');
     const $wrapper = $('.bsa-wrapper');
-    if($wrapper.hasClass('toggled')){
-      $wrapper.removeClass('toggled');
-      bodyScrollLock.unlock('body')
-    }else{
-      $wrapper.addClass('toggled');
-      bodyScrollLock.lock('body');
-    }
+
+    $wrapper.toggleClass('toggled')
 
     if ($overlay.length === 0) {
       $('<div class="bsa-overlay"></div>').prependTo($wrapper);
@@ -21,8 +17,7 @@ $(document).ready(function () {
   // 遮罩层事件
   $(document).on('click', '.bsa-overlay', function () {
     $(this).remove();
-    $('.bsa-wrapper').toggleClass('toggled');
-    bodyScrollLock.unlock('body')
+    $('.bsa-wrapper').removeClass('toggled');
   });
 
 
@@ -136,6 +131,62 @@ $(document).ready(function () {
     });
   }
 
+
+  //调色板打开事件监听
+  const switcherWrapper = document.getElementById('bsa-switcher-wrapper')
+  switcherWrapper.addEventListener('show.bs.offcanvas', event => {
+    bodyScrollLock.lock('body');
+  })
+  switcherWrapper.addEventListener('hidden.bs.offcanvas', event => {
+    bodyScrollLock.unlock('body');
+  })
+
+  //监听侧边栏过渡事件
+  $(document).on('transitionend', '.bsa-sidebar-wrapper', function (event) {
+    const targetUL = event.target
+    if (targetUL === this) {
+      const overlayEl = document.querySelector('.bsa-overlay')
+      if (overlayEl !== null) {
+        const position = getComputedStyle(overlayEl).getPropertyValue('position')
+        if (position === 'fixed') {
+          bodyScrollLock.lock('body');
+        }
+      }else{
+        bodyScrollLock.unlock('body');
+      }
+    }
+  })
+
+
+
+  //打开写邮件窗口
+  $(document).on('click', '.compose-mail-btn', function () {
+    $('.compose-mail-popup').show();
+  })
+
+
+  //关闭写邮件窗口
+  $(document).on('click', '.compose-mail-close', function () {
+    $('.compose-mail-popup').hide();
+  })
+
+  //小屏幕下邮件侧边栏按钮点击处理
+  $(document).on('click', '.email-toggle-btn', function () {
+    // 先添加遮罩层
+    const $overlay = $('.bsa-email-overlay');
+    const $wrapper = $('.email-wrapper');
+    if ($overlay.length === 0) {
+      $('<div class="bsa-email-overlay"></div>').prependTo($wrapper);
+    } else {
+      $overlay.remove();
+    }
+    $wrapper.toggleClass("email-toggled")
+  })
+
+  $(document).on('click', '.bsa-email-overlay', function () {
+    $(this).remove();
+    $('.email-wrapper').removeClass("email-toggled")
+  })
 
 })
 

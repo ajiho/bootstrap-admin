@@ -52,6 +52,9 @@ table {
 .bsa-wrapper.toggled .bsa-header {
   left: var(--bsa-sidebar-mini-width);
 }
+.bsa-wrapper.toggled .bsa-footer {
+  left: var(--bsa-sidebar-mini-width);
+}
 .bsa-wrapper.toggled .bsa-content-wrapper {
   padding-left: var(--bsa-sidebar-mini-width);
 }
@@ -262,6 +265,7 @@ table {
   left: var(--bsa-sidebar-width);
   z-index: var(--bsa-base-zindex);
   background-color: rgb(255, 255, 255);
+  transition: 0.3s left;
 }
 
 .bsa-error-code {
@@ -533,6 +537,130 @@ ul.bsa-timeline2 > li::before {
   background-color: #0d6efd;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.email-wrapper {
+  width: auto;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 0.1rem 0.7rem rgba(0, 0, 0, 0.1);
+}
+.email-wrapper .email-sidebar {
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.email-wrapper .email-sidebar .card-header {
+  min-height: 70px;
+}
+.email-wrapper .email-sidebar .card-body a.list-group-item {
+  color: #404142;
+  padding: 0.35rem 1.25rem;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: all 0.3s ease-out;
+}
+.email-wrapper .email-sidebar .card-body a.list-group-item:hover {
+  background-color: rgba(13, 110, 253, 0.12);
+}
+.email-wrapper .email-sidebar .card-body a.list-group-item.active {
+  color: #0b5ed7;
+  font-weight: 600;
+  background-color: rgba(13, 110, 253, 0.12);
+}
+.email-wrapper .email-sidebar .card-body .email-navigation {
+  height: 345px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  overflow: auto;
+}
+.email-wrapper .email-sidebar .card-footer .email-hangout .chat-user-online:before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 45px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  background: #16e15e;
+}
+.email-wrapper .email-main {
+  margin-left: 250px;
+}
+.email-wrapper .email-main .email-toggle-btn {
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 24px;
+  color: #404142;
+  border-radius: 0;
+  cursor: pointer;
+  background-color: #fff;
+  border: 0 solid rgba(0, 0, 0, 0.15);
+  display: none;
+}
+.email-wrapper .email-main .card-header {
+  min-height: 70px;
+}
+.email-wrapper .email-main .email-message {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #383a3c;
+}
+.email-wrapper .email-main .email-message .email-actions {
+  width: 220px;
+}
+.email-wrapper .email-main .email-message .email-right {
+  width: 180px;
+}
+.email-wrapper .email-main .email-message:hover {
+  transition: all 0.2s ease-out;
+  background-color: #eceef1;
+}
+.email-wrapper .compose-mail-popup {
+  height: 500px;
+  max-height: 100%;
+  width: 42%;
+  position: fixed;
+  bottom: 0;
+  right: 30px;
+  z-index: calc(var(--bsa-base-zindex) + 40);
+  display: none;
+}
+.email-wrapper .compose-mail-popup .compose-mail-title {
+  font-size: 16px;
+}
+.email-wrapper .compose-mail-popup .compose-mail-close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.email-wrapper .compose-mail-popup .compose-mail-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.email-wrapper.email-toggled .email-sidebar {
+  left: 0;
+}
+.email-wrapper.email-toggled .bsa-email-overlay {
+  display: block;
 }
 
 @keyframes tada {
@@ -988,6 +1116,19 @@ ul.bsa-timeline2 > li::before {
   height: 100px !important;
 }
 
+.btn-white {
+  background-color: #fff;
+  border-color: #e7eaf3;
+}
+
+.offcanvas {
+  z-index: calc(var(--bsa-base-zindex) + 150) !important;
+}
+
+.offcanvas-backdrop {
+  z-index: calc(var(--bsa-base-zindex) + 100) !important;
+}
+
 .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading {
   background-color: var(--bs-light-bg-subtle) !important;
 }
@@ -1288,11 +1429,16 @@ ul.bsa-timeline2 > li::before {
     right: 0;
     bottom: 0;
     left: 0;
+    height: 100vh;
+    width: 100vw;
     background-color: #060505;
     opacity: 0.5;
     cursor: move;
   }
   .bsa-wrapper.toggled .bsa-header {
+    left: 0;
+  }
+  .bsa-wrapper.toggled .bsa-footer {
     left: 0;
   }
   .bsa-wrapper.toggled .bsa-content-wrapper {
@@ -1327,6 +1473,35 @@ ul.bsa-timeline2 > li::before {
     transform: translateX(-100%);
   }
   .bsa-footer {
+    left: 0;
+  }
+  .email-wrapper .bsa-email-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 9;
+    display: none;
+    cursor: move;
+    transition: all 0.3s ease-out;
+  }
+  .email-wrapper .email-sidebar {
+    left: -250px;
+  }
+  .email-wrapper .email-main {
+    margin-left: 0;
+  }
+  .email-wrapper .email-main .email-toggle-btn {
+    display: inline-block;
+  }
+  .email-wrapper .compose-mail-popup {
+    width: auto;
+    right: 0;
     left: 0;
   }
   #nprogress .bar {

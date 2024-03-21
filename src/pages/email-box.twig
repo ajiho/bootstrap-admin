@@ -1,14 +1,25 @@
-{% set mainPage = '应用' %}
-{% set page = '邮箱' %}
+{% extends "layout/email-base.twig" %}
 
-
-{% from './components/breadcrumb.twig' import breadcrumb %}
-
-
-{% extends "layout/main.twig" %}
-
-{% block mainContent %}
-  <div class="container-fluid p-3">
-    {{ breadcrumb(['应用','邮箱']) }}
-  </div>
+{% block emailContent %}
+  {% for key in range(30) %}
+    <!--第{{ loop.index }}行邮箱消息-->
+    <a href="email-read.html?id={{ loop.index }}"
+       class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+      <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+        <input class="form-check-input" type="checkbox" aria-label="勾选"/>
+        <i class='bi bi-star bsa-fs-20'></i>
+        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+      </div>
+      <div class="flex-grow-1">
+        <p class="mb-0 bsa-ellipsis-1">
+          【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+        </p>
+      </div>
+      <div class="email-right flex-shrink-0">
+        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+      </div>
+    </a>
+  {% endfor %}
 {% endblock %}
+
+

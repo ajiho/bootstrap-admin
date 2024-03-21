@@ -22,16 +22,30 @@
       right: 0;
       bottom: 0;
       left: 0;
+      height: 100vh;
+      width: 100vw;
       background-color: #060505;
       opacity: 0.5;
       cursor: move;
     }
   }
 
+
+
+
   &.toggled {
 
     // 头部的左边距离
     .#{$bsa-prefix}header {
+      left: var(--#{$bsa-prefix}sidebar-mini-width);
+
+      @include media-breakpoint-down(lg) {
+        left: 0;
+      }
+    }
+
+    // 头部的左边距离
+    .#{$bsa-prefix}footer {
       left: var(--#{$bsa-prefix}sidebar-mini-width);
 
       @include media-breakpoint-down(lg) {
@@ -55,6 +69,8 @@
     }
 
     @include media-breakpoint-up(lg) {
+
+
 
       &:not(.sidebar-hovered) {
 

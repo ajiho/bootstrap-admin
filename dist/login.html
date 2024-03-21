@@ -74,6 +74,8 @@
     <script src="js/bootstrap-admin.http.js"></script>
     <!--bootstrap-admin核心js文件-->
     <script src="js/bootstrap-admin.core.js"></script>
+    <!--bootstrap-admin工具js文件-->
+    <script src="js/bootstrap-admin.utils.js"></script>
     <!--===================公共js//========================-->
     <!--===================//页面单独所需的js========================-->
     <script src="lib/formvalidation/js/formValidation.js"></script>
@@ -117,17 +119,15 @@
                     data: data,
                 }).then(response => {
                     if (response.code === 200) {
-                        layer.msg('登录成功', {
-                            time: 1000,
-                            end: function() { // 关闭时的回调函数
 
-                                //直接跳转到首页
-                                location.replace('index.html')
-                            }
-                        });
+                        layer.msg('登录成功', {
+                            time: 800,
+                            icon: 1
+                        }, () => location.replace('index.html'));
                     }
                 });
             });
+
 
 
             //密码框的显示和隐藏

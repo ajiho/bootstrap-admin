@@ -1,13 +1,14 @@
-.#{$bsa-prefix}footer{
+.#{$bsa-prefix}footer {
   box-shadow: 0 1px 1px -1px rgba(var(--#{$prefix}dark-rgb), 0.25);
   padding: 8px 16px;
   position: fixed;
   bottom: 0;
   right: 0;
-  height:var(--#{$bsa-prefix}footer-height);
+  height: var(--#{$bsa-prefix}footer-height);
   left: var(--#{$bsa-prefix}sidebar-width);
   z-index: var(--#{$bsa-prefix}base-zindex);
-  background-color: rgba(255,255,255, 1);
+  background-color: rgba(255, 255, 255, 1);
+  transition: .3s left;
 
   @include media-breakpoint-down(lg) {
     left: 0;

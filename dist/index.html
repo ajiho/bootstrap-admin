@@ -144,31 +144,8 @@
             </li>
             <!--  主题配色  -->
             <li class="dropdown">
-                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <div class="bsa-header-item" data-bs-toggle="offcanvas" href="#bsa-switcher-wrapper">
                     <i class="bi bi-palette"></i>
-                </div>
-                <div class="dropdown-menu dropdown-menu-end p-0">
-                    <div class="card shadow-sm">
-                        <div class="card-header d-flex justify-content-between bg-body">
-                            <span class="bsa-fs-15">主题配色</span>
-                        </div>
-                        <div class="card-body">
-                            <!--    配色包裹      -->
-                            <div class="bsa-theme-switcher-wrapper">
-                                <input aria-label="light" class="form-check-input" type="checkbox" value="light">
-                                <input aria-label="dark" class="form-check-input" type="checkbox" value="dark">
-                                <input aria-label="indigo" class="form-check-input" type="checkbox" value="indigo">
-                                <input aria-label="green" class="form-check-input" type="checkbox" value="green">
-                                <input aria-label="blue" class="form-check-input" type="checkbox" value="blue">
-                                <input aria-label="yellow" class="form-check-input" type="checkbox" value="yellow">
-                                <input aria-label="pink" class="form-check-input" type="checkbox" value="pink">
-                                <input aria-label="red" class="form-check-input" type="checkbox" value="red">
-                                <input aria-label="orange" class="form-check-input" type="checkbox" value="orange">
-                                <input aria-label="cyan" class="form-check-input" type="checkbox" value="cyan">
-                                <input aria-label="teal" class="form-check-input" type="checkbox" value="teal">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </li>
             <!--    管理员信息    -->
@@ -394,7 +371,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:">
+                                    <a href="index-iframe.html" target="_blank">
                                         <div class="content">IFrame+多tab模式</div>
                                     </a>
                                 </li>
@@ -663,56 +640,56 @@
 
                                                     <tr>
                                                         <td>1</td>
-                                                        <td>陕西省</td>
-                                                        <td>9477</td>
+                                                        <td>湖北省</td>
+                                                        <td>9803</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>2</td>
-                                                        <td>黑龙江省</td>
-                                                        <td>9308</td>
+                                                        <td>甘肃省</td>
+                                                        <td>9350</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>3</td>
-                                                        <td>北京市</td>
-                                                        <td>9275</td>
+                                                        <td>广东省</td>
+                                                        <td>9312</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>4</td>
-                                                        <td>上海市</td>
-                                                        <td>9247</td>
+                                                        <td>重庆市</td>
+                                                        <td>8872</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>5</td>
-                                                        <td>山西省</td>
-                                                        <td>8837</td>
+                                                        <td>江西省</td>
+                                                        <td>8857</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>6</td>
-                                                        <td>吉林省</td>
-                                                        <td>8575</td>
+                                                        <td>安徽省</td>
+                                                        <td>8477</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>7</td>
-                                                        <td>甘肃省</td>
-                                                        <td>7996</td>
+                                                        <td>北京市</td>
+                                                        <td>8205</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>8</td>
-                                                        <td>海南省</td>
-                                                        <td>7739</td>
+                                                        <td>黑龙江省</td>
+                                                        <td>8110</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>9</td>
-                                                        <td>辽宁省</td>
-                                                        <td>7553</td>
+                                                        <td>贵州省</td>
+                                                        <td>7936</td>
                                                     </tr>
 
 
@@ -972,10 +949,21 @@
         <!--页面内容包裹结束-->
         <!--底部版权-->
         <div class="bsa-footer d-flex align-items-center justify-content-center">
-            Copyright © 2024. All right reserved.
+            <p class="mb-0 bsa-ellipsis-1">Copyright © 2024. All right reserved.</p>
         </div>
     </div>
     <!--wrapper结束-->
+    <!--  调色板开始  -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="bsa-switcher-wrapper">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            调色区域
+        </div>
+    </div>
+    <!--  调色板结束  -->
     <!--===================//公共js========================-->
     <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -987,6 +975,8 @@
     <script src="js/bootstrap-admin.http.js"></script>
     <!--bootstrap-admin核心js文件-->
     <script src="js/bootstrap-admin.core.js"></script>
+    <!--bootstrap-admin工具js文件-->
+    <script src="js/bootstrap-admin.utils.js"></script>
     <!--===================公共js//========================-->
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
@@ -1024,7 +1014,6 @@
         })
     </script>
 
-    <script src="js/bootstrap-admin.utils.js"></script>
     <script src="lib/chart.js/dist/chart.umd.js"></script>
     <script src="lib/echarts/dist/echarts.min.js"></script>
     <script src="lib/countup.js/dist/countUp.umd.js"></script>
@@ -1212,178 +1201,178 @@
                                 data: [
 
                                     {
-                                        name: "陕西省",
-                                        value: 9477
-                                    },
-
-                                    {
-                                        name: "黑龙江省",
-                                        value: 9308
-                                    },
-
-                                    {
-                                        name: "北京市",
-                                        value: 9275
-                                    },
-
-                                    {
-                                        name: "上海市",
-                                        value: 9247
-                                    },
-
-                                    {
-                                        name: "山西省",
-                                        value: 8837
-                                    },
-
-                                    {
-                                        name: "吉林省",
-                                        value: 8575
+                                        name: "湖北省",
+                                        value: 9803
                                     },
 
                                     {
                                         name: "甘肃省",
-                                        value: 7996
-                                    },
-
-                                    {
-                                        name: "海南省",
-                                        value: 7739
-                                    },
-
-                                    {
-                                        name: "辽宁省",
-                                        value: 7553
-                                    },
-
-                                    {
-                                        name: "福建省",
-                                        value: 7307
-                                    },
-
-                                    {
-                                        name: "天津市",
-                                        value: 7299
-                                    },
-
-                                    {
-                                        name: "贵州省",
-                                        value: 6365
-                                    },
-
-                                    {
-                                        name: "香港特别行政区",
-                                        value: 5828
-                                    },
-
-                                    {
-                                        name: "四川省",
-                                        value: 5753
-                                    },
-
-                                    {
-                                        name: "新疆维吾尔自治区",
-                                        value: 5266
-                                    },
-
-                                    {
-                                        name: "台湾省",
-                                        value: 4951
-                                    },
-
-                                    {
-                                        name: "青海省",
-                                        value: 4851
-                                    },
-
-                                    {
-                                        name: "宁夏回族自治区",
-                                        value: 4779
-                                    },
-
-                                    {
-                                        name: "云南省",
-                                        value: 4253
-                                    },
-
-                                    {
-                                        name: "湖北省",
-                                        value: 3963
-                                    },
-
-                                    {
-                                        name: "河北省",
-                                        value: 3754
-                                    },
-
-                                    {
-                                        name: "西藏自治区",
-                                        value: 3694
-                                    },
-
-                                    {
-                                        name: "广西壮族自治区",
-                                        value: 3536
-                                    },
-
-                                    {
-                                        name: "浙江省",
-                                        value: 3434
-                                    },
-
-                                    {
-                                        name: "安徽省",
-                                        value: 2201
+                                        value: 9350
                                     },
 
                                     {
                                         name: "广东省",
-                                        value: 2192
+                                        value: 9312
                                     },
 
                                     {
                                         name: "重庆市",
-                                        value: 2034
-                                    },
-
-                                    {
-                                        name: "南海诸岛",
-                                        value: 1986
-                                    },
-
-                                    {
-                                        name: "河南省",
-                                        value: 1981
-                                    },
-
-                                    {
-                                        name: "山东省",
-                                        value: 1558
-                                    },
-
-                                    {
-                                        name: "江苏省",
-                                        value: 1173
-                                    },
-
-                                    {
-                                        name: "内蒙古自治区",
-                                        value: 1112
-                                    },
-
-                                    {
-                                        name: "湖南省",
-                                        value: 953
+                                        value: 8872
                                     },
 
                                     {
                                         name: "江西省",
-                                        value: 71
+                                        value: 8857
+                                    },
+
+                                    {
+                                        name: "安徽省",
+                                        value: 8477
+                                    },
+
+                                    {
+                                        name: "北京市",
+                                        value: 8205
+                                    },
+
+                                    {
+                                        name: "黑龙江省",
+                                        value: 8110
+                                    },
+
+                                    {
+                                        name: "贵州省",
+                                        value: 7936
+                                    },
+
+                                    {
+                                        name: "新疆维吾尔自治区",
+                                        value: 7553
+                                    },
+
+                                    {
+                                        name: "江苏省",
+                                        value: 7210
+                                    },
+
+                                    {
+                                        name: "内蒙古自治区",
+                                        value: 7059
+                                    },
+
+                                    {
+                                        name: "山东省",
+                                        value: 7011
+                                    },
+
+                                    {
+                                        name: "浙江省",
+                                        value: 6992
+                                    },
+
+                                    {
+                                        name: "辽宁省",
+                                        value: 6981
                                     },
 
                                     {
                                         name: "澳门特别行政区",
-                                        value: 7
+                                        value: 5883
+                                    },
+
+                                    {
+                                        name: "云南省",
+                                        value: 5335
+                                    },
+
+                                    {
+                                        name: "西藏自治区",
+                                        value: 5179
+                                    },
+
+                                    {
+                                        name: "天津市",
+                                        value: 4413
+                                    },
+
+                                    {
+                                        name: "宁夏回族自治区",
+                                        value: 4399
+                                    },
+
+                                    {
+                                        name: "湖南省",
+                                        value: 4051
+                                    },
+
+                                    {
+                                        name: "南海诸岛",
+                                        value: 4028
+                                    },
+
+                                    {
+                                        name: "广西壮族自治区",
+                                        value: 3920
+                                    },
+
+                                    {
+                                        name: "台湾省",
+                                        value: 3830
+                                    },
+
+                                    {
+                                        name: "河南省",
+                                        value: 3628
+                                    },
+
+                                    {
+                                        name: "上海市",
+                                        value: 3561
+                                    },
+
+                                    {
+                                        name: "海南省",
+                                        value: 2161
+                                    },
+
+                                    {
+                                        name: "山西省",
+                                        value: 1983
+                                    },
+
+                                    {
+                                        name: "河北省",
+                                        value: 1831
+                                    },
+
+                                    {
+                                        name: "福建省",
+                                        value: 1529
+                                    },
+
+                                    {
+                                        name: "四川省",
+                                        value: 1349
+                                    },
+
+                                    {
+                                        name: "青海省",
+                                        value: 1281
+                                    },
+
+                                    {
+                                        name: "香港特别行政区",
+                                        value: 751
+                                    },
+
+                                    {
+                                        name: "陕西省",
+                                        value: 110
+                                    },
+
+                                    {
+                                        name: "吉林省",
+                                        value: 77
                                     },
 
                                 ]

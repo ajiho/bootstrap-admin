@@ -144,31 +144,8 @@
             </li>
             <!--  主题配色  -->
             <li class="dropdown">
-                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <div class="bsa-header-item" data-bs-toggle="offcanvas" href="#bsa-switcher-wrapper">
                     <i class="bi bi-palette"></i>
-                </div>
-                <div class="dropdown-menu dropdown-menu-end p-0">
-                    <div class="card shadow-sm">
-                        <div class="card-header d-flex justify-content-between bg-body">
-                            <span class="bsa-fs-15">主题配色</span>
-                        </div>
-                        <div class="card-body">
-                            <!--    配色包裹      -->
-                            <div class="bsa-theme-switcher-wrapper">
-                                <input aria-label="light" class="form-check-input" type="checkbox" value="light">
-                                <input aria-label="dark" class="form-check-input" type="checkbox" value="dark">
-                                <input aria-label="indigo" class="form-check-input" type="checkbox" value="indigo">
-                                <input aria-label="green" class="form-check-input" type="checkbox" value="green">
-                                <input aria-label="blue" class="form-check-input" type="checkbox" value="blue">
-                                <input aria-label="yellow" class="form-check-input" type="checkbox" value="yellow">
-                                <input aria-label="pink" class="form-check-input" type="checkbox" value="pink">
-                                <input aria-label="red" class="form-check-input" type="checkbox" value="red">
-                                <input aria-label="orange" class="form-check-input" type="checkbox" value="orange">
-                                <input aria-label="cyan" class="form-check-input" type="checkbox" value="cyan">
-                                <input aria-label="teal" class="form-check-input" type="checkbox" value="teal">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </li>
             <!--    管理员信息    -->
@@ -394,7 +371,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:">
+                                    <a href="index-iframe.html" target="_blank">
                                         <div class="content">IFrame+多tab模式</div>
                                     </a>
                                 </li>
@@ -502,6 +479,7 @@
         <!--页面内容包裹开始-->
         <div class="bsa-content-wrapper">
             <!--内容真正的放置区域-->
+
             <div class="container-fluid p-3">
                 <!--面包屑导航-->
                 <div class="row g-3 mb-3 align-items-center">
@@ -518,15 +496,730 @@
                     </div>
                 </div>
 
+
+                <!--邮箱包裹开始-->
+                <div class="email-wrapper">
+                    <!--邮箱侧边栏-->
+                    <div class="email-sidebar">
+
+                        <div class="card h-100 border-0 rounded-0">
+                            <div class="card-header bg-body  flex-shrink-0 d-grid align-items-center">
+                                <a href="javascript:" class="btn btn-primary compose-mail-btn"><i class='bi bi-plus me-2'></i> 写邮件</a>
+                            </div>
+                            <div class="card-body p-0">
+                                <!--邮箱侧边栏导航-->
+                                <div class="email-navigation" data-overlayscrollbars-initialize>
+                                    <div class="list-group list-group-flush">
+                                        <a href="email-box.html" class="list-group-item d-flex align-items-center active">
+                                            <i class='bi bi-inbox me-3 bsa-fs-20'></i>
+                                            <span>收件箱</span>
+                                            <span class="badge bg-primary rounded-pill ms-auto">666</span> </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-star me-3 bsa-fs-20'></i>
+                                            <span>星标</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-alarm me-3 bsa-fs-20'></i>
+                                            <span>延迟</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-send me-3 bsa-fs-20'></i>
+                                            <span>已发</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-file-earmark me-3 bsa-fs-20'></i>
+                                            <span>草稿</span>
+                                            <span class="badge bg-primary rounded-pill ms-auto">30</span> </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-bookmark me-3 bsa-fs-20'></i>
+                                            <span>重要</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-chat me-3 bsa-fs-20'></i>
+                                            <span>聊天</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-envelope-arrow-up me-3 bsa-fs-20'></i>
+                                            <span>计划</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-envelope-open me-3 bsa-fs-20'></i>
+                                            <span>所有邮件</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-info-circle me-3 bsa-fs-20'></i>
+                                            <span>垃圾邮件</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-trash me-3 bsa-fs-20'></i>
+                                            <span>回收站</span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item"><span>会议</span></div>
+                                    <a href="javascript:" class="list-group-item d-flex align-items-center"><i class='bi bi-camera-video me-3 bsa-fs-20'></i><span>新的会议</span></a>
+                                    <a href="javascript:" class="list-group-item d-flex align-items-center"><i class='bi bi-people me-3 bsa-fs-20'></i><span>加入会议</span></a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-body text-body-secondary">
+                                <div class="list-group-item email-hangout">
+                                    <div class="d-flex align-items-center">
+                                        <div class="chat-user-online">
+                                            <img src="img/avatar.jpg" width="42" height="42" class="rounded-circle" alt="" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <p class="mb-0">欲饮琵琶码上催</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <div class="bsa-fs-25 bsa-cursor-pointer" data-bs-toggle="dropdown"><i class='bi bi-plus-lg'></i>
+                                            </div>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="javascript:">设置</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="javascript:">帮助和反馈</a>
+                                                <a class="dropdown-item" href="javascript:">启用拆分视图模式</a>
+                                                <a class="dropdown-item" href="javascript:">键盘快捷键</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="javascript:">退出</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--邮箱右侧内容-->
+                    <div class="email-main h-100">
+                        <!--邮箱右侧卡片组件-->
+                        <div class="card h-100 border-0 rounded-0">
+                            <!--邮箱右侧卡片头部-->
+                            <div class="card-header bg-body d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                                <div class="email-toggle-btn">
+                                    <i class='bi bi-list'></i>
+                                </div>
+                                <button type="button" class="btn btn-white">
+                                    <input class="form-check-input" type="checkbox" aria-label="全选">
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-arrow-clockwise'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-box-arrow-in-down'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-file-earmark-text'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-trash3'></i>
+                                </button>
+                                <form style="max-width: 240px">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent">
+                                            <i class="bi bi-search"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="搜索邮件" aria-label="搜索邮件">
+                                    </div>
+                                </form>
+                                <button class="btn btn-white btn-sm flex-shrink-0">1-30 共 8888</button>
+                                <button class="btn btn-white"><i class='bi bi-chevron-left'></i>
+                                </button>
+                                <button class="btn btn-white"><i class='bi bi-chevron-right'></i>
+                                </button>
+
+                            </div>
+                            <!--邮箱右侧卡片身体-->
+                            <div class="card-body overflow-auto p-0" data-overlayscrollbars-initialize>
+                                <!--第1行邮箱消息-->
+                                <a href="email-read.html?id=1" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第2行邮箱消息-->
+                                <a href="email-read.html?id=2" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第3行邮箱消息-->
+                                <a href="email-read.html?id=3" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第4行邮箱消息-->
+                                <a href="email-read.html?id=4" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第5行邮箱消息-->
+                                <a href="email-read.html?id=5" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第6行邮箱消息-->
+                                <a href="email-read.html?id=6" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第7行邮箱消息-->
+                                <a href="email-read.html?id=7" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第8行邮箱消息-->
+                                <a href="email-read.html?id=8" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第9行邮箱消息-->
+                                <a href="email-read.html?id=9" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第10行邮箱消息-->
+                                <a href="email-read.html?id=10" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第11行邮箱消息-->
+                                <a href="email-read.html?id=11" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第12行邮箱消息-->
+                                <a href="email-read.html?id=12" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第13行邮箱消息-->
+                                <a href="email-read.html?id=13" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第14行邮箱消息-->
+                                <a href="email-read.html?id=14" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第15行邮箱消息-->
+                                <a href="email-read.html?id=15" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第16行邮箱消息-->
+                                <a href="email-read.html?id=16" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第17行邮箱消息-->
+                                <a href="email-read.html?id=17" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第18行邮箱消息-->
+                                <a href="email-read.html?id=18" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第19行邮箱消息-->
+                                <a href="email-read.html?id=19" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第20行邮箱消息-->
+                                <a href="email-read.html?id=20" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第21行邮箱消息-->
+                                <a href="email-read.html?id=21" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第22行邮箱消息-->
+                                <a href="email-read.html?id=22" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第23行邮箱消息-->
+                                <a href="email-read.html?id=23" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第24行邮箱消息-->
+                                <a href="email-read.html?id=24" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第25行邮箱消息-->
+                                <a href="email-read.html?id=25" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第26行邮箱消息-->
+                                <a href="email-read.html?id=26" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第27行邮箱消息-->
+                                <a href="email-read.html?id=27" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第28行邮箱消息-->
+                                <a href="email-read.html?id=28" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第29行邮箱消息-->
+                                <a href="email-read.html?id=29" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第30行邮箱消息-->
+                                <a href="email-read.html?id=30" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                                <!--第31行邮箱消息-->
+                                <a href="email-read.html?id=31" class="text-decoration-none d-flex flex-column flex-md-row align-items-md-center  email-message px-4 py-2 gap-2">
+                                    <div class="d-flex align-items-center flex-shrink-0 email-actions gap-2">
+                                        <input class="form-check-input" type="checkbox" aria-label="勾选" />
+                                        <i class='bi bi-star bsa-fs-20'></i>
+                                        <p class="mb-0 bsa-ellipsis-1"><b>腾讯云</b></p>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 bsa-ellipsis-1">
+                                            【腾讯云】您的域名即将到期，请及时续费！您的域名即将到期，请及时续费！ 尊敬的腾讯云用户，您好！
+                                        </p>
+                                    </div>
+                                    <div class="email-right flex-shrink-0">
+                                        <p class="mb-0 text-secondary bsa-fs-13 text-md-end bsa-ellipsis-1">下午 6:02</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--写邮件开始-->
+                    <div class="compose-mail-popup">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white py-2 cursor-pointer">
+                                <div class="d-flex align-items-center">
+                                    <div class="compose-mail-title">新邮件</div>
+                                    <div class="compose-mail-close ms-auto">x</div>
+                                </div>
+                            </div>
+                            <div class="card-body overflow-auto" data-overlayscrollbars-initialize>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="sendee" class="form-label">接收人</label>
+                                        <input type="email" class="form-control" id="sendee" name="sendee">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">主题</label>
+                                        <input type="email" class="form-control" id="subject" name="subject">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">消息</label>
+                                        <textarea class="form-control" id="message" rows="10" name="message"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer bg-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">发送</button>
+                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">操作一</a></li>
+                                            <li><a class="dropdown-item" href="#">操作二</a></li>
+                                            <li><a class="dropdown-item" href="#">操作三</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">操作四</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-2">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-fonts"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class='bi bi-link-45deg'></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-emoji-smile"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-hdd-rack"></i>
+                                        </button>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--写邮件结束-->
+                </div>
+                <!--邮箱包裹结束-->
+
             </div>
         </div>
         <!--页面内容包裹结束-->
         <!--底部版权-->
         <div class="bsa-footer d-flex align-items-center justify-content-center">
-            Copyright © 2024. All right reserved.
+            <p class="mb-0 bsa-ellipsis-1">Copyright © 2024. All right reserved.</p>
         </div>
     </div>
     <!--wrapper结束-->
+    <!--  调色板开始  -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="bsa-switcher-wrapper">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            调色区域
+        </div>
+    </div>
+    <!--  调色板结束  -->
     <!--===================//公共js========================-->
     <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -538,6 +1231,8 @@
     <script src="js/bootstrap-admin.http.js"></script>
     <!--bootstrap-admin核心js文件-->
     <script src="js/bootstrap-admin.core.js"></script>
+    <!--bootstrap-admin工具js文件-->
+    <script src="js/bootstrap-admin.utils.js"></script>
     <!--===================公共js//========================-->
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
@@ -572,6 +1267,16 @@
 
             })
 
+        })
+    </script>
+    <script>
+        //滚动条美化
+        document.querySelectorAll('.email-navigation,.email-main .card-body,.compose-mail-popup .card-body').forEach(element => {
+            OverlayScrollbarsGlobal.OverlayScrollbars(element, {
+                overflow: {
+                    x: 'hidden',
+                },
+            });
         })
     </script>
     <!--===================页面单独所需的//========================-->

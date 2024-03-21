@@ -275,7 +275,7 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <li class="open">
                             <a href="javascript:" class="arrow">
                                 <div class="prepend"><i class="bi bi-grid"></i></div>
                                 <div class="content">应用</div>
@@ -287,7 +287,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="email-box.html">
+                                    <a class="active" href="email-box.html">
                                         <div class="content">邮箱</div>
                                     </a>
                                 </li>
@@ -306,7 +306,7 @@
 
                         <!--  副标题  -->
                         <li class="subheader">LABELS</li>
-                        <li class="open">
+                        <li>
                             <a href="javascript:" class="arrow">
                                 <div class="prepend"><i class="bi bi-gear"></i></div>
                                 <div class="content">设置</div>
@@ -329,7 +329,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="open">
+                                <li>
                                     <a href="javascript:" class="arrow">
                                         <div class="content">我的设置</div>
                                     </a>
@@ -340,7 +340,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="active" href="reset-password.html">
+                                            <a href="reset-password.html">
                                                 <div class="content">修改密码</div>
                                             </a>
                                         </li>
@@ -479,65 +479,258 @@
         <!--页面内容包裹开始-->
         <div class="bsa-content-wrapper">
             <!--内容真正的放置区域-->
-            <div class="container-fluid p-3">
 
+            <div class="container-fluid p-3">
                 <!--面包屑导航-->
                 <div class="row g-3 mb-3 align-items-center">
                     <div class="col-lg-6">
-                        <h1 class="fs-4 m-0">修改密码</h1>
+                        <h1 class="fs-4 m-0">邮箱</h1>
                     </div>
                     <div class="col-lg-6">
                         <nav aria-label="breadcrumb" class="d-flex align-items-center flex-lg-row-reverse">
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="index.html">主页</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">设置</li>
-                                <li class="breadcrumb-item active" aria-current="page">我的设置</li>
+                                <li class="breadcrumb-item active" aria-current="page">应用</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
 
 
-                <div class="row g-3 mb-3">
-                    <div class="col">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-header bg-body">
-                                修改密码
+                <!--邮箱包裹开始-->
+                <div class="email-wrapper">
+                    <!--邮箱侧边栏-->
+                    <div class="email-sidebar">
+
+                        <div class="card h-100 border-0 rounded-0">
+                            <div class="card-header bg-body  flex-shrink-0 d-grid align-items-center">
+                                <a href="javascript:" class="btn btn-primary compose-mail-btn"><i class='bi bi-plus me-2'></i> 写邮件</a>
                             </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <form id="form">
-                                            <div class="row mb-3">
-                                                <label for="oldPassword" class="col-sm-3 col-form-label text-sm-end">当前密码</label>
-                                                <div class="col-sm-9">
-                                                    <input type="password" autocomplete class="form-control" id="oldPassword" name="oldPassword">
+                            <div class="card-body p-0">
+                                <!--邮箱侧边栏导航-->
+                                <div class="email-navigation" data-overlayscrollbars-initialize>
+                                    <div class="list-group list-group-flush">
+                                        <a href="email-box.html" class="list-group-item d-flex align-items-center active">
+                                            <i class='bi bi-inbox me-3 bsa-fs-20'></i>
+                                            <span>收件箱</span>
+                                            <span class="badge bg-primary rounded-pill ms-auto">666</span> </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-star me-3 bsa-fs-20'></i>
+                                            <span>星标</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-alarm me-3 bsa-fs-20'></i>
+                                            <span>延迟</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-send me-3 bsa-fs-20'></i>
+                                            <span>已发</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-file-earmark me-3 bsa-fs-20'></i>
+                                            <span>草稿</span>
+                                            <span class="badge bg-primary rounded-pill ms-auto">30</span> </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-bookmark me-3 bsa-fs-20'></i>
+                                            <span>重要</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-chat me-3 bsa-fs-20'></i>
+                                            <span>聊天</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-envelope-arrow-up me-3 bsa-fs-20'></i>
+                                            <span>计划</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-envelope-open me-3 bsa-fs-20'></i>
+                                            <span>所有邮件</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-info-circle me-3 bsa-fs-20'></i>
+                                            <span>垃圾邮件</span>
+                                        </a>
+                                        <a href="javascript:" class="list-group-item d-flex align-items-center ">
+                                            <i class='bi bi-trash me-3 bsa-fs-20'></i>
+                                            <span>回收站</span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item"><span>会议</span></div>
+                                    <a href="javascript:" class="list-group-item d-flex align-items-center"><i class='bi bi-camera-video me-3 bsa-fs-20'></i><span>新的会议</span></a>
+                                    <a href="javascript:" class="list-group-item d-flex align-items-center"><i class='bi bi-people me-3 bsa-fs-20'></i><span>加入会议</span></a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-body text-body-secondary">
+                                <div class="list-group-item email-hangout">
+                                    <div class="d-flex align-items-center">
+                                        <div class="chat-user-online">
+                                            <img src="img/avatar.jpg" width="42" height="42" class="rounded-circle" alt="" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <p class="mb-0">欲饮琵琶码上催</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <div class="bsa-fs-25 bsa-cursor-pointer" data-bs-toggle="dropdown"><i class='bi bi-plus-lg'></i>
+                                            </div>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="javascript:">设置</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="javascript:">帮助和反馈</a>
+                                                <a class="dropdown-item" href="javascript:">启用拆分视图模式</a>
+                                                <a class="dropdown-item" href="javascript:">键盘快捷键</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="javascript:">退出</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--邮箱右侧内容-->
+                    <div class="email-main h-100">
+                        <!--邮箱右侧卡片组件-->
+                        <div class="card h-100 border-0 rounded-0">
+                            <!--邮箱右侧卡片头部-->
+                            <div class="card-header bg-body d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                                <div class="email-toggle-btn">
+                                    <i class='bi bi-list'></i>
+                                </div>
+                                <button type="button" class="btn btn-white">
+                                    <input class="form-check-input" type="checkbox" aria-label="全选">
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-arrow-clockwise'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-box-arrow-in-down'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-file-earmark-text'></i>
+                                </button>
+                                <button type="button" class="btn btn-white">
+                                    <i class='bi bi-trash3'></i>
+                                </button>
+                                <form style="max-width: 240px">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent">
+                                            <i class="bi bi-search"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="搜索邮件" aria-label="搜索邮件">
+                                    </div>
+                                </form>
+                                <button class="btn btn-white btn-sm flex-shrink-0">1-30 共 8888</button>
+                                <button class="btn btn-white"><i class='bi bi-chevron-left'></i>
+                                </button>
+                                <button class="btn btn-white"><i class='bi bi-chevron-right'></i>
+                                </button>
+
+                            </div>
+                            <!--邮箱右侧卡片身体-->
+                            <div class="card-body overflow-auto p-0" data-overlayscrollbars-initialize>
+                                <div class="p-3">
+                                    <h4>域名到期提醒！</h4>
+                                    <hr>
+                                    <div class="d-flex align-items-center flex-wrap gap-2">
+                                        <img src="img/avatar.jpg" width="42" height="42" class="rounded-circle" alt="" />
+                                        <div class="flex-grow-1 ms-2">
+                                            <p class="mb-0 fw-bold">腾讯云</p>
+                                            <div class="dropdown">
+                                                <div class="dropdown-toggle" data-bs-toggle="dropdown">给我</div>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="javascript:">设置</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="javascript:">帮助和反馈</a>
+                                                    <a class="dropdown-item" href="javascript:">启用拆分视图模式</a>
+                                                    <a class="dropdown-item" href="javascript:">键盘快捷键</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="javascript:">退出</a>
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <label for="password" class="col-sm-3 col-form-label text-sm-end">新密码</label>
-                                                <div class="col-sm-9">
-                                                    <input type="password" autocomplete class="form-control" id="password" name="password">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <label for="rePassword" class="col-sm-3 col-form-label text-sm-end">确认新密码</label>
-                                                <div class="col-sm-9">
-                                                    <input type="password" autocomplete class="form-control" id="rePassword" name="rePassword">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-9 offset-sm-3">
-                                                    <button type="submit" class="btn btn-primary">确认修改</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        </div>
+                                        <p class="mb-0 text-secondary">2024-03-21 23:26:36 (3小时之前)</p>
+                                    </div>
+                                    <div class="px-md-5 py-5">
+                                        尊敬的腾讯云用户，您好！
+                                        您的账号（创建者账号ID： xxxxxxxxxxx，昵称：欲饮琵琶码上催）下有30个域名，仅剩30天到期，若您已开启自动续费，
+                                        请关注账户余额；若您未开启自动续费，请尽快续费！
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!--写邮件开始-->
+                    <div class="compose-mail-popup">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white py-2 cursor-pointer">
+                                <div class="d-flex align-items-center">
+                                    <div class="compose-mail-title">新邮件</div>
+                                    <div class="compose-mail-close ms-auto">x</div>
+                                </div>
+                            </div>
+                            <div class="card-body overflow-auto" data-overlayscrollbars-initialize>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="sendee" class="form-label">接收人</label>
+                                        <input type="email" class="form-control" id="sendee" name="sendee">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">主题</label>
+                                        <input type="email" class="form-control" id="subject" name="subject">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">消息</label>
+                                        <textarea class="form-control" id="message" rows="10" name="message"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer bg-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">发送</button>
+                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">操作一</a></li>
+                                            <li><a class="dropdown-item" href="#">操作二</a></li>
+                                            <li><a class="dropdown-item" href="#">操作三</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">操作四</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-2">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-fonts"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class='bi bi-link-45deg'></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-emoji-smile"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-hdd-rack"></i>
+                                        </button>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--写邮件结束-->
                 </div>
+                <!--邮箱包裹结束-->
 
             </div>
         </div>
@@ -608,52 +801,13 @@
 
         })
     </script>
-    <script src="lib/formvalidation/js/formValidation.js"></script>
-    <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
-    <script src="lib/formvalidation/js/language/zh_CN.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#form').formValidation({
-                fields: {
-                    oldPassword: {
-                        validators: {
-                            notEmpty: true,
-                        }
-                    },
-                    password: {
-                        validators: {
-                            notEmpty: true,
-                        }
-                    },
-                    rePassword: {
-                        validators: {
-                            notEmpty: true,
-                        }
-                    }
-                }
-            }).on('success.form.fv', function(e) {
-                //阻止表单提交
-                e.preventDefault();
-                //得到表单对象
-                const $form = $(e.target);
-                const data = $form.serialize();
-
-                //ajax请求
-                $.ajax({
-                    url: "/resetPwd",
-                    method: 'put',
-                    data
-                }).then(function(response) {
-                    if (response.code === 200) {
-                        layer.msg('操作成功', {
-                            time: 800,
-                            icon: 1
-                        });
-                    }
-                });
-
-
-
+        //滚动条美化
+        document.querySelectorAll('.email-navigation,.email-main .card-body,.compose-mail-popup .card-body').forEach(element => {
+            OverlayScrollbarsGlobal.OverlayScrollbars(element, {
+                overflow: {
+                    x: 'hidden',
+                },
             });
         })
     </script>

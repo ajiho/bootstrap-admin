@@ -144,31 +144,8 @@
             </li>
             <!--  主题配色  -->
             <li class="dropdown">
-                <div class="bsa-header-item" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <div class="bsa-header-item" data-bs-toggle="offcanvas" href="#bsa-switcher-wrapper">
                     <i class="bi bi-palette"></i>
-                </div>
-                <div class="dropdown-menu dropdown-menu-end p-0">
-                    <div class="card shadow-sm">
-                        <div class="card-header d-flex justify-content-between bg-body">
-                            <span class="bsa-fs-15">主题配色</span>
-                        </div>
-                        <div class="card-body">
-                            <!--    配色包裹      -->
-                            <div class="bsa-theme-switcher-wrapper">
-                                <input aria-label="light" class="form-check-input" type="checkbox" value="light">
-                                <input aria-label="dark" class="form-check-input" type="checkbox" value="dark">
-                                <input aria-label="indigo" class="form-check-input" type="checkbox" value="indigo">
-                                <input aria-label="green" class="form-check-input" type="checkbox" value="green">
-                                <input aria-label="blue" class="form-check-input" type="checkbox" value="blue">
-                                <input aria-label="yellow" class="form-check-input" type="checkbox" value="yellow">
-                                <input aria-label="pink" class="form-check-input" type="checkbox" value="pink">
-                                <input aria-label="red" class="form-check-input" type="checkbox" value="red">
-                                <input aria-label="orange" class="form-check-input" type="checkbox" value="orange">
-                                <input aria-label="cyan" class="form-check-input" type="checkbox" value="cyan">
-                                <input aria-label="teal" class="form-check-input" type="checkbox" value="teal">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </li>
             <!--    管理员信息    -->
@@ -394,7 +371,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:">
+                                    <a href="index-iframe.html" target="_blank">
                                         <div class="content">IFrame+多tab模式</div>
                                     </a>
                                 </li>
@@ -758,10 +735,21 @@
         <!--页面内容包裹结束-->
         <!--底部版权-->
         <div class="bsa-footer d-flex align-items-center justify-content-center">
-            Copyright © 2024. All right reserved.
+            <p class="mb-0 bsa-ellipsis-1">Copyright © 2024. All right reserved.</p>
         </div>
     </div>
     <!--wrapper结束-->
+    <!--  调色板开始  -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="bsa-switcher-wrapper">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            调色区域
+        </div>
+    </div>
+    <!--  调色板结束  -->
     <!--===================//公共js========================-->
     <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -773,6 +761,8 @@
     <script src="js/bootstrap-admin.http.js"></script>
     <!--bootstrap-admin核心js文件-->
     <script src="js/bootstrap-admin.core.js"></script>
+    <!--bootstrap-admin工具js文件-->
+    <script src="js/bootstrap-admin.utils.js"></script>
     <!--===================公共js//========================-->
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->

@@ -7,7 +7,7 @@ import Twig from 'twig';
 import fs from "fs-extra";
 import { glob } from "glob";
 
-import tplData from "./tpl-data.mjs";
+import tplData from "./data/index.mjs";
 
 const input = process.argv[2];
 const output = process.argv[3];

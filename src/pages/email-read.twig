@@ -1,0 +1,35 @@
+{% extends "layout/email-base.twig" %}
+
+{% block emailContent %}
+  <div class="p-3">
+    <h4>域名到期提醒！</h4>
+    <hr>
+    <div class="d-flex align-items-center flex-wrap gap-2">
+      <img src="img/avatar.jpg" width="42" height="42" class="rounded-circle" alt=""/>
+      <div class="flex-grow-1 ms-2">
+        <p class="mb-0 fw-bold">腾讯云</p>
+        <div class="dropdown">
+          <div class="dropdown-toggle" data-bs-toggle="dropdown">给我</div>
+          <div class="dropdown-menu">
+            <a class="dropdown-item"
+               href="javascript:">设置</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:">帮助和反馈</a>
+            <a class="dropdown-item" href="javascript:">启用拆分视图模式</a>
+            <a class="dropdown-item" href="javascript:">键盘快捷键</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:">退出</a>
+          </div>
+        </div>
+      </div>
+      <p class="mb-0 text-secondary">2024-03-21 23:26:36 (3小时之前)</p>
+    </div>
+    <div class="px-md-5 py-5">
+      尊敬的腾讯云用户，您好！
+      您的账号（创建者账号ID： xxxxxxxxxxx，昵称：欲饮琵琶码上催）下有30个域名，仅剩30天到期，若您已开启自动续费，
+      请关注账户余额；若您未开启自动续费，请尽快续费！
+    </div>
+  </div>
+{% endblock %}
+
+
