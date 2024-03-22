@@ -34,6 +34,7 @@
       $(document).on('click', `.bsa-logout-trigger`, function () {
 
         layer.confirm('确定退出登录吗？', {
+          icon: 3,
           btn: ['确定', '关闭'] //按钮
         }, function () {
 
@@ -42,14 +43,7 @@
             url: '/logout'
           }).then(response => {
             if (response.code === 200) {
-
-              layer.msg('退出成功', {
-                time: 1000,
-                end: function () { // 关闭时的回调函数
-                  //直接跳转到首页
-                  location.replace('login.html')
-                }
-              });
+              layer.msg('退出成功', {icon: 1, time: 800}, () => location.replace('login.html'));
             }
           });
         });

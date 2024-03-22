@@ -92,6 +92,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      // 激活状态背景色也保持不变
+      &:active{
+        background-color: var(--#{$prefix}tertiary-bg);
+        color: var(--#{$prefix}body-color);
+      }
+
     }
   }
 

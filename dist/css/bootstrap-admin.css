@@ -113,6 +113,10 @@ table {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.bsa-header .dropdown-menu .dropdown-item:active {
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+}
 
 .bsa-theme-switcher-wrapper {
   display: flex;
