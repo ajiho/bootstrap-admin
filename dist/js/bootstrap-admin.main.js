@@ -111,36 +111,6 @@ $(document).ready(function () {
       $('.bsa-wrapper').removeClass('sidebar-hovered');
     })
 
-
-  //头部下拉菜单内容区域的滚动条美化
-  document.querySelectorAll('.bsa-header .card-body').forEach(el => {
-    OverlayScrollbarsGlobal.OverlayScrollbars(el, {
-      overflow: {
-        x: 'hidden',
-      },
-    });
-  })
-
-  //侧边栏滚动条美化
-  const sidebarScrollElement = document.querySelector('.bsa-sidebar-wrapper .card-body')
-  if (sidebarScrollElement !== null) {
-    OverlayScrollbarsGlobal.OverlayScrollbars(sidebarScrollElement, {
-      overflow: {
-        x: 'hidden',
-      },
-    });
-  }
-
-
-  //调色板打开事件监听
-  const switcherWrapper = document.getElementById('bsa-switcher-wrapper')
-  switcherWrapper.addEventListener('show.bs.offcanvas', event => {
-    bodyScrollLock.lock('body');
-  })
-  switcherWrapper.addEventListener('hidden.bs.offcanvas', event => {
-    bodyScrollLock.unlock('body');
-  })
-
   //监听侧边栏过渡事件
   $(document).on('transitionend', '.bsa-sidebar-wrapper', function (event) {
     const targetUL = event.target
@@ -151,24 +121,12 @@ $(document).ready(function () {
         if (position === 'fixed') {
           bodyScrollLock.lock('body');
         }
-      }else{
+      } else {
         bodyScrollLock.unlock('body');
       }
     }
   })
 
-
-
-  //打开写邮件窗口
-  $(document).on('click', '.compose-mail-btn', function () {
-    $('.compose-mail-popup').show();
-  })
-
-
-  //关闭写邮件窗口
-  $(document).on('click', '.compose-mail-close', function () {
-    $('.compose-mail-popup').hide();
-  })
 
   //小屏幕下邮件侧边栏按钮点击处理
   $(document).on('click', '.email-toggle-btn', function () {
@@ -183,10 +141,13 @@ $(document).ready(function () {
     $wrapper.toggleClass("email-toggled")
   })
 
+
+  // 邮箱遮罩层点击时关闭遮罩
   $(document).on('click', '.bsa-email-overlay', function () {
     $(this).remove();
     $('.email-wrapper').removeClass("email-toggled")
   })
+
 
 })
 

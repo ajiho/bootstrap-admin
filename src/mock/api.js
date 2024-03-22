@@ -11,6 +11,8 @@ let api = {
     index: RegExp(/\/user(\?.*)?$/),
     //改变用户状态
     changeStatus: RegExp(/^\/user\/ChangeStatus\/\d+$/),
+    //给用户发送邮件
+    email: RegExp(/^\/user\/email\/\d+$/),
     //删除用户
     delete: RegExp(/^\/user\/\d+$/),
     //批量删除

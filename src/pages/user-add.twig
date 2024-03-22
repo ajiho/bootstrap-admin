@@ -100,10 +100,11 @@
           url: "/user",
           method: 'post',
           data: data,
-          success: function (res) {
+        }).then(response => {
+          if (response.code === 200) {
             layer.msg('添加成功', {time: 800, icon: 1}, () => location.replace('user-list.html'));
           }
-        })
+        });
       });
     })
   </script>

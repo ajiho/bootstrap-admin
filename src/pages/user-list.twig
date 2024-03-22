@@ -418,8 +418,7 @@
             if (response.code === 200) {
 
               layer.msg('删除成功', {time: 800, icon: 1}, () => {
-                // location.reload();//可以直接刷新当前页面
-                bsTableRefresh($table)
+                $.bootstrapTable.refresh($table)
               });
             }
           });

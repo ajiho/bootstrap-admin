@@ -16,11 +16,11 @@
     <div class="email-wrapper">
       <!--邮箱侧边栏-->
       <div class="email-sidebar">
-
         <div class="card h-100 border-0 rounded-0">
           <div class="card-header bg-body  flex-shrink-0 d-grid align-items-center">
-            <a href="javascript:" class="btn btn-primary compose-mail-btn"><i
-                class='bi bi-plus me-2'></i> 写邮件</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" href="#email-compose-box">
+              <i class='bi bi-plus me-2'></i> 写邮件
+            </button>
           </div>
           <div class="card-body p-0">
             <!--邮箱侧边栏导航-->
@@ -31,7 +31,8 @@
                      class="list-group-item d-flex align-items-center {{ loop.index == 1 ? 'active' : '' }}">
                     <i class='{{ email.icon }} me-3 bsa-fs-20'></i>
                     <span>{{ email.name }}</span>
-                    {% if email.total > 0 %}<span class="badge bg-primary rounded-pill ms-auto">{{ email.total }}</span>{% endif %}
+                    {% if email.total > 0 %}<span
+                      class="badge bg-primary rounded-pill ms-auto">{{ email.total }}</span>{% endif %}
                   </a>
                 {% endfor %}
 
@@ -73,9 +74,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
       <!--邮箱右侧内容-->
       <div class="email-main h-100">
         <!--邮箱右侧卡片组件-->
@@ -121,89 +120,122 @@
           </div>
         </div>
       </div>
-
-      <!--写邮件开始-->
-      <div class="compose-mail-popup">
-        <div class="card h-100">
-          <div class="card-header bg-primary text-white py-2 cursor-pointer">
-            <div class="d-flex align-items-center">
-              <div class="compose-mail-title">新邮件</div>
-              <div class="compose-mail-close ms-auto">x</div>
-            </div>
-          </div>
-          <div class="card-body overflow-auto" data-overlayscrollbars-initialize>
-            <form>
-              <div class="mb-3">
-                <label for="sendee" class="form-label">接收人</label>
-                <input type="email" class="form-control" id="sendee" name="sendee">
-              </div>
-
-              <div class="mb-3">
-                <label for="subject" class="form-label">主题</label>
-                <input type="email" class="form-control" id="subject" name="subject">
-              </div>
-
-              <div class="mb-3">
-                <label for="message" class="form-label">消息</label>
-                <textarea class="form-control" id="message" rows="10" name="message"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="card-footer bg-body">
-            <div class="d-flex align-items-center">
-              <div class="btn-group">
-                <button type="submit" class="btn btn-primary">发送</button>
-                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">操作一</a></li>
-                  <li><a class="dropdown-item" href="#">操作二</a></li>
-                  <li><a class="dropdown-item" href="#">操作三</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">操作四</a></li>
-                </ul>
-              </div>
-
-              <div class="ms-2">
-                <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-fonts"></i>
-                </button>
-                <button type="button" class="btn border-0 btn-sm btn-white"><i class='bi bi-link-45deg'></i>
-                </button>
-                <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-emoji-smile"></i>
-                </button>
-                <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-hdd-rack"></i>
-                </button>
-              </div>
-              <div class="ms-auto">
-                <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--写邮件结束-->
     </div>
     <!--邮箱包裹结束-->
 
+    <!--邮件回复开始-->
+    <div class="offcanvas offcanvas-end"  data-bs-backdrop="static" tabindex="-1" id="email-compose-box">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">邮件回复</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" data-overlayscrollbars-initialize>
+        <form id="form">
+          <div class="mb-3">
+            <label for="sendee" class="form-label">接收人</label>
+            <input type="email" class="form-control" id="sendee" name="sendee">
+          </div>
+
+          <div class="mb-3">
+            <label for="subject" class="form-label">主题</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">消息</label>
+            <textarea class="form-control" id="message" rows="10" name="message"></textarea>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="btn-group">
+              <button type="submit" class="btn btn-primary">发送</button>
+              <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">操作一</a></li>
+                <li><a class="dropdown-item" href="#">操作二</a></li>
+                <li><a class="dropdown-item" href="#">操作三</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">操作四</a></li>
+              </ul>
+            </div>
+
+            <div class="ms-2">
+              <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-fonts"></i>
+              </button>
+              <button type="button" class="btn border-0 btn-sm btn-white"><i class='bi bi-link-45deg'></i>
+              </button>
+              <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-emoji-smile"></i>
+              </button>
+              <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-hdd-rack"></i>
+              </button>
+            </div>
+            <div class="ms-auto">
+              <button type="button" class="btn border-0 btn-sm btn-white"><i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <!--邮件回复结束-->
   </div>
 {% endblock %}
 
-
 {% block mainJs %}
+  <script src="lib/formvalidation/js/formValidation.js"></script>
+  <script src="lib/formvalidation/js/framework/bootstrap.js"></script>
+  <script src="lib/formvalidation/js/language/zh_CN.js"></script>
   <script>
-    //滚动条美化
-    document.querySelectorAll('.email-navigation,.email-main .card-body,.compose-mail-popup .card-body').forEach(element => {
-      OverlayScrollbarsGlobal.OverlayScrollbars(element, {
-        overflow: {
-          x: 'hidden',
-        },
+    $(document).ready(function () {
+      $("#form").formValidation({
+        //验证字段
+        fields: {
+          sendee: {
+            validators: {
+              notEmpty: true
+            }
+          },
+          subject: {
+            validators: {
+              notEmpty: true
+            }
+          },
+          message: {
+            validators: {
+              notEmpty: true
+            }
+          },
+          //...
+        }
+      }).on('success.form.fv', function (e) {
+        //阻止表单提交
+        e.preventDefault();
+        //得到表单对象
+        const $form = $(e.target);
+        const data = $form.serialize();
+
+
+        //得到序列化数据
+        $.ajax({
+          url: "/user/email/10",
+          method: 'post',
+          data: data,
+        }).then(response => {
+          if (response.code === 200) {
+            layer.msg('邮件已发送', {time: 800, icon: 1});
+          }
+        });
       });
     })
   </script>
 {% endblock %}
+
+
+
 

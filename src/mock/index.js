@@ -20,6 +20,9 @@ Mock.mock(Api.user.index, 'get', Utils.template(userList, 50))
 //改变用户状态
 Mock.mock(Api.user.changeStatus, 'get', Utils.template());
 
+//给用户发送邮件
+Mock.mock(Api.user.email, 'post', Utils.template());
+
 //分配角色
 Mock.mock(Api.user.role, 'post', Utils.template());
 

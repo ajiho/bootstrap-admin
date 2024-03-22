@@ -20,13 +20,29 @@ $(document).ready(function (e) {
   //优化:禁止所有的input记忆输入内容
   $('input').attr('AutoComplete', 'off')
 
-  //滚动条美化
-  OverlayScrollbarsGlobal.OverlayScrollbars(document.querySelector('body'), {
+  //body元素滚动条美化
+  const osBodyInstance = OverlayScrollbarsGlobal.OverlayScrollbars(document.querySelector('body'), {
     overflow: {
       x: 'hidden',
     },
   });
 
+  //滚动条初始化快捷助手
+  $('[data-overlayscrollbars-initialize]').each(function () {
+    const $osElement = $(this);
+
+    if (!$osElement.is('html, body')) {
+      const x = $osElement.data('os-overflow-x') || 'hidden';
+      const y = $osElement.data('os-overflow-y') || 'scroll';
+
+      OverlayScrollbarsGlobal.OverlayScrollbars(this, {
+        overflow: {
+          x,
+          y
+        },
+      });
+    }
+  })
 
   //js跳转辅助,针对一些不是a链接的元素跳转时很有用 只需要给元素上绑定 data-href 和 data-target属性即可 作用同a链接的href和target相同
   $(document).on('click', '[data-bsa-href]', function (event) {
@@ -77,6 +93,36 @@ $(document).ready(function (e) {
       })
     }
   })
+
+
+  //监听所有的offcanvas组件的事件
+  $(document).on('show.bs.offcanvas', '.offcanvas', function (event) {
+    if($(this).attr('data-bs-backdrop') === 'static'){
+      bodyScrollLock.lock('body');
+      osBodyInstance.options({
+        overflow: {
+          x: 'hidden',
+          y: 'hidden',
+        },
+      })
+    }
+  })
+
+  //fix:由于页面body也使用了滚动条插件进行了美化,保持offcanvas启用data-bs-backdrop:true相同效果
+  $(document).on('hide.bs.offcanvas', '.offcanvas', function (event) {
+    if($(this).attr('data-bs-backdrop') === 'static'){
+      bodyScrollLock.unlock('body')
+      osBodyInstance.options({
+        overflow: {
+          x: 'hidden',
+          y: 'scroll',
+        },
+      })
+    }
+  })
+
+
+
 
 });
 

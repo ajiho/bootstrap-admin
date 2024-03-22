@@ -599,7 +599,7 @@
     </div>
     <!--wrapper结束-->
     <!--  调色板开始  -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="bsa-switcher-wrapper">
+    <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="bsa-switcher-wrapper">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -613,6 +613,8 @@
     <script src="lib/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
+    <!--解决滑动穿透问题-->
+    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script src="lib/layer/dist/layer.js"></script>
     <script src="lib/nprogress/nprogress.js"></script>
     <script src="lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
@@ -626,8 +628,6 @@
     <!--===================//页面单独所需的js========================-->
     <!--bootstrap-admin主页面js文件-->
     <script src="js/bootstrap-admin.main.js"></script>
-    <!--用于防止侧边栏菜单打开时主页面还可以滑动的问题(滑动穿透问题)-->
-    <script src="lib/tua-body-scroll-lock/dist/tua-bsl.umd.js"></script>
     <script>
         $(document).ready(function() {
             // 退出登录前询问
@@ -963,8 +963,7 @@
                                 time: 800,
                                 icon: 1
                             }, () => {
-                                // location.reload();//可以直接刷新当前页面
-                                bsTableRefresh($table)
+                                $.bootstrapTable.refresh($table)
                             });
                         }
                     });
