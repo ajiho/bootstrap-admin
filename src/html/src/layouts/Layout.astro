@@ -1,0 +1,73 @@
+---
+interface Props {
+  title?: string
+  keywords?: string
+  description?: string
+  author?: string
+  body?: {
+    class?: string | string[]
+    [key: string]: any
+  }
+}
+
+const {
+  title = "AdminLTS 基于 bootstrap5.1.3+ 的开源免费响应式后台管理系统模板",
+  keywords = "响应式后台模板,开源免费后台模板,bootstrap5后台管理系统模板",
+  description = "零门槛/响应式/清爽/极简",
+  author = "ajiho",
+  body = {},
+} = Astro.props
+const { class: bodyClass = [], ...bodyAttrs } = body
+---
+
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <slot name="head" />
+    <link
+      rel="icon"
+      href="./assets/img/favicon-16x16.svg"
+      sizes="32x32"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="./assets/img/favicon-16x16.svg"
+      sizes="16x16"
+      type="image/svg+xml"
+    />
+    <meta name="keywords" content={keywords} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <!-- 核心css依赖 -->
+    <link
+      rel="stylesheet"
+      href="./lib/bootstrap-icons/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="./lib/overlayscrollbars/styles/overlayscrollbars.min.css"
+    />
+    <link rel="stylesheet" href="./lib/quicktab/dist/css/quicktab.min.css" />
+    <link rel="stylesheet" href="./css/adminlts.css" />
+  </head>
+  <body class:list={bodyClass} {...bodyAttrs}>
+    <slot />
+    <script
+      is:inline
+      src="./lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"
+    ></script>
+    <script is:inline src="./lib/quicktab/dist/js/quicktab.min.js"></script>
+    <script is:inline src="./lib/jquery/dist/jquery.min.js"></script>
+    <script is:inline src="./js/bootstrap.min.js"></script>
+    <!-- adminlts核心js文件 -->
+    <script is:inline src="./js/adminlts.js"></script>
+    <slot name="scripts" />
+  </body>
+</html>

@@ -1,0 +1,39 @@
+---
+import Layout from "@layouts/Layout.astro"
+---
+
+<Layout
+  body={{
+    "data-overlayscrollbars-initialize": "",
+    "data-lts-toggle": "scrollbar,scrolltop",
+    // "data-lts-scrolltop-offset": "200",
+  }}
+>
+  node-list
+  <Fragment slot="scripts">
+    <script is:inline>
+      $(".btn1").on("click", function () {
+        // adminlts.bus.emit("refresh", { data: "1" })
+        adminlts.popup.dialog({
+          header: false,
+          title: "dsa",
+          body: "dsad",
+          btn: ["aa", "ewq"],
+          btn0: () => {
+            console.log("qq")
+          },
+        })
+
+        // const myDialog = new adminlts.bootstrap.Dialog("#myDialog")
+
+        // myDialog.show()
+      })
+
+      $(".btn2").on("click", function () {
+        popup.dialog({
+          title: "adsa",
+        })
+      })
+    </script>
+  </Fragment>
+</Layout>

@@ -1,3 +1,22 @@
-node_modules
+# 工程文件
 .idea
-/.vscode
+
+# 生产目录
+dist/
+
+# Node
+node_modules/
+
+
+# 缓存文件
+**/.vitepress/cache/
+**/.vitepress/dist/
+**/.vitepress/.temp/
+.astro/
+.stylelintcache
+
+# 生产版本文件
+*dist
+*dist.zip
+
+

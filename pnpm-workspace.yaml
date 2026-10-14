@@ -1,0 +1,27 @@
+allowBuilds:
+  "@parcel/watcher": true
+  esbuild: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - "@astrojs/markdown-satteri@0.3.1 || 0.3.5"
+  - astro@7.0.0 || 7.1.5
+  - prettier@3.9.0 || 3.9.4
+  - lightningcss-android-arm64@1.33.0
+  - lightningcss-darwin-arm64@1.33.0
+  - lightningcss-darwin-x64@1.33.0
+  - lightningcss-freebsd-x64@1.33.0
+  - lightningcss-linux-arm-gnueabihf@1.33.0
+  - lightningcss-linux-arm64-gnu@1.33.0
+  - lightningcss-linux-arm64-musl@1.33.0
+  - lightningcss-linux-x64-gnu@1.33.0
+  - lightningcss-linux-x64-musl@1.33.0
+  - lightningcss-win32-arm64-msvc@1.33.0
+  - lightningcss-win32-x64-msvc@1.33.0
+  - lightningcss@1.33.0
+  - postcss@8.5.20
+  - tsdown@0.22.11
+  - "@astrojs/internal-helpers@0.10.2"
+  - datatables.net-dt@3.0.1
+  - datatables.net@3.0.1
+  - vitepress@2.0.0-alpha.19
+  - "@rolldown/binding-openharmony-arm64@1.2.6"

@@ -1,0 +1,12 @@
+@use "../config" as *;
+
+.#{$lts-prefix}main {
+  grid-area: mn;
+  contain: layout paint;
+  overflow: hidden;
+}
+
+// tab的优化处理
+.tab-body > li:not(.active) > iframe {
+  display: none;
+}

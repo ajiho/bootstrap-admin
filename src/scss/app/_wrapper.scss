@@ -1,0 +1,110 @@
+@use "bootstrap/scss/functions" as *;
+@use "bootstrap/scss/layout/breakpoints" as *;
+@use "bootstrap/scss/mixins/transition" as *;
+@use "../config" as *;
+
+.#{$lts-prefix}wrapper {
+  display: grid;
+  grid-template-areas:
+    "sd hd"
+    "sd mn"
+    "sd ft";
+  grid-template-rows: var(--header-height) 1fr var(--footer-height);
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  @include transition(grid-template-columns $transition-speed ease);
+
+  &:not(.toggled) {
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: 0 1fr;
+      .#{$lts-prefix}sidebar {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  &.toggled {
+    grid-template-columns: var(--sidebar-collapsed-width) 1fr;
+
+    .#{$lts-prefix}sidebar {
+      width: var(--sidebar-collapsed-width);
+    }
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: 0 1fr;
+      .#{$lts-prefix}sidebar {
+        width: var(--sidebar-width);
+      }
+      // 遮罩层显示
+      .#{$lts-prefix}overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      .#{$lts-prefix}sidebar {
+        &:hover {
+          width: var(--sidebar-width);
+        }
+        &:not(:hover) {
+          .#{$lts-prefix}sidebar {
+            // header居中
+            &__header {
+              justify-content: center;
+            }
+
+            // 品牌名字隐藏
+            &__logo-text {
+              display: none;
+            }
+
+            // 侧边栏footer隐藏
+            &__footer {
+              display: none;
+            }
+          }
+
+          .#{$lts-prefix}navigation {
+            // 隐藏下级菜单
+            &__submenu {
+              display: none;
+            }
+            // 隐藏副标题
+            &__subheader {
+              display: none;
+            }
+
+            &__link {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              // 箭头隐藏
+              &.has-submenu::after {
+                display: none;
+              }
+            }
+
+            &__prepend {
+              margin-right: 0;
+            }
+
+            &__content {
+              display: none;
+            }
+
+            &__append {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

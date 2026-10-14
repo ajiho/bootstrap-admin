@@ -1,0 +1,12 @@
+---
+import type { SidebarMenuItem } from "@data/sidebar"
+
+interface Props {
+  item: SidebarMenuItem
+}
+
+const { item } = Astro.props
+---
+
+<!-- 导航副标题 -->
+<li class="lts-navigation__subheader">{item.subheader}</li>

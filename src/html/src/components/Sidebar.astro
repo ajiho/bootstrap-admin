@@ -1,0 +1,41 @@
+---
+import Navigation from "@components/Navigation.astro"
+
+const version = "1.0.0"
+---
+
+<!-- 侧边栏 -->
+<aside class="lts-sidebar">
+  <!-- 侧边栏头部 -->
+  <div class="lts-sidebar__header">
+    <img
+      src="assets/img/favicon-32x32.svg"
+      class="lts-sidebar__logo-icon"
+      alt="logo-icon"
+    />
+    <div class="lts-sidebar__logo-text">AdminLTS</div>
+  </div>
+  <!-- /侧边栏头部 -->
+  <!-- 侧边栏内容区域 -->
+  <div
+    class="lts-sidebar__body"
+    data-lts-toggle="scrollbar"
+    data-overlayscrollbars-initialize
+  >
+    <Navigation />
+  </div>
+  <!-- /侧边栏内容区域 -->
+
+  <!-- 侧边栏底部 -->
+  <div class="lts-sidebar__footer">
+    <div class="d-grid">
+      <button
+        data-lts-link-href="https://www.adminlts.com/docs"
+        type="button"
+        class="btn-text theme-secondary"><i class="bi bi-book"></i> 文档</button
+      >
+    </div>
+  </div>
+  <!-- /侧边栏底部 -->
+</aside>
+<!-- /侧边栏 -->

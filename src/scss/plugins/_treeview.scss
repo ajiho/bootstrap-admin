@@ -1,0 +1,24 @@
+@use "bootstrap/scss/mixins/transition" as *;
+
+@use "../config" as *;
+@use "../functions" as *;
+
+[data-lts-toggle="treeview"],
+[data-lts-treeview-initialize] {
+  li {
+    // grid布局
+    display: grid;
+    grid-template-rows: max-content 0fr;
+    @include transition(grid-template-rows 0.3s $transition-fn);
+
+    ul,
+    ol {
+      overflow: hidden;
+    }
+
+    //带有展开类的li
+    &.#{state(open)} {
+      grid-template-rows: min-content 1fr;
+    }
+  }
+}

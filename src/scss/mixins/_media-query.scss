@@ -1,0 +1,17 @@
+@mixin media-query($query) {
+  @media #{$query} {
+    @content;
+  }
+}
+
+@mixin media-query-down($max-width) {
+  @media (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin media-query-up($min-width) {
+  @media (min-width: #{$min-width}) {
+    @content;
+  }
+}

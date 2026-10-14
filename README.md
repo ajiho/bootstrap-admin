@@ -1,74 +1,30 @@
-<h1 align="center">Bootstrap-Admin(BSA)</h1> 
+# AdminLTS 🎨
 
-<p align="center">    
-    <b>无论您是用于项目开发、学习、还是教学演示、希望能给个star，这将会是我最大的动力!</b>
-</p>
-<p align="center">    
-    <b>如果对您有所帮助，您可以点右上角 "Star" 收藏一下 ，获取第一时间更新，谢谢！</b>
-</p>
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://www.lujiahao.com/sponsor)
+[![test](https://github.com/ajiho/AdminLTS/workflows/Test/badge.svg)](https://github.com/ajiho/AdminLTS/actions)
+[![npm](https://img.shields.io/npm/v/adminlts)](https://www.npmjs.com/package/adminlts)
+[![star](https://gitee.com/ajiho/AdminLTS/badge/star.svg?theme=dark)](https://gitee.com/ajiho/AdminLTS)
+[![star](https://img.shields.io/github/stars/ajiho/adminLTS)](https://github.com/ajiho/adminLTS)
+[![Packagist](https://img.shields.io/packagist/v/ajiho/adminlts.svg)](https://packagist.org/packages/ajiho/adminlts)
+[![cdn version](https://data.jsdelivr.com/v1/package/npm/adminlts/badge)](https://www.jsdelivr.com/package/npm/adminlts)
 
-## 介绍
+---
 
-Bootstrap-Admin(以下简称BSA)基于bootstrap5.x设计的一个响应式静态后台管理HTML模板，它是开源免费的,旨在快速让喜欢用bootstrap开发的后台程序员有个愉悦的起点。
+AdminLTS(Admin Long-Term Support)是一个基于[bootstrap(5.1.3+)](https://getbootstrap.com/)风格简约的纯静态通用后台模板项目,顾名思义([LTS](https://zh.wikipedia.org/wiki/%E9%95%B7%E6%9C%9F%E6%94%AF%E6%8F%B4)),它是一个安全可靠的长期支持和维护的后台管理模板解决方案。无论您是用于项目开发、学习、毕设、还是教学视频演示、希望能给个star，这将会是我最大的动力!
+如果对您有所帮助，您可以点仓库右上角 "Star" 收藏一下 ，获取第一时间更新，谢谢！
 
-[演示地址V1.1.0](https://ajiho.gitee.io/bootstrap-admin)
+## 文档
 
-## 特性
+[https://www.adminlts.com/docs](https://www.adminlts.com/docs)
 
-- 高度响应式、一站匹配手机、平板、pc
-- 界面整体白色为基调、简约、大气、流畅不卡顿
-- 集成开发中常用的优秀的开源js插件
-- BSA不依赖Jquery(集成的开源js插件目前还依赖Jquery的情况除外)
-- 符合国情的iframe多tab选项卡(1.1+)
-- 严格区分BSA和Bootstrap的样式,BSA的样式都是`bsa`开头
-- 没有修改Bootstrap底层样式,享受原汁原味的Bootstrap5默认样式,BSA只提供一个后台的架子
-- 紧跟Bootstrap官方更新的步伐
+## 变更日志
 
+每个版本的详细更改都记录在[CHANGELOG.md](https://github.com/ajiho/AdminLTS/blob/master/CHANGELOG.md)文件中
 
-## 版本对应
+## 贡献指南
 
-|bootstrap-admin版本|bootstrap版本|
-|--|--|
-|v1.x|v5.1.3|
-|v2.x|v5.3.0(todo)|
+PR之前请先阅读[贡献指南](https://github.com/ajiho/AdminLTS/blob/master/.github/CONTRIBUTING.md)
 
-## 设备支持
+## License
 
-~~~
-# https://github.com/browserslist/browserslist#readme
-
->= 0.5%
-last 2 major versions
-not dead
-Chrome >= 60
-Firefox >= 60
-Firefox ESR
-iOS >= 12
-Safari >= 12
-not Explorer <= 11
-~~~
-
-## 下载
-
-生产环境请使用下面的方式下载
-
-### 仓库下载
-
-[下载地址](https://gitee.com/ajiho/bootstrap-admin/releases)
-
-### composer下载
-
-~~~
-composer require ajiho/bootstrap-admin
-~~~
-
-### npm下载
-
-~~~
-npm i bootstrap-admin
-~~~
-
-## 反馈
-
-开发过程发现有任何问题，欢迎大家提交Issue。
-
+[MIT](https://github.com/ajiho/AdminLTS/blob/master/LICENSE)

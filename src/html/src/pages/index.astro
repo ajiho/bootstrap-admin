@@ -1,0 +1,105 @@
+---
+import Layout from "@layouts/Layout.astro"
+import Header from "@components/Header.astro"
+import Sidebar from "@components/Sidebar.astro"
+import Footer from "@components/Footer.astro"
+import Main from "@components/Main.astro"
+import Wrapper from "@components/Wrapper.astro"
+---
+
+<Layout>
+  <Wrapper>
+    <Header />
+    <Sidebar />
+
+    <!-- <Main /> -->
+    <Footer />
+  </Wrapper>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      const pushmenuel = document.querySelector(".test-push-menu")
+
+      // document.addEventListener("toggle.lts.push-menu", () => {
+      //   console.log("Sidebar toggle")
+      // })
+
+      document
+        .querySelector(
+          ".lts-navigation > li.lts-navigation__item:nth-of-type(3)",
+        )
+        .addEventListener("toggle.lts.treeview", (e) => {
+          if (e.detail.open) {
+            console.log("open")
+          } else {
+            console.log("close")
+          }
+        })
+
+      document
+        .querySelector(
+          ".lts-navigation > li.lts-navigation__item:nth-of-type(3)",
+        )
+        .addEventListener("toggled.lts.treeview", (e) => {
+          if (e.detail.open) {
+            console.log("opened")
+          } else {
+            console.log("closed")
+          }
+        })
+
+      // pushmenuel.addEventListener("toggle.lts.push-menu", (e) => {
+      //   console.log(e.detail)
+      // })
+
+      pushmenuel.addEventListener("hovertoggle.lts.push-menu", (e) => {
+        console.log(e.detail)
+      })
+
+      pushmenuel.addEventListener("hovertoggled.lts.push-menu", (e) => {
+        console.log(e.detail)
+      })
+
+      // document.addEventListener("toggled.lts.push-menu", () => {
+      //   console.log("Sidebar toggled")
+      // })
+
+      // document.addEventListener("untoggled.lts.push-menu", () => {
+      //   console.log("Sidebar untoggled")
+      // })
+
+      const tree = adminlts.Treeview.getOrCreateInstance(".lts-navigation")
+      const item = document.querySelector(".test")
+      const test_item2 = document.querySelector(".test2")
+      $(".btn6").on("click", async () => {
+        tree.reveal(item)
+      })
+
+      $(".btn1").on("click", () => {
+        tree.openParents(item)
+      })
+
+      $(".btn2").on("click", () => {
+        tree.closeChildren(test_item2)
+      })
+
+      $(".btn3").on("click", () => {
+        tree.activate(test_item2)
+      })
+
+      $(".btn4").on("click", () => {
+        tree.expandAll()
+      })
+
+      $(".btn5").on("click", () => {
+        tree.collapseAll()
+      })
+
+      adminlts.bus.on("refresh", (data) => {
+        console.log("监听成功", data)
+      })
+
+      // console.log(a)
+    </script>
+  </Fragment>
+</Layout>

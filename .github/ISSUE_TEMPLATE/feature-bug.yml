@@ -1,0 +1,45 @@
+name: 💖 提交问题
+description: bug提交或者新特性请求,如果是bug请确认您已经测试验证存在
+body:
+  - type: checkboxes
+    attributes:
+      label: 先决条件
+      description: 请确认您已经按照如下流程进行操作
+      options:
+        - label: "我确认已查阅文档:https://adminlts.com/docs ，但没有找到相关解决方案。"
+          required: true
+        - label: 我确认已在 [Issues](https://github.com/ajiho/AdminLTS/issues?q=is%3Aissue ) 中搜索过类似的问题，但没有找到相关解决方案。
+          required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: 报告类型
+      options:
+        - BUG报告
+        - 功能请求
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 使用版本
+      description: 请提供您当前使用的 **AdminLTS** 版本号。若不清楚，可打开 `adminlts.js` 查看头部注释。
+      placeholder: 如:v1.0.1
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 问题描述
+      description: 请提供详细的问题描述和操作步骤等信息，以便我们也能够更轻松地将问题复现。
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 浏览器
+      placeholder: 如:Chrome x.x.x.x(正式版本)(64 位)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 演示地址
+      description: 提供Stackblitz, CodePen上的演示页面可以快速定位问题
+      placeholder: URL

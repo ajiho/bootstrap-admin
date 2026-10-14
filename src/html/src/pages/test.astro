@@ -1,0 +1,79 @@
+---
+import Layout from "@layouts/Layout.astro"
+---
+
+<Layout
+  body={{
+    "data-overlayscrollbars-initialize": "",
+    "data-lts-toggle": "scrollbar,scrolltop",
+    // "data-lts-scrolltop-offset": "200",
+  }}
+>
+  的撒大
+  <a class="lts-back-to-top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <button class="btn btn1">dialog</button>
+  <button class="btn btn2">dialog2</button>
+
+  <dialog class="dialog" id="myDialogddaaaaaaa">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Dialog title</h1>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="dialog"
+        aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>
+        This is a native dialog element. It uses the browser’s built-in modal
+        behavior for accessibility and focus management.
+      </p>
+    </div>
+    <div class="dialog-footer">
+      <button
+        type="button"
+        class="btn-solid theme-secondary"
+        data-bs-dismiss="dialog">Close</button
+      >
+      <button type="button" class="btn-solid theme-primary">Save changes</button
+      >
+    </div>
+  </dialog>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      // const el = document.querySelector("#myDialogddaaaaaaa")
+
+      // const rwe = adminlts.bootstrap.Dialog.getOrCreateInstance(el)
+
+      // console.log(el)
+      // console.log(rwe)
+
+      // rwe.show()
+
+      $(".btn1").on("click", function () {
+        // adminlts.bus.emit("refresh", { data: "1" })
+        adminlts.popup.dialog({
+          header: false,
+          title: "dsa",
+          body: "dsad",
+          btn: ["aa", "ewq"],
+          btn0: () => {
+            console.log("qq")
+          },
+        })
+
+        // const myDialog = new adminlts.bootstrap.Dialog("#myDialog")
+
+        // myDialog.show()
+      })
+
+      $(".btn2").on("click", function () {
+        popup.dialog({
+          title: "adsa",
+        })
+      })
+    </script>
+  </Fragment>
+</Layout>

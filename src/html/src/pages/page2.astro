@@ -1,0 +1,91 @@
+---
+import Layout from "@layouts/Layout.astro"
+---
+
+<Layout
+  body={{
+    "data-overlayscrollbars-initialize": "",
+    "data-lts-toggle": "scrollbar,scrolltop",
+    // "data-lts-scrolltop-offset": "200",
+  }}
+>
+  <!-- <a class="lts-back-to-top"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <button
+    type="button"
+    class="btn-solid theme-primary"
+    data-bs-toggle="dialog"
+    data-bs-target="#exampleDialog"
+  >
+    Open dialog
+  </button>
+
+  <dialog class="dialog" id="exampleDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Dialog title</h1>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="dialog"
+        aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>
+        This is a native dialog element. It uses the browser’s built-in modal
+        behavior for accessibility and focus management.
+      </p>
+    </div>
+    <div class="dialog-footer">
+      <button
+        type="button"
+        class="btn-solid theme-secondary"
+        data-bs-dismiss="dialog">Close</button
+      >
+      <button type="button" class="btn-solid theme-primary">Save changes</button
+      >
+    </div>
+  </dialog>
+
+  <div class="container-fluid">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">
+          We’ll never share your email with anyone else.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="mb-3 form-field">
+        <input type="checkbox" id="exampleCheck1" class="check" />
+        <label for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn-solid theme-primary">Submit</button>
+    </form>
+  </div>
+
+  <button type="button" class="btn-test btn-solid theme-primary">Primary</button
+  >
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      console.log("welcome")
+
+      $(".btn-test").on("click", function () {
+        adminlts.bus.emit("refresh", { data: "1" })
+      })
+    </script>
+  </Fragment>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from "@layouts/Layout.astro"
+---
+
+<Layout
+  body={{
+    "data-overlayscrollbars-initialize": "",
+    "data-lts-toggle": "scrollbar,scrolltop",
+    // "data-lts-scrolltop-offset": "200",
+  }}
+>
+  <div class="container-fluid">
+    <!-- 在移动设备上，将第一列占满整行，第二列占据一半宽度 -->
+    <div class="row">
+      <div class="col-6 lg:col-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-body flex-row">
+            <div>
+              <small class="text-body-secondary"> 今日订单 </small>
+
+              <h3 class="mb-0 mt-1 lts-ani-num" style="--lts-num: 2000"></h3>
+            </div>
+
+            <i class="bi bi-bag fs-1 text-primary"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 lg:col-3">dsa</div>
+      <div class="col-6 lg:col-3">.col-6 .md:col-4</div>
+      <div class="col-6 lg:col-3">.col-6 .md:col-4</div>
+    </div>
+  </div>
+</Layout>

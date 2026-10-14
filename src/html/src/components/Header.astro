@@ -1,0 +1,132 @@
+---
+const apps = Array.from({ length: 5 }, (_, i) => i + 1)
+---
+
+<!-- 头部导航区域 -->
+<header class="lts-header">
+  <!-- 头部导航左侧区域 -->
+  <div class="lts-header__start">
+    <!-- 侧边栏折叠触发按钮 -->
+    <!-- data-lts-toggle="pushmenu" -->
+    <button
+      class="lts-header__action test-push-menu"
+      type="button"
+      data-lts-toggle="pushmenu"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+  </div>
+  <!-- 头部导航中间区域 -->
+  <div class="lts-header__center px-3">
+    <div
+      class="nav-overflow"
+      data-bs-toggle="nav-overflow"
+      data-bs-more-text="false"
+      data-bs-icon-placement="start"
+      data-bs-more-icon='<svg t="1791985757409" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3511" width="16" height="16"><path d="M213.333333 554.666667h298.666667v298.666666H213.333333v-298.666666z m42.666667 42.666666v213.333334h213.333333v-213.333334H256zM213.333333 213.333333h298.666667v298.666667H213.333333V213.333333z m42.666667 42.666667v213.333333h213.333333V256H256z m298.666667-42.666667h298.666666v298.666667h-298.666666V213.333333z m42.666666 42.666667v213.333333h213.333334V256h-213.333334z m-42.666666 298.666667h298.666666v298.666666h-298.666666v-298.666666z m42.666666 42.666666v213.333334h213.333334v-213.333334h-213.333334z" p-id="3512"></path></svg>'
+    >
+      <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+            默认
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            菜单一
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            菜单二
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 头部导航右侧区域 -->
+  <div class="lts-header__end">
+    <!-- 搜索按钮 -->
+    <button class="lts-header__action" aria-label="搜索" title="搜索">
+      <i class="bi bi-search"></i>
+    </button>
+    <!-- 通知按钮 -->
+    <button class="lts-header__action" aria-label="通知" title="通知">
+      <i class="bi bi-bell"></i>
+      <span class="lts-header__notification-dot"></span>
+    </button>
+    <!-- 拓展菜单按钮(建议把拓展放在此处,以免破坏头部整体布局,不需要可以直接删除) -->
+    <button
+      class="lts-header__action"
+      data-bs-toggle="menu"
+      data-bs-placement="bottom-end"
+      data-bs-auto-close="outside"
+      aria-expanded="false"
+      title="应用"
+    >
+      <i class="bi bi-grid"></i>
+    </button>
+    <!-- 拓展按钮所触发的下拉菜单 -->
+    <div class="menu menu-translucent">
+      <button>触发按钮</button>
+    </div>
+    <!-- /拓展按钮所触发的下拉菜单 -->
+    <!-- 全屏按钮 -->
+    <button class="lts-header__action" title="全屏">
+      <i class="bi bi-arrows-fullscreen"></i>
+    </button>
+    <!-- 调色盘按钮 -->
+    <button class="lts-header__action" title="主题">
+      <i class="bi bi-palette"></i>
+    </button>
+    <!-- 管理员信息区域 -->
+    <div data-bs-toggle="menu" aria-expanded="false">
+      <div class="lts-header__user-info">
+        <img
+          src="assets/img/avatar.jpg"
+          class="lts-header__avatar"
+          alt="用户头像"
+        />
+        <!-- 管理员详情信息(如果你只需要头像那么你可以直接把下面这部分删除) -->
+        <div class="lts-header__details">
+          <!-- 管理员账号/昵称 -->
+          <div class="lts-header__nickname">欲饮琵琶码上催</div>
+          <!-- 管理员角色(不需要可删除,上面的用户昵称可自动垂直居中) -->
+          <div class="lts-header__role">超级管理员</div>
+        </div>
+      </div>
+    </div>
+    <!-- 管理员信息对应的下拉菜单 -->
+    <div class="menu menu-translucent">
+      <a class="menu-item" href="javascript:">
+        <i class="bi bi-person"></i>个人资料
+      </a>
+      <a class="menu-item" href="javascript:">
+        <i class="bi bi-key"></i>修改密码
+      </a>
+      <div class="submenu">
+        <button class="menu-item" type="button">
+          <i class="bi bi-file-earmark-richtext"></i>我的创作
+        </button>
+        <div class="menu">
+          <a class="menu-item" href="javascript:">
+            新建文章
+          </a>
+          <a class="menu-item" href="javascript:">
+            回收站
+          </a>
+          <a class="menu-item" href="javascript:">
+            收藏
+          </a>
+        </div>
+      </div>
+      <hr class="menu-divider" />
+      <a class="menu-item theme-danger" href="javascript:">
+        <i class="bi bi-box-arrow-right"></i>退出登录
+      </a>
+    </div>
+    <!-- /管理员信息对应的下拉菜单 -->
+  </div>
+</header>
+<!-- /头部导航区域 -->

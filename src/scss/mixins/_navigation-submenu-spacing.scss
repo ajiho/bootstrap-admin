@@ -1,0 +1,14 @@
+@mixin navigation-submenu-spacing($root, $maxLevel, $level: 0) {
+  @if $level <= $maxLevel {
+    #{$root}__link {
+      padding-left: calc(
+        var(--navigation-padding-x) + var(--navigation-icon-size) + var(--navigation-prepend-gap) +
+          #{$level} * var(--navigation-indent)
+      );
+
+      + #{$root}__submenu {
+        @include navigation-submenu-spacing($root, $maxLevel, $level + 1);
+      }
+    }
+  }
+}

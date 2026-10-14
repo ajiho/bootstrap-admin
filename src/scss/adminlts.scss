@@ -1,0 +1,10 @@
+// @import "bootstrap/scss/functions";
+// @import "bootstrap/scss/variables";
+// @import "bootstrap/scss/variables-dark";
+// @import "bootstrap/scss/maps";
+// @import "bootstrap/scss/mixins";
+
+//  全局 CSS 变量、层（Layer）定义以及配置
+@forward "root";
+@forward "app";
+@forward "plugins";

@@ -1,0 +1,56 @@
+---
+import type { SidebarMenuItem } from "@data/sidebar"
+interface Props {
+  item: SidebarMenuItem
+}
+
+const { item } = Astro.props
+
+const hasChildren = !!item.children?.length
+---
+
+<li
+  class="lts-navigation__item"
+  class:list={[
+    item.text == "四级菜单2" && "test",
+    item.text == "多级菜单" && "test2",
+  ]}
+>
+  <a
+    href={item.href || "javascript:;"}
+    class:list={[
+      "lts-navigation__link",
+      item.active && "is-active",
+      hasChildren && "has-submenu",
+    ]}
+  >
+    {
+      // 有图标的情况
+      item.icon && (
+        <>
+          <div class="lts-navigation__prepend">
+            <i class={`bi ${item.icon}`} />
+          </div>
+        </>
+      )
+    }
+
+    <div class="lts-navigation__content">{item.text}</div>
+
+    {
+      item.append && (
+        <div class="lts-navigation__append" set:html={item.append} />
+      )
+    }
+  </a>
+
+  {
+    item.children && (
+      <ul class="lts-navigation__submenu">
+        {item.children.map((child) => (
+          <Astro.self item={child} />
+        ))}
+      </ul>
+    )
+  }
+</li>

@@ -1,0 +1,40 @@
+name: Deploy to Vercel
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  push:
+    branches:
+      - main
+
+  # 允许从页面手动运行此工作流
+  workflow_dispatch:
+
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm # 或者 pnpm / yarn
+
+      - name: 禁用Vercel的Telemetry
+        run: pnpm dlx vercel telemetry disable
+
+      - name: Install Node dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy to Vercel
+        run: pnpm dlx vercel deploy --prod --local-config=.github/vercel.json --token=${{ secrets.VERCEL_TOKEN }}

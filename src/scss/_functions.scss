@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "./config" as *;
+
+@function state($name) {
+  @return map.get($states, $name);
+}

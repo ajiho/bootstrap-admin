@@ -1,0 +1,53 @@
+@use "bootstrap/scss/mixins/transition" as *;
+@use "../mixins/text-ellipsis" as *;
+@use "../config" as *;
+
+.#{$lts-prefix}sidebar {
+  z-index: var(--zindex-sidebar);
+  grid-area: sd;
+  width: var(--sidebar-width);
+  transform: translateX(0);
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bs-bg-body);
+
+  @include transition(width $transition-speed ease, transform $transition-speed ease);
+  &__header {
+    padding: var(--bs-spacer-2) var(--bs-spacer-3);
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 0.35);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background-color: var(--bs-bg-body);
+  }
+  &__logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__logo-text {
+    margin-inline-start: var(--bs-spacer-2);
+    font-size: 1.125rem;
+    color: var(--bs-fg-body);
+    letter-spacing: 1px;
+    flex: 1;
+    min-width: 0;
+
+    @include text-ellipsis();
+  }
+
+  &__body {
+    contain: layout;
+    flex: 1;
+    overflow: auto;
+  }
+
+  &__footer {
+    padding: var(--bs-spacer-2) var(--bs-spacer-3);
+    flex-shrink: 0;
+    height: var(--footer-height);
+    box-shadow: 0 -1px 1px -1px rgb(0 0 0 / 0.45);
+    color: var(--bs-fg-3);
+  }
+}
