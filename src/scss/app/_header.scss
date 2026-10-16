@@ -73,6 +73,7 @@
   &__nickname {
     font-size: 15px;
   }
+
   // 角色名称
   &__role {
     font-size: 13px;
@@ -102,7 +103,7 @@
     svg {
       width: 20px;
       height: 20px;
-      stroke: currentColor;
+      stroke: currentcolor;
       fill: none;
       stroke-width: 1.8;
       stroke-linecap: round;

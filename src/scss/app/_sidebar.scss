@@ -13,14 +13,16 @@
   background-color: var(--bs-bg-body);
 
   @include transition(width $transition-speed ease, transform $transition-speed ease);
+
   &__header {
     padding: var(--bs-spacer-2) var(--bs-spacer-3);
-    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 0.35);
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 35%);
     height: var(--header-height);
     display: flex;
     align-items: center;
     background-color: var(--bs-bg-body);
   }
+
   &__logo-icon {
     width: 32px;
     height: 32px;
@@ -34,7 +36,7 @@
     flex: 1;
     min-width: 0;
 
-    @include text-ellipsis();
+    @include text-ellipsis;
   }
 
   &__body {
@@ -47,7 +49,7 @@
     padding: var(--bs-spacer-2) var(--bs-spacer-3);
     flex-shrink: 0;
     height: var(--footer-height);
-    box-shadow: 0 -1px 1px -1px rgb(0 0 0 / 0.45);
+    box-shadow: 0 -1px 1px -1px rgb(0 0 0 / 45%);
     color: var(--bs-fg-3);
   }
 }

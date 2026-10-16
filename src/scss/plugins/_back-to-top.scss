@@ -7,6 +7,7 @@
   right: 30px;
   bottom: 30px;
   z-index: 9;
+
   // display: none;
   width: 40px;
   height: 40px;
@@ -16,10 +17,14 @@
   cursor: pointer;
   background: #307ef3;
   border: 0;
+
   @include border-radius(100%);
+
   box-shadow: 0 0 10px #307ef3;
   opacity: 0.5;
+
   @include transition(opacity $transition-speed ease);
+
   &:hover {
     opacity: 1;
   }

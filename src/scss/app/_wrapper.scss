@@ -5,12 +5,8 @@
 
 .#{$lts-prefix}wrapper {
   display: grid;
-  grid-template-areas:
-    "sd hd"
-    "sd mn"
-    "sd ft";
-  grid-template-rows: var(--header-height) 1fr var(--footer-height);
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template:
+    "sd hd" var(--header-height) "sd mn" 1fr "sd ft" var(--footer-height) / var(--sidebar-width) minmax(0, 1fr);
   position: fixed;
   inset: 0;
   height: 100%;
@@ -40,6 +36,7 @@
       .#{$lts-prefix}sidebar {
         width: var(--sidebar-width);
       }
+
       // 遮罩层显示
       .#{$lts-prefix}overlay {
         opacity: 1;
@@ -52,6 +49,7 @@
         &:hover {
           width: var(--sidebar-width);
         }
+
         &:not(:hover) {
           .#{$lts-prefix}sidebar {
             // header居中
@@ -75,6 +73,7 @@
             &__submenu {
               display: none;
             }
+
             // 隐藏副标题
             &__subheader {
               display: none;

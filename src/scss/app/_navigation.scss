@@ -9,7 +9,6 @@
 @use "../config" as *;
 
 $navigation-tokens: () !default;
-
 $navigation-tokens: defaults(
   (
     --navigation-indent: 1rem,
@@ -32,8 +31,7 @@ $navigation-tokens: defaults(
     $self: &;
 
     @include tokens($navigation-tokens);
-
-    @include ul-reset();
+    @include ul-reset;
 
     //  副标题
     &__subheader {
@@ -41,9 +39,9 @@ $navigation-tokens: defaults(
       overflow: hidden;
       font-size: 0.875rem;
       font-weight: 400;
-
       color: color-mix(in srgb, var(--bs-fg-body) 40%, white);
-      @include text-ellipsis();
+
+      @include text-ellipsis;
     }
 
     // 分隔符
@@ -114,14 +112,15 @@ $navigation-tokens: defaults(
           background-color: var(--bs-fg-body);
 
           @include mask-icon(var(--navigation-arrow-icon));
-
           @include transition(transform $transition-speed $transition-fn);
+
           transform: scale(0.4) rotate(0);
           transform-origin: center;
           will-change: transform;
         }
       }
     }
+
     &__prepend {
       display: flex;
       grid-area: prepend;
@@ -138,7 +137,7 @@ $navigation-tokens: defaults(
       grid-area: content;
       align-self: center;
 
-      @include text-ellipsis();
+      @include text-ellipsis;
     }
 
     // 追加内容
@@ -152,8 +151,9 @@ $navigation-tokens: defaults(
 
     // 下级菜单
     &__submenu {
-      @include ul-reset();
+      @include ul-reset;
     }
+
     &__item {
       // content-visibility: auto; // 该属性加了会影响监听所有的过渡结束事件
 

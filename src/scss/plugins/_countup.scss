@@ -5,10 +5,12 @@
   inherits: true;
   initial-value: 0;
 }
+
 @keyframes seed {
   from {
     --seed: 0;
   }
+
   to {
     --seed: 100;
   }
