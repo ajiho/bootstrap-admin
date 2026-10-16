@@ -1,0 +1,13 @@
+.#{$lts-prefix}overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  z-index: var(--zindex-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-speed) var(--transition-ease),
+    visibility var(--transition-speed) var(--transition-ease);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

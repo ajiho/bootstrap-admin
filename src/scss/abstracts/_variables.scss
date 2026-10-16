@@ -1,6 +1,27 @@
+// 前缀
 $lts-prefix: lts- !default;
 
 // 过渡的全局默认值
 // --------------------------------------------------------
 $transition-speed: 0.3s !default;
 $transition-fn: ease-in-out !default;
+
+// 侧边栏
+// --------------------------------------------------------
+$sidebar-width: 240px !default;
+$sidebar-collapsed-width: 80px !default;
+
+// 头部导航
+// --------------------------------------------------------
+$header-height: 50px !default;
+
+// 底部版权
+// --------------------------------------------------------
+$footer-height: 38px !default;
+
+// 状态
+// --------------------------------------------------------
+$states: (
+  open: is-open,
+  active: is-active,
+);

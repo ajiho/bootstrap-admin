@@ -1,0 +1,119 @@
+.#{$lts-prefix}header {
+  grid-area: hd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bs-spacer-2) var(--bs-spacer-3);
+  gap: 0.35rem;
+
+  &__start,
+  &__center,
+  &__end {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  &__center {
+    flex: 1;
+  }
+
+  &__end {
+    margin-left: auto;
+  }
+
+  &__user-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  // 用户头像
+  &__avatar {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    user-select: none;
+
+    @include border-radius(50%);
+
+    // lg屏幕下用户头像再放小一点
+    @include media-breakpoint-down(lg) {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include media-query-down(342px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  // 用户详情
+  &__details {
+    display: block;
+    flex-shrink: 0;
+    max-width: 150px;
+    margin-left: 8px;
+
+    // xl设备下直接隐藏用户详情只展示头像
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+  }
+
+  // 用户昵称
+  &__nickname {
+    font-size: 15px;
+  }
+
+  // 角色名称
+  &__role {
+    font-size: 13px;
+    color: var(--bs-secondary-fg);
+  }
+
+  &__action {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: var(--color-text-muted);
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+
+    &:hover {
+      background: var(--color-content-bg);
+      color: var(--color-text);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentcolor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  /* 通知红点 */
+  &__notification-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--color-danger);
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+}

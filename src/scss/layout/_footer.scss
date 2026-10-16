@@ -1,0 +1,28 @@
+.#{$lts-prefix}footer {
+  grid-area: ft;
+  background: var(--color-header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bs-spacer-2) var(--bs-spacer-3);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  gap: 16px;
+
+  &__links {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
