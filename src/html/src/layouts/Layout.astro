@@ -55,7 +55,7 @@ const { class: bodyClass = [], ...bodyAttrs } = body
       href="./lib/overlayscrollbars/styles/overlayscrollbars.min.css"
     />
     <link rel="stylesheet" href="./lib/quicktab/dist/css/quicktab.min.css" />
-    <link rel="stylesheet" href="./css/adminlts.css" />
+    <!-- <link rel="stylesheet" href="./css/adminlts.css" /> -->
   </head>
   <body class:list={bodyClass} {...bodyAttrs}>
     <slot />
@@ -63,9 +63,12 @@ const { class: bodyClass = [], ...bodyAttrs } = body
       is:inline
       src="./lib/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"
     ></script>
+    <script
+      is:inline
+      src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ></script>
     <script is:inline src="./lib/quicktab/dist/js/quicktab.min.js"></script>
     <script is:inline src="./lib/jquery/dist/jquery.min.js"></script>
-    <script is:inline src="./js/bootstrap.min.js"></script>
     <!-- adminlts核心js文件 -->
     <script is:inline src="./js/adminlts.js"></script>
     <slot name="scripts" />

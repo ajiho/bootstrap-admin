@@ -42,6 +42,8 @@ async function main() {
 
     // 禁止显示依赖包的警告
     quietDeps: true,
+    // 抑制 @import 弃用警告
+    silenceDeprecations: ["import"],
   });
 
   /* ----------------------------------

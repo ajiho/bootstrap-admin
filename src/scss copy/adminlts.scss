@@ -1,0 +1,35 @@
+// admin-lts.scss
+
+// Bootstrap functions and variable setup
+// Bootstrap components and utilities API
+
+// Template abstracts
+// @import "abstracts/variables";
+// @import "abstracts/functions";
+// @import "abstracts/mixins";
+
+// Template base
+// @import "base/root";
+// @import "base/typography";
+
+// Template layout
+@import "layout/wrapper";
+// @import "layout/header";
+// @import "layout/sidebar";
+// @import "layout/content";
+// @import "layout/footer";
+
+// Template components
+// @import "components/brand";
+// @import "components/sidebar-menu";
+// @import "components/user-panel";
+// @import "components/page-header";
+// @import "components/info-box";
+// @import "components/small-box";
+
+// Page styles
+// @import "pages/dashboard";
+// @import "pages/login";
+
+// Theme overrides
+// @import "themes/color-modes";

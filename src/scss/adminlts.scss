@@ -1,10 +1,47 @@
-// @import "bootstrap/scss/functions";
-// @import "bootstrap/scss/variables";
-// @import "bootstrap/scss/variables-dark";
-// @import "bootstrap/scss/maps";
-// @import "bootstrap/scss/mixins";
+// admin-lts.scss
 
-//  全局 CSS 变量、层（Layer）定义以及配置
-@forward "root";
-@forward "app";
-@forward "plugins";
+// 1. Bootstrap 必要的函数
+@import "bootstrap/scss/functions";
+
+// 2. Bootstrap 变量
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+// 3. Bootstrap 配置和映射
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Bootstrap functions and variable setup
+// Bootstrap components and utilities API
+
+// Template abstracts
+@import "abstracts/variables";
+// @import "abstracts/functions";
+// @import "abstracts/mixins";
+
+// Template base
+// @import "base/root";
+// @import "base/typography";
+
+// Template layout
+@import "layout/wrapper";
+// @import "layout/header";
+// @import "layout/sidebar";
+// @import "layout/content";
+// @import "layout/footer";
+
+// Template components
+// @import "components/brand";
+// @import "components/sidebar-menu";
+// @import "components/user-panel";
+// @import "components/page-header";
+// @import "components/info-box";
+// @import "components/small-box";
+
+// Page styles
+// @import "pages/dashboard";
+// @import "pages/login";
+
+// Theme overrides
+// @import "themes/color-modes";

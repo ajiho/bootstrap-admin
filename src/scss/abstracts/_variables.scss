@@ -1,0 +1,6 @@
+$lts-prefix: lts- !default;
+
+// 过渡的全局默认值
+// --------------------------------------------------------
+$transition-speed: 0.3s !default;
+$transition-fn: ease-in-out !default;

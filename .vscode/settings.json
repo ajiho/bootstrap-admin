@@ -6,5 +6,6 @@
     "source.fixAll.oxc": "always"
   },
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "nifty.scss.loadPaths": ["node_modules"]
 }
