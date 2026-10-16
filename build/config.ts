@@ -1,11 +1,3 @@
-import { createConsola } from "consola";
-
-export const logger = createConsola({
-  defaults: {
-    tag: "adminlts",
-  },
-});
-
 export const PATHS = {
   dist: "dist",
   lib: "dist/lib",

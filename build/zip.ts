@@ -1,8 +1,8 @@
+import { consola } from "consola";
 import * as zl from "zip-lib";
 
 import pkg from "../package.json" with { type: "json" };
-import { PATHS } from "./config.ts";
-import { logger } from "./config.ts";
+import { PATHS } from "./config";
 
 export async function main() {
   const zipDir = `adminlts-${pkg.version}-dist`;
@@ -10,7 +10,7 @@ export async function main() {
 
   await zl.archiveFolder(PATHS.dist, zipFileName);
 
-  logger.success(`zip完成: ${zipFileName}`);
+  consola.success(`zip完成: ${zipFileName}`);
 }
 
 main().catch((err) => {

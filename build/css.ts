@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import { browserslistToTargets, transform } from "lightningcss";
 import { relative, dirname, join, resolve } from "pathe";
 import postcss from "postcss";
-import postcssPrefixCustomProperties from "postcss-custom-properties-prefix";
+import postcssCustomPropertiesPrefix from "postcss-custom-properties-prefix";
 import sortMediaQueries from "postcss-sort-media-queries";
 import { compile } from "sass";
 
@@ -48,7 +48,7 @@ async function main() {
    * PostCSS
    * ---------------------------------- */
   const postcssResult = await postcss([
-    postcssPrefixCustomProperties({
+    postcssCustomPropertiesPrefix({
       prefix: "lts-",
       ignore: [/^--bs-/, /^--bd-/],
     }),

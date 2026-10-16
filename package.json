@@ -46,7 +46,7 @@
     "clean": "rimraf dist",
     "fmt": "oxfmt",
     "lint:check:js": "oxlint",
-    "lint:check:css": "stylelint src/**/*.scss --cache",
+    "lint:check:css": "stylelint . --cache",
     "lint:fix:js": "pnpm run lint:check:js --fix",
     "lint:fix:css": "pnpm run lint:check:css --fix",
     "lint": "run-p lint:check:*",

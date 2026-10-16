@@ -1,8 +1,8 @@
+import { consola } from "consola";
 import fs from "fs-extra";
 import { globSync } from "tinyglobby";
 
-import { copyTasks } from "./config.ts";
-import { logger } from "./config.ts";
+import { copyTasks } from "./config";
 
 export async function main() {
   for (const task of copyTasks) {
@@ -17,7 +17,7 @@ export async function main() {
     }
   }
 
-  logger.success("三方库已复制成功");
+  consola.success("三方库已复制成功");
 }
 
 main().catch((err) => {

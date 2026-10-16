@@ -6,7 +6,7 @@ function getBanner(pluginFilename: string = "") {
   return `/*!
   * AdminLTS${pluginFilename ? ` ${pluginFilename}` : ""} v${pkg.version} (${pkg.homepage})
   * Copyright 2011-${year} ${pkg.author}
-  * Licensed under MIT (https://github.com/ajiho/AdminLTS/blob/main/LICENSE)
+  * Licensed under MIT (https://github.com/ColoristLab/AdminLTS/blob/main/LICENSE)
   */`;
 }
 
