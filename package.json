@@ -128,6 +128,9 @@
     "vitest": "^5.0.5",
     "zip-lib": "^1.4.0"
   },
+  "peerDependencies": {
+    "bootstrap": "^5.3.8"
+  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",

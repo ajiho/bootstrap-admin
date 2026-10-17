@@ -1,22 +1,20 @@
-# 工程文件
-.idea
+# IDE
+.idea/
 
-# 生产目录
-dist/
-
-# Node
+# Dependencies
 node_modules/
 
-
-# 缓存文件
-**/.vitepress/cache/
-**/.vitepress/dist/
-**/.vitepress/.temp/
+# Build output
+dist/
 .astro/
+**/.vitepress/dist/
+
+
+# Cache
 .stylelintcache
-
-# 生产版本文件
-*dist
-*dist.zip
+**/.vitepress/cache/
+**/.vitepress/.temp/
 
 
+# Archives
+*.zip

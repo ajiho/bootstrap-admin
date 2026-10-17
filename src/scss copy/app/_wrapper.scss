@@ -5,8 +5,8 @@
 
 .#{$lts-prefix}wrapper {
   display: grid;
-  grid-template:
-    "sd hd" var(--header-height) "sd mn" 1fr "sd ft" var(--footer-height) / var(--sidebar-width) minmax(0, 1fr);
+  grid-template: "sd hd" var(--header-height) "sd mn" 1fr "sd ft" var(--footer-height) /
+      var(--sidebar-width) minmax(0, 1fr);
   position: fixed;
   inset: 0;
   height: 100%;
