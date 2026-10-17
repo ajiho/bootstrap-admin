@@ -8,137 +8,20 @@ import Wrapper from "@components/Wrapper.astro"
 ---
 
 <Layout>
-  <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-  >
-    Launch demo modal
-  </button>
-
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
-            Modal title
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">
-            Save changes
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  dasd
   <Fragment slot="scripts">
     <script is:inline>
-      const pushmenuel = document.querySelector(".test-push-menu")
+      // console.log(adminlts)
+      console.log(window.popup)
 
-      // document.addEventListener("toggle.lts.push-menu", () => {
-      //   console.log("Sidebar toggle")
+      // const id = adminlts.popup.modal({
+      //   title: "确认操作",
+      //   content: "确定要删除这条记录吗？",
       // })
 
-      document
-        .querySelector(
-          ".lts-navigation > li.lts-navigation__item:nth-of-type(3)",
-        )
-        .addEventListener("toggle.lts.treeview", (e) => {
-          if (e.detail.open) {
-            console.log("open")
-          } else {
-            console.log("close")
-          }
-        })
-
-      document
-        .querySelector(
-          ".lts-navigation > li.lts-navigation__item:nth-of-type(3)",
-        )
-        .addEventListener("toggled.lts.treeview", (e) => {
-          if (e.detail.open) {
-            console.log("opened")
-          } else {
-            console.log("closed")
-          }
-        })
-
-      // pushmenuel.addEventListener("toggle.lts.push-menu", (e) => {
-      //   console.log(e.detail)
-      // })
-
-      pushmenuel.addEventListener("hovertoggle.lts.push-menu", (e) => {
-        console.log(e.detail)
+      $(() => {
+        console.log(window.popup)
       })
-
-      pushmenuel.addEventListener("hovertoggled.lts.push-menu", (e) => {
-        console.log(e.detail)
-      })
-
-      // document.addEventListener("toggled.lts.push-menu", () => {
-      //   console.log("Sidebar toggled")
-      // })
-
-      // document.addEventListener("untoggled.lts.push-menu", () => {
-      //   console.log("Sidebar untoggled")
-      // })
-
-      const tree = adminlts.Treeview.getOrCreateInstance(".lts-navigation")
-      const item = document.querySelector(".test")
-      const test_item2 = document.querySelector(".test2")
-      $(".btn6").on("click", async () => {
-        tree.reveal(item)
-      })
-
-      $(".btn1").on("click", () => {
-        tree.openParents(item)
-      })
-
-      $(".btn2").on("click", () => {
-        tree.closeChildren(test_item2)
-      })
-
-      $(".btn3").on("click", () => {
-        tree.activate(test_item2)
-      })
-
-      $(".btn4").on("click", () => {
-        tree.expandAll()
-      })
-
-      $(".btn5").on("click", () => {
-        tree.collapseAll()
-      })
-
-      adminlts.bus.on("refresh", (data) => {
-        console.log("监听成功", data)
-      })
-
-      // console.log(a)
     </script>
   </Fragment>
 </Layout>
