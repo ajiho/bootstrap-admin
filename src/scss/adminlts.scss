@@ -17,11 +17,13 @@
 
 // Template abstracts
 @import "abstracts/variables";
+
 // @import "abstracts/functions";
 @import "mixins";
 
 // Template base
 @import "root";
+
 // @import "base/typography";
 
 // Template layout
@@ -31,6 +33,7 @@
 @import "layout/sidebar";
 @import "layout/main";
 @import "layout/footer";
+
 // @import "layout/navigation";
 @import "layout/overlays";
 

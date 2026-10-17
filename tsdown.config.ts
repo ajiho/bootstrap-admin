@@ -3,20 +3,15 @@ import { defineConfig } from "tsdown";
 export default defineConfig([
   {
     entry: {
-      index: "src/index.ts",
-      util: "src/util/index.ts",
+      adminlts: "src/ts/index.ts",
     },
+    format: "umd",
+    platform: "browser",
+    globalName: "AdminLTS",
+    clean: false,
     minify: false,
-  },
-  {
-    entry: "src/index.iife.ts",
-    sourcemap: true,
-    format: "iife",
-    minify: false,
-    inlineOnly: false,
     outputOptions: {
-      name: "moola",
-      file: "dist/moola.js",
+      entryFileNames: "js/adminlts.js",
     },
   },
 ]);
