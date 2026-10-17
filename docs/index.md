@@ -11,14 +11,14 @@ hero:
   tagline: 后端开发者构建管理系统的最佳起点
   actions:
     - theme: brand
-      text: 下载主题
-      link: https://github.com/AdminDesign/AdminLTS/archive/refs/tags/V2.0.1.zip
-    - theme: alt
-      text: 文档
+      text: 什么是AdminLTS
       link: /guide/what-is-it
     - theme: alt
+      text: 快速开始
+      link: /guide/getting-started
+    - theme: alt
       text: 演示
-      link: https://www.adminlts.com/
+      link: https://www.adminlts.com
 
 features:
   - icon: ✨

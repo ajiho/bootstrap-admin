@@ -6,7 +6,7 @@
 
 ### Git 下载(推荐)
 
-您也可以通过 GitHub 或 Gitee 的 [releases](https://github.com/ajiho/AdminLTS/releases) 列表下载。
+您也可以通过 GitHub 或 Gitee 的 [releases](https://github.com/ColoristLab/AdminLTS/releases) 列表下载。
 
 ### 包管理器
 

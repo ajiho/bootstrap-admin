@@ -51,7 +51,7 @@
     "lint:fix:css": "pnpm run lint:check:css --fix",
     "lint": "run-p lint:check:*",
     "lint:fix": "run-p lint:fix:*",
-    "docs:dev": "vitepress dev docs --open",
+    "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "css:build:base": "tsx build/css.ts",
