@@ -11,17 +11,14 @@ import Wrapper from "@components/Wrapper.astro"
   dasd
   <Fragment slot="scripts">
     <script is:inline>
+      console.log(popup.modal("aa"))
+
       // console.log(adminlts)
-      console.log(window.popup)
 
       // const id = adminlts.popup.modal({
       //   title: "确认操作",
       //   content: "确定要删除这条记录吗？",
       // })
-
-      $(() => {
-        console.log(window.popup)
-      })
     </script>
   </Fragment>
 </Layout>

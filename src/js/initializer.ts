@@ -1,8 +1,6 @@
 import datasetConfig from "dataset-config";
 import $ from "jquery";
 
-import { getRootWindow } from "./utils";
-
 const SELECTOR_DATA_TOGGLE = '[data-lts-toggle="initializer"]';
 
 /**
@@ -47,7 +45,7 @@ class Initializer {
   #init(): void {
     console.log("Initializerxxxxxxxddddddddddddd");
 
-    window.popup = "a";
+    // window.popup = "a";
 
     // Object.defineProperty(window, "popup", {
     //   configurable: true,

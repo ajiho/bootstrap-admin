@@ -13,6 +13,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/ts/**/*", "**/*.ts"],
+  "include": ["src/js/**/*"],
   "exclude": ["node_modules", "dist"]
 }
