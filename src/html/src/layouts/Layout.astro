@@ -55,6 +55,8 @@ const { class: bodyClass = [], ...bodyAttrs } = body
       href="./lib/overlayscrollbars/styles/overlayscrollbars.min.css"
     />
     <link rel="stylesheet" href="./lib/quicktab/dist/css/quicktab.min.css" />
+    <!-- 页面专属 CSS -->
+    <slot name="styles" />
     <link rel="stylesheet" href="./css/adminlts.css" />
   </head>
   <body class:list={bodyClass} {...bodyAttrs}>

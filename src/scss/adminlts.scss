@@ -23,6 +23,7 @@
 
 // Template base
 @import "root";
+@import "scrollbars";
 
 // @import "base/typography";
 
@@ -37,7 +38,7 @@
 // @import "layout/navigation";
 @import "layout/overlays";
 
-// @import "layout/content";
+@import "plugin/back-to-top";
 // @import "layout/footer";
 
 // Template components
