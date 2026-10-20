@@ -206,8 +206,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       dataset-config:
-        specifier: ^1.3.0
-        version: 1.3.0
+        specifier: ^1.3.1
+        version: 1.3.1
       datatables.net-bs5:
         specifier: ^3.1.4
         version: 3.1.4
@@ -245,14 +245,14 @@ importers:
         specifier: ^2.0.3
         version: 2.0.3
       postcss:
-        specifier: ^8.5.30
-        version: 8.5.30
+        specifier: ^8.5.31
+        version: 8.5.31
       postcss-custom-properties-prefix:
         specifier: ^0.1.0
-        version: 0.1.0(postcss@8.5.30)
+        version: 0.1.0(postcss@8.5.31)
       postcss-sort-media-queries:
         specifier: ^6.7.1
-        version: 6.7.1(postcss@8.5.30)
+        version: 6.7.1(postcss@8.5.31)
       prettier:
         specifier: ^3.9.10
         version: 3.9.10
@@ -282,7 +282,7 @@ importers:
         version: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
       stylelint-config-standard-scss:
         specifier: ^17.0.0
-        version: 17.0.0(postcss@8.5.30)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
+        version: 17.0.0(postcss@8.5.31)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
       stylelint-order:
         specifier: ^8.1.2
         version: 8.1.2(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
@@ -303,10 +303,10 @@ importers:
         version: 1.5.0(typescript@6.0.3)
       vitepress:
         specifier: 2.0.0-alpha.20
-        version: 2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.30)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1)
+        version: 2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.31)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1)
       vitepress-plugin-tabs:
         specifier: ^0.9.1
-        version: 0.9.1(vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.30)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.44(typescript@6.0.3))
+        version: 0.9.1(vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.31)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.44(typescript@6.0.3))
       vitest:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(sass@1.105.2)(tsx@4.23.15)(yaml@2.9.1))
@@ -2152,8 +2152,8 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
-  dataset-config@1.3.0:
-    resolution: {integrity: sha512-AdOJRiZ2geQMHZoxsKZVPNpqBBb2WNifoDapdvkzAOSai7qbUfeG9MRYVu9vVFeUFfv1Rwt3/NHa2Dmk589syQ==}
+  dataset-config@1.3.1:
+    resolution: {integrity: sha512-+zFUe4H3ZgUigeM7xiJPPGiwZGObn52ZwJ50d1FgGeED+mzPv5nut/06AjJq3C8jFyi4XufseyvGvTx4TDi7TQ==}
 
   datatables.net-bs5@3.1.4:
     resolution: {integrity: sha512-bTdQtbF+m6lPd5UdVvyqD7AT+xV1eLgGFYtyRlREEnB7ynmsVRBxGqKdsVRjOJfwtA9k9BYiR1R+g0SxBKGcqA==}
@@ -3040,8 +3040,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.30:
-    resolution: {integrity: sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==}
+  postcss@8.5.31:
+    resolution: {integrity: sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prettier-plugin-astro@1.1.1:
@@ -4832,7 +4832,7 @@ snapshots:
       '@vue/shared': 3.5.44
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.30
+      postcss: 8.5.31
       source-map-js: 1.2.2
 
   '@vue/compiler-ssr@3.5.44':
@@ -5265,7 +5265,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  dataset-config@1.3.0: {}
+  dataset-config@1.3.1: {}
 
   datatables.net-bs5@3.1.4:
     dependencies:
@@ -6041,9 +6041,9 @@ snapshots:
 
   pidtree@1.0.0: {}
 
-  postcss-custom-properties-prefix@0.1.0(postcss@8.5.30):
+  postcss-custom-properties-prefix@0.1.0(postcss@8.5.31):
     dependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
       postcss-value-parser: 4.2.0
 
   postcss-media-query-parser@0.2.3: {}
@@ -6052,31 +6052,31 @@ snapshots:
 
   postcss-resolve-nested-selector@0.1.7: {}
 
-  postcss-safe-parser@7.1.0(postcss@8.5.30):
+  postcss-safe-parser@7.1.0(postcss@8.5.31):
     dependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
 
-  postcss-scss@4.0.9(postcss@8.5.30):
+  postcss-scss@4.0.9(postcss@8.5.31):
     dependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
 
   postcss-selector-parser@7.1.6:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss-sort-media-queries@6.7.1(postcss@8.5.30):
+  postcss-sort-media-queries@6.7.1(postcss@8.5.31):
     dependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
       sort-css-media-queries: 3.0.5
 
-  postcss-sorting@10.0.0(postcss@8.5.30):
+  postcss-sorting@10.0.0(postcss@8.5.31):
     dependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.30:
+  postcss@8.5.31:
     dependencies:
       nanoid: 3.3.20
       picocolors: 1.1.1
@@ -6379,26 +6379,26 @@ snapshots:
     dependencies:
       ansi-regex: 6.4.0
 
-  stylelint-config-recommended-scss@17.0.1(postcss@8.5.30)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-recommended-scss@17.0.1(postcss@8.5.31)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      postcss-scss: 4.0.9(postcss@8.5.30)
+      postcss-scss: 4.0.9(postcss@8.5.31)
       stylelint: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
       stylelint-config-recommended: 18.0.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
       stylelint-scss: 7.3.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
     optionalDependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
 
   stylelint-config-recommended@18.0.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       stylelint: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
 
-  stylelint-config-standard-scss@17.0.0(postcss@8.5.30)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-standard-scss@17.0.0(postcss@8.5.31)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       stylelint: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.30)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.31)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
       stylelint-config-standard: 40.0.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
     optionalDependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
 
   stylelint-config-standard@40.0.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
@@ -6407,8 +6407,8 @@ snapshots:
 
   stylelint-order@8.1.2(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      postcss: 8.5.30
-      postcss-sorting: 10.0.0(postcss@8.5.30)
+      postcss: 8.5.31
+      postcss-sorting: 10.0.0(postcss@8.5.31)
       stylelint: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
 
   stylelint-scss@7.3.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)):
@@ -6454,8 +6454,8 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       picocolors: 1.1.1
-      postcss: 8.5.30
-      postcss-safe-parser: 7.1.0(postcss@8.5.30)
+      postcss: 8.5.31
+      postcss-safe-parser: 7.1.0(postcss@8.5.31)
       postcss-selector-parser: 7.1.6
       postcss-value-parser: 4.2.0
       string-width: 8.3.0
@@ -6664,7 +6664,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
-      postcss: 8.5.30
+      postcss: 8.5.31
       rolldown: 1.2.14
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -6679,12 +6679,12 @@ snapshots:
     optionalDependencies:
       vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(sass@1.105.2)(tsx@4.23.15)(yaml@2.9.1)
 
-  vitepress-plugin-tabs@0.9.1(vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.30)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.44(typescript@6.0.3)):
+  vitepress-plugin-tabs@0.9.1(vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.31)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.44(typescript@6.0.3)):
     dependencies:
-      vitepress: 2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.30)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1)
+      vitepress: 2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.31)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1)
       vue: 3.5.44(typescript@6.0.3)
 
-  vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.30)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1):
+  vitepress@2.0.0-alpha.20(@types/node@26.6.5)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.28.2)(postcss@8.5.31)(sass@1.105.2)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1):
     dependencies:
       '@docsearch/css': 4.7.1
       '@docsearch/js': 4.7.1
@@ -6704,7 +6704,7 @@ snapshots:
       vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(sass@1.105.2)(tsx@4.23.15)(yaml@2.9.1)
       vue: 3.5.44(typescript@6.0.3)
     optionalDependencies:
-      postcss: 8.5.30
+      postcss: 8.5.31
     transitivePeerDependencies:
       - '@types/node'
       - '@vitejs/devtools'

@@ -26,3 +26,4 @@ minimumReleaseAgeExclude:
   - vitepress@2.0.0-alpha.19
   - "@rolldown/binding-openharmony-arm64@1.2.6"
   - postcss-custom-properties-prefix@0.1.0
+  - dataset-config@1.3.1
